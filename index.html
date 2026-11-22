@@ -140,6 +140,15 @@ body.assistant-open .ai-launch{display:none}
 .affiliate-disclosure summary:hover{color:#ff8b19}
 .affiliate-disclosure[open] summary{color:#ff8b19}
 .affiliate-disclosure p{max-width:460px;margin:8px 0 0;padding:12px 14px;background:#181819;border:1px solid #303034;border-radius:10px;color:#aaa;line-height:1.6;font-size:12px}
+
+/* Affiliate disclosure as an overlay popover: doesn't shift footer layout */
+.disclosure .affiliate-disclosure{position:relative!important;display:inline-block!important;margin-left:10px!important;z-index:30}
+.disclosure .affiliate-disclosure summary{font-size:12px!important;line-height:1.4!important;padding:3px 0!important;color:#85858b!important;cursor:pointer!important}
+.disclosure .affiliate-disclosure summary:before{content:"ⓘ "!important;color:#777!important}
+.disclosure .affiliate-disclosure summary:hover{color:#aaa!important}
+.disclosure .affiliate-disclosure[open] summary{color:#aaa!important}
+.disclosure .affiliate-disclosure p{position:absolute!important;right:0!important;bottom:calc(100% + 10px)!important;width:min(360px,calc(100vw - 36px))!important;max-width:none!important;margin:0!important;padding:12px 14px!important;background:#181819!important;border:1px solid #333338!important;border-radius:12px!important;box-shadow:0 14px 32px rgba(0,0,0,.5)!important;color:#aaa!important;font-size:12px!important;line-height:1.6!important;z-index:50!important}
+@media(max-width:560px){.disclosure .affiliate-disclosure p{right:auto!important;left:0!important;width:min(330px,calc(100vw - 36px))!important}}
 </style>
 <!-- Google Analytics 4 - Vitrine Certeira -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRZ9ZCZJEH"></script>
