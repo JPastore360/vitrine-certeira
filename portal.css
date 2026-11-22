@@ -42,3 +42,12 @@ main .article>p:last-child{margin:30px 0;padding:18px 20px;border:1px solid var(
 .top .navlinks a{font-size:13px;color:#c5c5cb;padding:8px 12px;border-radius:99px;border:1px solid transparent}
 .top .navlinks a:hover{border-color:#4a3827;background:var(--vc-glow);color:#fff}
 @media(max-width:700px){.top .nav{align-items:flex-start;flex-direction:column;gap:8px}.top .navlinks{gap:4px}.top .navlinks a{padding:6px 9px;font-size:12px}}
+
+/* Affiliate disclosure as an overlay popover: doesn't shift footer layout */
+.affiliate-disclosure{position:relative!important;display:inline-block!important;margin-left:10px!important;z-index:30}
+.affiliate-disclosure summary{font-size:12px!important;line-height:1.4!important;padding:3px 0!important;color:#85858b!important;cursor:pointer!important}
+.affiliate-disclosure summary:before{content:"ⓘ "!important;color:#777!important}
+.affiliate-disclosure summary:hover{color:#aaa!important}
+.affiliate-disclosure[open] summary{color:#aaa!important}
+.affiliate-disclosure p{position:absolute!important;right:0!important;bottom:calc(100% + 10px)!important;width:min(360px,calc(100vw - 36px))!important;max-width:none!important;margin:0!important;padding:12px 14px!important;background:#181819!important;border:1px solid #333338!important;border-radius:12px!important;box-shadow:0 14px 32px rgba(0,0,0,.5)!important;color:#aaa!important;font-size:12px!important;line-height:1.6!important;z-index:50!important}
+@media(max-width:560px){.affiliate-disclosure p{right:auto!important;left:0!important;width:min(330px,calc(100vw - 36px))!important}}
