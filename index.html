@@ -81,6 +81,11 @@ body.assistant-open .ai-launch{display:none}
 .ai-result-link{display:inline-flex;background:#ff8a18;color:#141414;border-radius:8px;padding:7px 9px;font-weight:900;font-size:10px;text-decoration:none;}
 .ai-result-link.disabled{background:#333;color:#999;pointer-events:none;}
 .ai-msg.bot{overflow-wrap:anywhere;}
+
+/* Product images presentation */
+.photo{background:linear-gradient(145deg,#f5f5f5,#e7e7e7)!important;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.photo img{object-fit:contain!important;padding:12px;transition:transform .35s ease;}
+.card:hover .photo img{transform:scale(1.04);}
 </style>
 <!-- Google Analytics 4 - Vitrine Certeira -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRZ9ZCZJEH"></script>
@@ -114,52 +119,52 @@ body.assistant-open .ai-launch{display:none}
 // affiliateUrl deve ser o link de afiliado validado. Se vazio, o botão fica desativado.
 const products = [
   {
-    name: "Controle Redfin Bluetooth sem fio", category: "games", categoryName: "Games", description: "Controle Bluetooth compatível com PS4, PC, TV e celular.", price: "Consulte na loja", image: "", affiliateUrl: "https://meli.la/2fVzeGW", tag: "MERCADO LIVRE", icon: "🎮"
+    name: "Controle Redfin Bluetooth sem fio", category: "games", categoryName: "Games", description: "Controle Bluetooth compatível com PS4, PC, TV e celular.", price: "Consulte na loja", image: "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mhb9fl87n2md0a", affiliateUrl: "https://meli.la/2fVzeGW", tag: "MERCADO LIVRE", icon: "🎮"
   },
   {
-    name: "Controle Sony DualSense PS5 Midnight Black", category: "games", categoryName: "Games", description: "Controle original sem fio para PlayStation 5.", price: "Consulte na loja", image: "", affiliateUrl: "https://meli.la/11CEgBH", tag: "MERCADO LIVRE", icon: "🎮"
+    name: "Controle Sony DualSense PS5 Midnight Black", category: "games", categoryName: "Games", description: "Controle original sem fio para PlayStation 5.", price: "Consulte na loja", image: "https://www.costco.com.mx/medias/sys_master/products/h4b/h3d/398628244652062.jpg", affiliateUrl: "https://meli.la/11CEgBH", tag: "MERCADO LIVRE", icon: "🎮"
   },
   {
-    name: "Grand Theft Auto VI — PS5 edição padrão física", category: "games", categoryName: "Games", description: "GTA VI para PlayStation 5, edição física.", price: "Consulte na loja", image: "", affiliateUrl: "https://meli.la/2ckEByY", tag: "MERCADO LIVRE", icon: "🎮"
+    name: "Grand Theft Auto VI — PS5 edição padrão física", category: "games", categoryName: "Games", description: "GTA VI para PlayStation 5, edição física.", price: "Consulte na loja", image: "https://images.tcdn.com.br/img/img_prod/684553/grand_theft_auto_vi_gta_6_pre_venda_ps5_6915_2_1fcadb1df24e6a0466329a3c653b3779.jpg", affiliateUrl: "https://meli.la/2ckEByY", tag: "MERCADO LIVRE", icon: "🎮"
   },
   {
-    name: "Lavadora de alta pressão Kärcher Compacta 1500 PSI", category: "tools", categoryName: "Ferramentas", description: "Lavadora compacta de alta pressão para limpeza.", price: "Consulte na loja", image: "", affiliateUrl: "https://meli.la/25uLg8K", tag: "MERCADO LIVRE", icon: "🧽"
+    name: "Lavadora de alta pressão Kärcher Compacta 1500 PSI", category: "tools", categoryName: "Ferramentas", description: "Lavadora compacta de alta pressão para limpeza.", price: "Consulte na loja", image: "https://karcher.vtexassets.com/arquivos/ids/164289/1.jpg?v=639038247232500000", affiliateUrl: "https://meli.la/25uLg8K", tag: "MERCADO LIVRE", icon: "🧽"
   },
   {
-    name: "Lavadora WAP WL 1800 1500 PSI 127V", category: "tools", categoryName: "Ferramentas", description: "Lavadora de alta pressão WAP para limpeza doméstica.", price: "Consulte na loja", image: "", affiliateUrl: "https://meli.la/1SZmHZ8", tag: "MERCADO LIVRE", icon: "🧽"
+    name: "Lavadora WAP WL 1800 1500 PSI 127V", category: "tools", categoryName: "Ferramentas", description: "Lavadora de alta pressão WAP para limpeza doméstica.", price: "Consulte na loja", image: "https://formosa.vtexassets.com/arquivos/ids/265619/Lavadora-De-Alta-Press-o-Wl-1800---Wap-0.jpg?v=639142902228870000", affiliateUrl: "https://meli.la/1SZmHZ8", tag: "MERCADO LIVRE", icon: "🧽"
   },
   {
-    name: "Kit de ferramentas 46 peças com catraca e soquetes", category: "tools", categoryName: "Ferramentas", description: "Maleta de ferramentas para reparos e manutenção.", price: "Consulte na loja", image: "", affiliateUrl: "https://meli.la/2xn3rfY", tag: "MERCADO LIVRE", icon: "🧰"
+    name: "Kit de ferramentas 46 peças com catraca e soquetes", category: "tools", categoryName: "Ferramentas", description: "Maleta de ferramentas para reparos e manutenção.", price: "Consulte na loja", image: "https://a-static.mlcdn.com.br/800x800/maleta-de-chaves-catraca-com-kit-soquete-46-em-1-troya-tools-hai-brasil/pjpecaseacessorios/try6127-304/506922e70a3ea8057660aa476e90a635.jpeg", affiliateUrl: "https://meli.la/2xn3rfY", tag: "MERCADO LIVRE", icon: "🧰"
   },
   {
-    name: "Lavadora portátil de pressão com 2 baterias", category: "tools", categoryName: "Ferramentas", description: "Lavadora portátil sem fio com maleta e baterias.", price: "Consulte na loja", image: "", affiliateUrl: "https://meli.la/12Kje2T", tag: "MERCADO LIVRE", icon: "🧽"
+    name: "Lavadora portátil de pressão com 2 baterias", category: "tools", categoryName: "Ferramentas", description: "Lavadora portátil sem fio com maleta e baterias.", price: "Consulte na loja", image: "https://cdn.awsli.com.br/800x800/1742/1742732/produto/181097126b5dce20773.jpg", affiliateUrl: "https://meli.la/12Kje2T", tag: "MERCADO LIVRE", icon: "🧽"
   },
   {
-    name: "O Boticário Quasar Blue Desodorante Colônia 100 ml", category: "perfume", categoryName: "Perfumes", description: "Colônia masculina Quasar Blue 100 ml.", price: "Consulte na loja", image: "", affiliateUrl: "https://meli.la/1ddYqsi", tag: "MERCADO LIVRE", icon: "🧴"
+    name: "O Boticário Quasar Blue Desodorante Colônia 100 ml", category: "perfume", categoryName: "Perfumes", description: "Colônia masculina Quasar Blue 100 ml.", price: "Consulte na loja", image: "https://a-static.mlcdn.com.br/quasar-blue-colonia-100ml-o-boticario/megacatalogos/51244/b1fd7c4222cc297063037a90c6cb32fa.jpeg", affiliateUrl: "https://meli.la/1ddYqsi", tag: "MERCADO LIVRE", icon: "🧴"
   },
   {
-    name: "Filamento PLA Voolt3D High Speed 1,75 mm 1 kg Verde Velvet", category: "tech", categoryName: "Tecnologia", description: "Filamento PLA para impressão 3D.", price: "Consulte na loja", image: "", affiliateUrl: "https://meli.la/2mYh7yA", tag: "MERCADO LIVRE", icon: "🖨️"
+    name: "Filamento PLA Voolt3D High Speed 1,75 mm 1 kg Verde Velvet", category: "tech", categoryName: "Tecnologia", description: "Filamento PLA para impressão 3D.", price: "Consulte na loja", image: "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lx8nt9rz5h86b9", affiliateUrl: "https://meli.la/2mYh7yA", tag: "MERCADO LIVRE", icon: "🖨️"
   },
   {
-    name: "Power Bank Basike 20.000 mAh carga rápida 22,5 W", category: "tech", categoryName: "Tecnologia", description: "Power bank com cabos embutidos e display.", price: "Consulte na loja", image: "", affiliateUrl: "https://meli.la/24w6rvm", tag: "MERCADO LIVRE", icon: "🔋"
+    name: "Power Bank Basike 20.000 mAh carga rápida 22,5 W", category: "tech", categoryName: "Tecnologia", description: "Power bank com cabos embutidos e display.", price: "Consulte na loja", image: "https://cdn.shopify.com/s/files/1/0930/6243/1086/files/1_-_2026-03-12T162858.331.jpg?v=1773690055", affiliateUrl: "https://meli.la/24w6rvm", tag: "MERCADO LIVRE", icon: "🔋"
   },
   {
-    name: "Projetor portátil 4K HD Android Wi-Fi Bluetooth", category: "tech", categoryName: "Tecnologia", description: "Projetor portátil com sistema Android e conectividade.", price: "Consulte na loja", image: "", affiliateUrl: "https://meli.la/1dKSUfw", tag: "MERCADO LIVRE", icon: "📽️"
+    name: "Projetor portátil 4K HD Android Wi-Fi Bluetooth", category: "tech", categoryName: "Tecnologia", description: "Projetor portátil com sistema Android e conectividade.", price: "Consulte na loja", image: "https://imgs.extra.com.br/1579370282/1xg.jpg?imwidth=1000", affiliateUrl: "https://meli.la/1dKSUfw", tag: "MERCADO LIVRE", icon: "📽️"
   },
   {
-    name: "Fone Soundcore Anker P20i Bluetooth 5.3", category: "tech", categoryName: "Tecnologia", description: "Fone sem fio Soundcore com graves potentes e longa autonomia.", price: "Consulte na loja", image: "", affiliateUrl: "https://meli.la/231ELVU", tag: "MERCADO LIVRE", icon: "🎧"
+    name: "Fone Soundcore Anker P20i Bluetooth 5.3", category: "tech", categoryName: "Tecnologia", description: "Fone sem fio Soundcore com graves potentes e longa autonomia.", price: "Consulte na loja", image: "https://media.naheed.pk/catalog/product/cache/2f2d0cb0c5f92580479e8350be94f387/1/2/1291441-1.jpg", affiliateUrl: "https://meli.la/231ELVU", tag: "MERCADO LIVRE", icon: "🎧"
   },
   {
-    name: "Amplificador Taramps TS 800x4 800W 4 canais", category: "auto", categoryName: "Automotivo", description: "Amplificador de 4 canais para som automotivo.", price: "Consulte na loja", image: "", affiliateUrl: "https://meli.la/1QpxF68", tag: "MERCADO LIVRE", icon: "🔊"
+    name: "Amplificador Taramps TS 800x4 800W 4 canais", category: "auto", categoryName: "Automotivo", description: "Amplificador de 4 canais para som automotivo.", price: "Consulte na loja", image: "https://http2.mlstatic.com/D_973764-MLB93586574586_102025-C.jpg", affiliateUrl: "https://meli.la/1QpxF68", tag: "MERCADO LIVRE", icon: "🔊"
   },
   {
-    name: "Módulo Taramps TS 400x4 400 RMS 4 canais", category: "auto", categoryName: "Automotivo", description: "Módulo amplificador de 4 canais para som automotivo.", price: "Consulte na loja", image: "", affiliateUrl: "https://meli.la/1wJSEq1", tag: "MERCADO LIVRE", icon: "🔊"
+    name: "Módulo Taramps TS 400x4 400 RMS 4 canais", category: "auto", categoryName: "Automotivo", description: "Módulo amplificador de 4 canais para som automotivo.", price: "Consulte na loja", image: "https://images.tcdn.com.br/img/img_prod/941173/modulo_amplificador_taramps_ts400x4_400_wrms_4_canais_2_ohms_22891_3_ff8dcd0b487bdbc80a1b2538f93caf2d.jpg", affiliateUrl: "https://meli.la/1wJSEq1", tag: "MERCADO LIVRE", icon: "🔊"
   },
   {
-    name: "Compressor de ar portátil Verunto VER-B15 digital", category: "auto", categoryName: "Automotivo", description: "Compressor portátil para pneus de carro, moto e bicicleta.", price: "Consulte na loja", image: "", affiliateUrl: "https://meli.la/2BXgs8W", tag: "MERCADO LIVRE", icon: "🛞"
+    name: "Compressor de ar portátil Verunto VER-B15 digital", category: "auto", categoryName: "Automotivo", description: "Compressor portátil para pneus de carro, moto e bicicleta.", price: "Consulte na loja", image: "https://http2.mlstatic.com/D_NQ_NP_601727-MLA92701041217_092025-F-compressor-portatil-sem-fio-para-calibragem-de-pneus-de-carro-moto-e-bicicleta.webp", affiliateUrl: "https://meli.la/2BXgs8W", tag: "MERCADO LIVRE", icon: "🛞"
   },
   {
-    name: "Carregador inteligente de bateria 12V 6A bivolt", category: "auto", categoryName: "Automotivo", description: "Carregador de bateria para carro, moto e outros veículos.", price: "Consulte na loja", image: "", affiliateUrl: "https://meli.la/1XcmMi8", tag: "MERCADO LIVRE", icon: "🔋"
+    name: "Carregador inteligente de bateria 12V 6A bivolt", category: "auto", categoryName: "Automotivo", description: "Carregador de bateria para carro, moto e outros veículos.", price: "Consulte na loja", image: "https://blushop.cdn.magazord.com.br/img/2025/08/produto/113/05-carregador-de-bateria-automotivo-smart-charger-6a-inteligente-bivolt-12v.jpeg", affiliateUrl: "https://meli.la/1XcmMi8", tag: "MERCADO LIVRE", icon: "🔋"
   },
 
   {
