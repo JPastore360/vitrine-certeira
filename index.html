@@ -65,6 +65,22 @@
 @media(max-width:620px){.ai-launch{right:12px;bottom:88px;padding:9px 13px 9px 9px;border-radius:16px}.ai-launch .robot-face{width:42px;height:42px}.ai-panel{right:10px;bottom:12px;width:calc(100vw - 20px);height:min(500px,calc(100dvh - 24px));max-height:calc(100dvh - 24px)}}
 body.assistant-open .ai-launch{display:none}
 .creator-credit{text-align:center;padding:18px 0 10px;color:#85858b;font-size:11px;letter-spacing:.12em;text-transform:uppercase}.creator-credit strong{color:#ff941f;font-weight:900;letter-spacing:.16em}.creator-credit span{color:#ff941f;margin-left:5px}@media(max-width:620px){.creator-credit{padding:16px 0 8px;font-size:10px}}
+
+/* Fix clipping and improve responsive text flow */
+.heroVisual,.visualHeadline,.visualTiles,.visualTile,.featuretile,.catbox,.editorial,.step,.faq article,.card,.cardbody{min-width:0;}
+.heroVisual{overflow:visible;}
+.visualTile,.featuretile p,.catbox small,.editorial p,.step p,.faq p,.card h3,.desc{overflow-wrap:anywhere;word-break:normal;}
+.card h3{min-height:unset;line-height:1.4;}
+.desc{min-height:unset;}
+.ai-results{display:flex;flex-direction:column;gap:9px;width:100%;}
+.ai-result{border:1px solid #38383b;background:#1c1c1e;border-radius:12px;padding:10px;display:grid;grid-template-columns:44px minmax(0,1fr);gap:9px;align-items:center;width:100%;}
+.ai-result-icon{height:44px;border-radius:9px;background:#252527;display:grid;place-items:center;font-size:22px;}
+.ai-result-info{min-width:0;}
+.ai-result-info strong{display:block;font-size:12px;line-height:1.35;overflow-wrap:anywhere;}
+.ai-result-info small{display:block;color:#aaa;font-size:10px;margin:4px 0 7px;}
+.ai-result-link{display:inline-flex;background:#ff8a18;color:#141414;border-radius:8px;padding:7px 9px;font-weight:900;font-size:10px;text-decoration:none;}
+.ai-result-link.disabled{background:#333;color:#999;pointer-events:none;}
+.ai-msg.bot{overflow-wrap:anywhere;}
 </style>
 <!-- Google Analytics 4 - Vitrine Certeira -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRZ9ZCZJEH"></script>
@@ -1300,14 +1316,36 @@ const aiPanel=document.getElementById('aiPanel'),aiMessages=document.getElementB
 function openAssistant(){aiPanel.classList.add('open');document.body.classList.add('assistant-open');aiInput.focus()}function closeAssistant(){aiPanel.classList.remove('open');document.body.classList.remove('assistant-open')}
 document.getElementById('aiLaunch').addEventListener('click',openAssistant);document.getElementById('aiClose').addEventListener('click',closeAssistant);
 function aiSay(text,type='bot'){const el=document.createElement('div');el.className='ai-msg '+type;el.textContent=text;aiMessages.appendChild(el);aiMessages.scrollTop=aiMessages.scrollHeight}
-function aiAnswer(query){const q=query.toLowerCase();let cat=null;const categoryMap=[['tech',['tecnologia','tech','celular','fone','power bank','projetor','eletrônico']],['casa',['casa','cozinha','natal','marmita','garrafa','panela']],['games',['game','gamer','controle','ps5','playstation','gta']],['tools',['ferramenta','lavadora','kit ferramentas']],['auto',['automotivo','carro','moto','som automotivo','compressor']],['agro',['agro','campo','rural']]];
-for(const [c,terms] of categoryMap){if(terms.some(t=>q.includes(t))){cat=c;break}}
-const matches=products.filter(p=>((!cat||p.category===cat)&&(q.split(/\s+/).some(w=>w.length>2&&(p.name+' '+p.categoryName+' '+p.description).toLowerCase().includes(w))))).slice(0,4);
-if(matches.length){const intro='Encontrei estas opções no catálogo:';
-return intro+'\n\n'+matches.map((p,i)=>(i+1)+'. '+p.name+' — '+p.price).join('\n')+'\n\nUse os filtros na vitrine para ver os produtos e clique no botão de oferta para abrir a loja.'}
-if(cat){return 'Temos produtos nesta categoria. Vou te levar para os achados filtrados. Clique em uma categoria na vitrine ou use a busca para refinar.'}
-if(/categoria|categorias|como funciona|ajuda/.test(q)){return 'Você pode explorar Tecnologia, Casa & Cozinha, Automotivo, Agro, Ferramentas, Games, Perfumes e Utilidades. Os filtros ficam acima da lista de produtos. Preços e estoque devem ser conferidos na loja.'}
-return 'Ainda não achei uma correspondência exata no catálogo atual. Tente termos como “controle”, “fone”, “lavadora”, “natal”, “power bank” ou escolha uma categoria. Sou uma versão beta local; a IA conectada será integrada em uma próxima etapa.';
+function norm(text){return text.toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'')}
+const categoryMap=[['tech',['tecnologia','tech','celular','fone','power bank','projetor','eletronico','acessorio']],['casa',['casa','cozinha','natal','marmita','garrafa','panela','decoracao']],['games',['game','gamer','controle','ps5','playstation','gta','jogo']],['tools',['ferramenta','lavadora','kit ferramentas','equipamento']],['auto',['automotivo','carro','moto','som automotivo','compressor','bateria']],['agro',['agro','campo','rural','fazenda']],['perfume',['perfume','fragrancia','colonia']],['util',['utilidade','utilidades','dia a dia']]];
+function aiAnswer(query){
+ const q=norm(query);
+ let cat=null;
+ for(const [c,terms] of categoryMap){if(terms.some(t=>q.includes(norm(t)))){cat=c;break}}
+ const words=q.split(/\\s+/).filter(w=>w.length>2&&!['quero','veja','mostrar','mostre','encontre','produto','produtos','para','com','uma','uns','das','dos','mais','interessantes','buscar','pesquisar'].includes(w));
+ let matches=products.filter(p=>{
+  if(cat&&p.category!==cat)return false;
+  const hay=norm(p.name+' '+p.categoryName+' '+p.description+' '+p.category);
+  if(cat&&words.length===0)return true;
+  return words.length===0?(!cat):words.some(w=>hay.includes(w));
+ });
+ if(!matches.length&&cat) matches=products.filter(p=>p.category===cat);
+ if(matches.length){
+  aiSay('Achei '+matches.length+' produto(s) no catálogo. Veja as opções e toque em “Ver na loja” para ir direto à página de compra:');
+  const results=document.createElement('div');results.className='ai-results';
+  matches.forEach(p=>{
+   const card=document.createElement('article');card.className='ai-result';
+   card.innerHTML='<div class="ai-result-icon">'+(p.icon||'🛍️')+'</div><div class="ai-result-info"><strong></strong><small></small><a class="ai-result-link" target="_blank" rel="nofollow sponsored noopener">VER NA LOJA ↗</a></div>';
+   card.querySelector('strong').textContent=p.name;
+   card.querySelector('small').textContent=(p.price||'Confira o preço')+' • '+(p.categoryName||'Achado');
+   const a=card.querySelector('a'); if(p.affiliateUrl){a.href=p.affiliateUrl}else{a.classList.add('disabled');a.removeAttribute('href');a.textContent='LINK INDISPONÍVEL'}
+   results.appendChild(card);
+  });
+  aiMessages.appendChild(results);aiMessages.scrollTop=aiMessages.scrollHeight;
+  return '';
+ }
+ if(/categoria|categorias|como funciona|ajuda/.test(q))return 'Explore Tecnologia, Casa & Cozinha, Automotivo, Agro, Ferramentas, Games, Perfumes e Utilidades. Se disser o que procura, listo todos os produtos correspondentes e links para compra.';
+ return 'Não encontrei produtos com esse termo no catálogo atual. Tente uma palavra mais simples ou peça uma categoria, como “games”, “cozinha”, “tecnologia” ou “automotivo”.';
 }
 function aiSubmit(q){q=q.trim();if(!q)return;aiSay(q,'user');aiInput.value='';aiSay(aiAnswer(q));}
 document.getElementById('aiForm').addEventListener('submit',e=>{e.preventDefault();aiSubmit(aiInput.value)});
