@@ -15,6 +15,15 @@
 @media(max-width:1200px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}\n@media(max-width:900px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.about{grid-template-columns:1fr}.navlinks{display:none}.hero{padding-top:45px}.sectionhead{align-items:start;flex-direction:column}.search{width:100%}}
 @media(max-width:520px){.wrap{padding:0 16px}.nav{height:64px}.brand{font-size:14px}.logo{width:38px;height:38px}.navcta{padding:10px 12px;font-size:12px}.hero h1{letter-spacing:-1.6px}.hero p{font-size:15px}.grid{gap:10px}.photo{height:145px}.cardbody{padding:12px}.card h3{font-size:14px}.desc{font-size:11px}.price{font-size:16px}.offer{font-size:11px;padding:10px 6px}.about{padding:20px}.aboutstats{gap:8px}.stat{padding:12px 10px}}
 </style>
+<!-- Google Analytics 4 - Vitrine Certeira -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRZ9ZCZJEH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZRZ9ZCZJEH');
+</script>
+
 </head>
 <body>
 <header class="topbar"><div class="wrap nav">
@@ -1139,5 +1148,46 @@ const grid=document.getElementById('productGrid');let selected='all';
 function card(p){const photo=p.image?`<img src="${p.image}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover">`:`<div class="placeholder">${p.icon||"✦"}</div>`;const price=p.price?`${p.price}`:`Preço consulte na loja`;const link=p.affiliateUrl?`<a class="offer" href="${p.affiliateUrl}" target="_blank" rel="nofollow sponsored noopener">VER OFERTA NA SHOPEE ↗</a>`:`<span class="offer disabled">LINK EM PREPARAÇÃO</span>`;return `<article class="card"><div class="photo">${photo}<span class="tag">${p.tag||"SELECIONADO"}</span></div><div class="cardbody"><div class="catlabel">${p.categoryName}</div><h3>${p.name}</h3><div class="desc">${p.description||"Produto selecionado pela Vitrine Certeira."}</div><div class="price">${price}</div>${link}</div></article>`}
 function render(){const q=document.getElementById('search').value.trim().toLowerCase();const filtered=products.filter(p=>(selected==='all'||p.category===selected)&&(`${p.name} ${p.categoryName} ${p.description}`.toLowerCase().includes(q)));grid.innerHTML=filtered.length?filtered.map(card).join(''):`<div class="empty">Nenhum produto encontrado com essa busca. Tente outra palavra.</div>`}
 document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');selected=b.dataset.cat;render()}));document.getElementById('search').addEventListener('input',render);document.getElementById('year').textContent=new Date().getFullYear();render();
+
+// GA4: eventos personalizados para medir interacoes no site
+// Clique em ofertas/links de afiliado
+document.addEventListener('click', function(event) {
+  const offer = event.target.closest('a.offer[href]');
+  if (!offer) return;
+  const productCard = offer.closest('.card');
+  const productName = productCard?.querySelector('h3')?.textContent?.trim() || 'Produto';
+  const category = productCard?.querySelector('.catlabel')?.textContent?.trim() || 'Não informada';
+  if (typeof gtag === 'function') {
+    gtag('event', 'product_click', {
+      product_name: productName,
+      product_category: category,
+      link_url: offer.href,
+      outbound: true
+    });
+  }
+});
+
+// Clique em categoria
+document.querySelectorAll('.filter').forEach(function(button) {
+  button.addEventListener('click', function() {
+    if (typeof gtag === 'function') {
+      gtag('event', 'category_filter', { category_name: button.textContent.trim(), category_value: button.dataset.cat });
+    }
+  });
+});
+
+// Busca: envia evento após pausa de digitação (evita disparar a cada tecla)
+let searchAnalyticsTimer;
+document.getElementById('search').addEventListener('input', function(event) {
+  clearTimeout(searchAnalyticsTimer);
+  const searchTerm = event.target.value.trim();
+  if (!searchTerm) return;
+  searchAnalyticsTimer = setTimeout(function() {
+    if (typeof gtag === 'function') {
+      gtag('event', 'site_search_used', { search_term: searchTerm });
+    }
+  }, 700);
+});
+
 </script>
 </body></html>
