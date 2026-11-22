@@ -11,4 +11,11 @@
     <priority>0.8</priority>
   </url>
   <url><loc>https://jpastore360.github.io/vitrine-certeira/tecnologia.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jpastore360.github.io/vitrine-certeira/categorias.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jpastore360.github.io/vitrine-certeira/ferramentas.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jpastore360.github.io/vitrine-certeira/automotivo.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jpastore360.github.io/vitrine-certeira/casa-utilidades.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jpastore360.github.io/vitrine-certeira/agro.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jpastore360.github.io/vitrine-certeira/games.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jpastore360.github.io/vitrine-certeira/perfumes.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
