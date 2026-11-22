@@ -1,0 +1,167 @@
+{
+  "source": "Amazon Associates user-provided short affiliate links",
+  "status": "pending_product_resolution",
+  "note": "Preserve original links. Populate title, image, category, description after resolving destination. Do not publish until product identity and image are confirmed.",
+  "products": [
+    {
+      "id": "amazon-01",
+      "store": "Amazon",
+      "affiliateUrl": "https://link.amazon/B0djIboJC",
+      "title": null,
+      "image": null,
+      "category": null,
+      "description": null,
+      "status": "pending"
+    },
+    {
+      "id": "amazon-02",
+      "store": "Amazon",
+      "affiliateUrl": "https://link.amazon/B089QlPF3",
+      "title": null,
+      "image": null,
+      "category": null,
+      "description": null,
+      "status": "pending"
+    },
+    {
+      "id": "amazon-03",
+      "store": "Amazon",
+      "affiliateUrl": "https://link.amazon/B0b3icDzn",
+      "title": null,
+      "image": null,
+      "category": null,
+      "description": null,
+      "status": "pending"
+    },
+    {
+      "id": "amazon-04",
+      "store": "Amazon",
+      "affiliateUrl": "https://link.amazon/B09s0c1gX",
+      "title": null,
+      "image": null,
+      "category": null,
+      "description": null,
+      "status": "pending"
+    },
+    {
+      "id": "amazon-05",
+      "store": "Amazon",
+      "affiliateUrl": "https://link.amazon/B0fYaYmhE",
+      "title": null,
+      "image": null,
+      "category": null,
+      "description": null,
+      "status": "pending"
+    },
+    {
+      "id": "amazon-06",
+      "store": "Amazon",
+      "affiliateUrl": "https://link.amazon/B09meXLqe",
+      "title": null,
+      "image": null,
+      "category": null,
+      "description": null,
+      "status": "pending"
+    },
+    {
+      "id": "amazon-07",
+      "store": "Amazon",
+      "affiliateUrl": "https://link.amazon/B0dDZsJaU",
+      "title": null,
+      "image": null,
+      "category": null,
+      "description": null,
+      "status": "pending"
+    },
+    {
+      "id": "amazon-08",
+      "store": "Amazon",
+      "affiliateUrl": "https://link.amazon/B042MTd3M",
+      "title": null,
+      "image": null,
+      "category": null,
+      "description": null,
+      "status": "pending"
+    },
+    {
+      "id": "amazon-09",
+      "store": "Amazon",
+      "affiliateUrl": "https://link.amazon/B05rK7c5t",
+      "title": null,
+      "image": null,
+      "category": null,
+      "description": null,
+      "status": "pending"
+    },
+    {
+      "id": "amazon-10",
+      "store": "Amazon",
+      "affiliateUrl": "https://link.amazon/B0ejJq3Fp",
+      "title": null,
+      "image": null,
+      "category": null,
+      "description": null,
+      "status": "pending"
+    },
+    {
+      "id": "amazon-11",
+      "store": "Amazon",
+      "affiliateUrl": "https://link.amazon/B0f1xAArn",
+      "title": null,
+      "image": null,
+      "category": null,
+      "description": null,
+      "status": "pending"
+    },
+    {
+      "id": "amazon-12",
+      "store": "Amazon",
+      "affiliateUrl": "https://link.amazon/B0dnLaOiZ",
+      "title": null,
+      "image": null,
+      "category": null,
+      "description": null,
+      "status": "pending"
+    },
+    {
+      "id": "amazon-13",
+      "store": "Amazon",
+      "affiliateUrl": "https://link.amazon/B07e0AEUv",
+      "title": null,
+      "image": null,
+      "category": null,
+      "description": null,
+      "status": "pending"
+    },
+    {
+      "id": "amazon-14",
+      "store": "Amazon",
+      "affiliateUrl": "https://link.amazon/B0aHcVM2X",
+      "title": null,
+      "image": null,
+      "category": null,
+      "description": null,
+      "status": "pending"
+    },
+    {
+      "id": "amazon-15",
+      "store": "Amazon",
+      "affiliateUrl": "https://link.amazon/B095UQVOZ",
+      "title": null,
+      "image": null,
+      "category": null,
+      "description": null,
+      "status": "pending"
+    },
+    {
+      "id": "amazon-16",
+      "store": "Amazon",
+      "affiliateUrl": "https://link.amazon/B01NcQ6Oo",
+      "title": null,
+      "image": null,
+      "category": null,
+      "description": null,
+      "status": "pending"
+    }
+  ]
+}
