@@ -121,6 +121,16 @@ body.assistant-open .ai-launch{display:none}
 .daily-promo{margin-bottom:28px;min-height:82px}
 #daily-promo-countdown{display:inline-block;min-width:66px;text-align:center;letter-spacing:.6px}
 .sectionhead{margin-top:6px}
+
+/* Certinho product thumbnails */
+.ai-result{grid-template-columns:88px minmax(0,1fr)!important;gap:13px!important;padding:12px!important;align-items:start!important}
+.ai-result-image{width:88px;height:88px;border-radius:13px;background:#f5f5f5;overflow:hidden;display:grid;place-items:center;flex-shrink:0}
+.ai-result-image img{width:100%;height:100%;object-fit:contain;padding:5px;display:block}
+.ai-result-image.fallback{font-size:30px;color:#ddd;background:#262628}
+.ai-result-info strong{font-size:14px!important;line-height:1.4!important}
+.ai-result-info small{font-size:12px!important;margin:5px 0 9px!important}
+.ai-result-link{font-size:12px!important;padding:9px 12px!important;border-radius:10px!important}
+@media(max-width:420px){.ai-result{grid-template-columns:70px minmax(0,1fr)!important}.ai-result-image{width:70px;height:70px}}
 </style>
 <!-- Google Analytics 4 - Vitrine Certeira -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRZ9ZCZJEH"></script>
@@ -1397,7 +1407,8 @@ function aiAnswer(query){
   const results=document.createElement('div');results.className='ai-results';
   matches.forEach(p=>{
    const card=document.createElement('article');card.className='ai-result';
-   card.innerHTML='<div class="ai-result-icon">'+(p.icon||'🛍️')+'</div><div class="ai-result-info"><strong></strong><small></small><a class="ai-result-link" target="_blank" rel="nofollow sponsored noopener">VER NA LOJA ↗</a></div>';
+   card.innerHTML='<div class="ai-result-image"><img alt="" loading="lazy"></div><div class="ai-result-info"><strong></strong><small></small><a class="ai-result-link" target="_blank" rel="nofollow sponsored noopener">VER NA LOJA ↗</a></div>';
+   const img=card.querySelector('.ai-result-image img'); if(p.image){img.src=p.image;img.alt=p.name}else{card.querySelector('.ai-result-image').textContent=p.icon||'🛍️';card.querySelector('.ai-result-image').classList.add('fallback')}
    card.querySelector('strong').textContent=p.name;
    card.querySelector('small').textContent=(p.price||'Confira o preço')+' • '+(p.categoryName||'Achado');
    const a=card.querySelector('a'); if(p.affiliateUrl){a.href=p.affiliateUrl}else{a.classList.add('disabled');a.removeAttribute('href');a.textContent='LINK INDISPONÍVEL'}
