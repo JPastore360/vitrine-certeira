@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jpastore360.github.io/vitrine-certeira/sitemap.xml
+Sitemap: https://vitrinecerteira.com.br/sitemap.xml
