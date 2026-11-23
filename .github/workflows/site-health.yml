@@ -1,0 +1,93 @@
+name: Vitrine Certeira - Saúde do Site
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 10 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  site-health:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validar sitemap e links internos
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from urllib.parse import urlparse, unquote
+          import xml.etree.ElementTree as ET
+          import re
+          import sys
+
+          root = Path('.')
+          sitemap = root / 'sitemap.xml'
+          errors = []
+          warnings = []
+
+          if not sitemap.exists():
+              print('ERRO: sitemap.xml não existe.')
+              sys.exit(1)
+
+          try:
+              xml = ET.parse(sitemap)
+          except Exception as e:
+              print(f'ERRO: sitemap XML inválido: {e}')
+              sys.exit(1)
+
+          locs = [el.text.strip() for el in xml.findall('.//{*}loc') if el.text]
+          if not locs:
+              errors.append('Sitemap não contém URLs <loc>.')
+
+          for url in locs:
+              parsed = urlparse(url)
+              path = unquote(parsed.path).lstrip('/')
+              target = root / (path or 'index.html')
+              if not target.exists():
+                  errors.append(f'URL no sitemap aponta para arquivo inexistente: {url} -> {target}')
+              elif target.is_dir() and not (target / 'index.html').exists():
+                  errors.append(f'URL no sitemap aponta para diretório sem index.html: {url}')
+
+          # Checa links locais em páginas HTML, ignorando links de âncora e esquemas externos.
+          for html in root.rglob('*.html'):
+              if '.git' in html.parts or 'node_modules' in html.parts:
+                  continue
+              text = html.read_text(encoding='utf-8', errors='replace')
+              for href in re.findall(r'href=["\\']([^"\\']+)["\\']', text, flags=re.I):
+                  href = href.strip()
+                  if not href or href.startswith(('#', 'mailto:', 'tel:', 'javascript:', 'data:')):
+                      continue
+                  parsed = urlparse(href)
+                  if parsed.scheme in ('http', 'https'):
+                      # Links do próprio site são verificados; links de terceiros ficam fora.
+                      host = parsed.netloc.lower()
+                      if host not in ('vitrinecerteira.com.br', 'www.vitrinecerteira.com.br',
+                                       'jpastore360.github.io'):
+                          continue
+                      path = unquote(parsed.path)
+                  else:
+                      path = unquote(parsed.path)
+                  path = path.lstrip('/')
+                  if not path:
+                      path = 'index.html'
+                  target = (root / path) if parsed.scheme or parsed.netloc else (html.parent / path)
+                  if target.is_dir():
+                      target = target / 'index.html'
+                  if not target.exists():
+                      warnings.append(f'Link local não encontrado: {html} -> {href}')
+
+          print(f'Sitemap: {len(locs)} URLs encontradas.')
+          for w in warnings:
+              print('AVISO:', w)
+          for e in errors:
+              print('ERRO:', e)
+          if errors:
+              sys.exit(1)
+          print('Validação concluída. Sitemap e destinos de URLs estão consistentes.')
+          PY
