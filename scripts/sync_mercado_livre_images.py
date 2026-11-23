@@ -23,27 +23,27 @@ def resolve_url(url):
         return response.geturl()
 
 def extract_products(source):
-    match = re.search(r"const\\s+products\\s*=\\s*\\[(.*?)\\n\\];", source, re.S)
+    match = re.search(r"const\s+products\s*=\s*\[(.*?)\n\];", source, re.S)
     if not match:
         return []
     products = []
-    blocks = re.split(r"\\n\\s*\\{", match.group(1))
+    blocks = re.split(r"\n\s*\{", match.group(1))
     for block in blocks:
-        name = re.search(r'(?:name\\s*:\\s*|"name"\\s*:\\s*)"([^"]+)"', block)
-        affiliate = re.search(r'(?:affiliateUrl\\s*:\\s*|"affiliateUrl"\\s*:\\s*)"(https?://[^" ]+)"', block)
-        tag = re.search(r'(?:tag\\s*:\\s*|"tag"\\s*:\\s*)"([^"]+)"', block)
+        name = re.search(r'(?:name\s*:\s*|"name"\s*:\s*)"([^"]+)"', block)
+        affiliate = re.search(r'(?:affiliateUrl\s*:\s*|"affiliateUrl"\s*:\s*)"(https?://[^" ]+)"', block)
+        tag = re.search(r'(?:tag\s*:\s*|"tag"\s*:\s*)"([^"]+)"', block)
         if name and affiliate and tag and tag.group(1).upper() == "MERCADO LIVRE":
             products.append({"name": name.group(1).strip(), "url": affiliate.group(1).strip()})
     return products
 
 def ids_from_url(url):
-    item_ids = re.findall(r"(MLB\\d{6,})", url, re.I)
-    catalog_ids = re.findall(r"(MLBU\\d{6,})", url, re.I)
+    item_ids = re.findall(r"(MLB\d{6,})", url, re.I)
+    catalog_ids = re.findall(r"(MLBU\d{6,})", url, re.I)
     query = urllib.parse.parse_qs(urllib.parse.urlparse(url).query)
     for values in query.values():
         for value in values:
-            item_ids += re.findall(r"(MLB\\d{6,})", value, re.I)
-            catalog_ids += re.findall(r"(MLBU\\d{6,})", value, re.I)
+            item_ids += re.findall(r"(MLB\d{6,})", value, re.I)
+            catalog_ids += re.findall(r"(MLBU\d{6,})", value, re.I)
     return list(dict.fromkeys(x.upper() for x in item_ids)), list(dict.fromkeys(x.upper() for x in catalog_ids))
 
 def photo_from(data):
@@ -59,7 +59,7 @@ def photo_from(data):
     return None
 
 def search_by_title(title):
-    url = "https://api.mercadolibre.com/sites/MLB/search?q=" + urllib.parse.quote(title) + "&limit=5
+    url = "https://api.mercadolibre.com/sites/MLB/search?q=" + urllib.parse.quote(title) + "&limit=5"
     try:
         results = (get_json(url).get("results") or [])
         tokens = {t for t in re.findall(r"[a-z0-9]+", title.lower()) if len(t) > 2}
@@ -101,7 +101,7 @@ def main():
         print(f'{product["name"]}: {"foto encontrada" if affiliate in image_map else "sem foto"}')
         time.sleep(0.25)
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT.write_text(json.dumps(image_map, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+    OUTPUT.write_text(json.dumps(image_map, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"Mapa atualizado: {len(image_map)} fotos para {len(products)} produtos Mercado Livre.")
 
 if __name__ == "__main__":
