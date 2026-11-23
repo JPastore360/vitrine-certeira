@@ -1,6 +1,13 @@
 name: Atualizar imagens Mercado Livre
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - "index.html"
+      - "scripts/sync_mercado_livre_images.py"
+      - ".github/workflows/mercado-livre-images.yml"
   workflow_dispatch:
   schedule:
     - cron: "0 9 * * *"
