@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://jpastore360.github.io/vitrine-certeira/</loc>
+    <loc>https://vitrinecerteira.com.br/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://jpastore360.github.io/vitrine-certeira/guia-compra.html</loc>
+    <loc>https://vitrinecerteira.com.br/guia-compra.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url><loc>https://jpastore360.github.io/vitrine-certeira/tecnologia.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://jpastore360.github.io/vitrine-certeira/categorias.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://jpastore360.github.io/vitrine-certeira/ferramentas.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://jpastore360.github.io/vitrine-certeira/automotivo.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://jpastore360.github.io/vitrine-certeira/casa-utilidades.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://jpastore360.github.io/vitrine-certeira/agro.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://jpastore360.github.io/vitrine-certeira/games.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://jpastore360.github.io/vitrine-certeira/perfumes.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://jpastore360.github.io/vitrine-certeira/guia-produtos-rurais.html</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
-  <url><loc>https://jpastore360.github.io/vitrine-certeira/guia-ferramentas-casa.html</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
-  <url><loc>https://jpastore360.github.io/vitrine-certeira/guia-tecnologia-acessorios.html</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://vitrinecerteira.com.br/tecnologia.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://vitrinecerteira.com.br/categorias.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vitrinecerteira.com.br/ferramentas.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vitrinecerteira.com.br/automotivo.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vitrinecerteira.com.br/casa-utilidades.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vitrinecerteira.com.br/agro.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vitrinecerteira.com.br/games.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vitrinecerteira.com.br/perfumes.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vitrinecerteira.com.br/guia-produtos-rurais.html</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://vitrinecerteira.com.br/guia-ferramentas-casa.html</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://vitrinecerteira.com.br/guia-tecnologia-acessorios.html</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
 </urlset>
