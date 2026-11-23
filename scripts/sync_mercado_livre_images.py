@@ -71,10 +71,10 @@ def scrape_page_image(url):
             html = response.read().decode("utf-8", errors="replace")
         # Open Graph / Twitter image metadata
         patterns = [
-            r'<meta[^>]+property=["\\']og:image["\\'][^>]+content=["\\']([^"\\']+)["\\']',
-            r'<meta[^>]+content=["\\']([^"\\']+)["\\'][^>]+property=["\\']og:image["\\']',
-            r'<meta[^>]+name=["\\']twitter:image["\\'][^>]+content=["\\']([^"\\']+)["\\']',
-            r'<meta[^>]+content=["\\']([^"\\']+)["\\'][^>]+name=["\\']twitter:image["\\']',
+            r'<meta[^>]+property="og:image"[^>]+content="([^"]+)"',
+            r'<meta[^>]+content="([^"]+)"[^>]+property="og:image"',
+            r'<meta[^>]+name="twitter:image"[^>]+content="([^"]+)"',
+            r'<meta[^>]+content="([^"]+)"[^>]+name="twitter:image"',
         ]
         for pattern in patterns:
             match = re.search(pattern, html, re.I)
@@ -83,7 +83,7 @@ def scrape_page_image(url):
                 if image.startswith("http"):
                     return image
         # Fallback: image URLs embedded in page JSON
-        candidates = re.findall(r'["\\'](?:secure_url|original|image|thumbnail)["\\']\\s*:\\s*["\\'](https?://[^"\\']+)["\\']', html, re.I)
+        candidates = re.findall(r'"(?:secure_url|original|image|thumbnail)"\\s*:\\s*"([^"]+)"', html, re.I)
         for candidate in candidates:
             candidate = candidate.replace("\\/", "/").replace("&amp;", "&")
             if "mlstatic.com" in candidate and candidate.startswith("http"):
