@@ -1,0 +1,35 @@
+name: Atualizar imagens Mercado Livre
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 9 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  refresh-images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Coletar imagens
+        run: python scripts/sync_mercado_livre_images.py
+      - name: Salvar mapa atualizado
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/mercado-livre-images.json
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração no mapa de imagens."
+          else
+            git commit -m "Atualiza imagens Mercado Livre"
+            git push
+          fi
