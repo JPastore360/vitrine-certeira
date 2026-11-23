@@ -31,7 +31,7 @@ main{max-width:1100px;margin:auto;padding:24px}.hero{padding:30px 0 24px;border-
 <div class="columns"><section class="panel"><h2>Resumo e prioridades</h2><div id="summary">Clique em “Executar auditoria do site” para começar.</div></section><section class="panel"><h2>O que esta auditoria verifica</h2><ul><li>Disponibilidade das URLs do sitemap</li><li>Título e meta description ausentes ou repetidos</li><li>Canonical e robots meta</li><li>H1 ausente ou duplicado</li><li>Links internos com destino inexistente/erro</li><li>Imagens sem texto alternativo (alt)</li></ul><p class="status">Nota: auditoria no navegador. Não substitui dados de Search Console nem testes de Core Web Vitals.</p></section></div>
 <section class="panel results" id="details" hidden><h2>Resultados por página</h2><div class="tablewrap"><table><thead><tr><th>URL</th><th>Status</th><th>SEO on-page</th><th>Problemas</th></tr></thead><tbody id="rows"></tbody></table></div></section>
 <section class="panel results" id="linkdetails" hidden><h2>Links internos com possíveis problemas</h2><div id="linklist"></div></section>
-<footer class="foot"><p>Vitrine Certeira · Central SEO experimental · Auditoria local sem chave de API</p></footer>
+<section class="panel results" id="gsc-panel"><h2>Oportunidades do Google Search Console</h2><p class="status">Importe um CSV exportado do Search Console (Desempenho → Consultas ou Páginas). A análise acontece no seu navegador, sem enviar o arquivo para servidor.</p><div class="toolbar"><input id="gsc-file" type="file" accept=".csv,text/csv"><button class="primary" id="gsc-analyze" disabled>Analyzar relatório</button></div><div id="gsc-status" class="status">Aguardando CSV.</div><div id="gsc-summary"></div><div class="tablewrap" id="gsc-table-wrap" hidden><table><thead><tr><th>Consulta / página</th><th>Impressões</th><th>Cliques</th><th>CTR</th><th>Posição</th><th>Oportunidade</th></tr></thead><tbody id="gsc-rows"></tbody></table></div></section>\n<footer class="foot"><p>Vitrine Certeira · Central SEO experimental · Auditoria local sem chave de API</p></footer>
 </main>
 <script>
 const $=id=>document.getElementById(id), root=location.origin;
@@ -80,5 +80,29 @@ $('pagespeed').addEventListener('click',()=>{
  const url=root+'/';
  $('status').textContent='Abrindo PageSpeed Insights em nova aba. Evita consumir a cota repetidamente dentro do painel.';
  window.open('https://pagespeed.web.dev/analysis?url='+encodeURIComponent(url),'_blank','noopener');
+});
+
+// Importador CSV do Search Console: processamento totalmente local
+const gscFile=$('gsc-file'),gscBtn=$('gsc-analyze');let gscText='';
+gscFile?.addEventListener('change',async()=>{const file=gscFile.files?.[0];gscText='';gscBtn.disabled=!file;if(file){gscText=await file.text();$('gsc-status').textContent='Arquivo carregado: '+file.name+' ('+Math.round(file.size/1024)+' KB).';}});
+function parseCSV(text){
+ const lines=text.replace(/^\\uFEFF/,'').split(/\\r?\\n/).filter(l=>l.trim());return lines.map(line=>{const a=[];let cur='',q=false;for(let i=0;i<line.length;i++){const ch=line[i];if(ch==='"'){if(q&&line[i+1]==='"'){cur+='"';i++;}else q=!q;}else if(ch===','&&!q){a.push(cur);cur='';}else cur+=ch;}a.push(cur);return a;});
+}
+function norm(s){return String(s||'').trim().toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'');}
+function num(s){let t=String(s||'').trim().replace(/%/g,'').replace(/\\s/g,'');if(t.includes(',')&&!t.includes('.'))t=t.replace(',','.');else t=t.replace(/,/g,'');return Number(t);}
+gscBtn?.addEventListener('click',()=>{
+ try{
+  const data=parseCSV(gscText);if(data.length<2)throw Error('CSV vazio ou sem linhas de dados.');
+  const headers=data[0].map(norm);const find=(alts)=>headers.findIndex(h=>alts.some(a=>h===a||h.includes(a)));
+  const ix=find(['consulta','query','pagina','page','landing page']),imp=find(['impressao','impressions']),click=find(['clique','clicks']),ctr=find(['ctr']),pos=find(['posicao','position']);
+  if(ix<0||imp<0||click<0)throw Error('Não encontrei as colunas Consulta/Página, Impressões e Cliques. Exporte o relatório de Consultas ou Páginas.');
+  const rows=data.slice(1).map(r=>({name:r[ix]||'(sem nome)',impressions:num(r[imp]),clicks:num(r[click]),ctr:ctr>=0?num(r[ctr]):NaN,position:pos>=0?num(r[pos]):NaN})).filter(r=>r.name&&Number.isFinite(r.impressions)&&Number.isFinite(r.clicks));
+  if(!rows.length)throw Error('Nenhuma linha válida encontrada no CSV.');
+  rows.forEach(r=>{if(!Number.isFinite(r.ctr))r.ctr=r.impressions?100*r.clicks/r.impressions:0;else if(r.ctr<=1)r.ctr*=100;r.opportunity=r.impressions>=30&&r.position>=4&&r.position<=20&&r.ctr<3?'Alta':r.impressions>=30&&r.position>=4&&r.position<=20?'Média':'—';});
+  const opp=rows.filter(r=>r.opportunity!=='—').sort((a,b)=>b.impressions-a.impressions);
+  $('gsc-summary').innerHTML='<p><strong>'+rows.length+'</strong> registros analisados · <strong>'+opp.length+'</strong> oportunidades de melhoria identificadas.</p><p class="status">Oportunidades priorizadas: muitas impressões, posição entre 4 e 20 e CTR abaixo de 3% (alta) ou posição 4–20 (média). Use esses dados para melhorar conteúdo e títulos, não como garantia de ranking.</p>';
+  $('gsc-rows').innerHTML=rows.sort((a,b)=>b.impressions-a.impressions).slice(0,100).map(r=>'<tr><td>'+r.name.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</td><td>'+r.impressions.toLocaleString('pt-BR')+'</td><td>'+r.clicks.toLocaleString('pt-BR')+'</td><td>'+r.ctr.toFixed(2)+'%</td><td>'+(Number.isFinite(r.position)?r.position.toFixed(1):'—')+'</td><td class="'+(r.opportunity==='Alta'?'warn':'')+'">'+r.opportunity+'</td></tr>').join('');
+  $('gsc-table-wrap').hidden=false;$('gsc-status').textContent='Relatório CSV analisado com sucesso.';
+ }catch(e){$('gsc-status').textContent='Não foi possível analisar: '+e.message;}
 });
 </script></body></html>
