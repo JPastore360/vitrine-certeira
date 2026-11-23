@@ -59,7 +59,7 @@ jobs:
               if '.git' in html.parts or 'node_modules' in html.parts:
                   continue
               text = html.read_text(encoding='utf-8', errors='replace')
-              for href in re.findall(r'href=["\\']([^"\\']+)["\\']', text, flags=re.I):
+          for href in re.findall(r'href="([^"]+)"', text, flags=re.I):
                   href = href.strip()
                   if not href or href.startswith(('#', 'mailto:', 'tel:', 'javascript:', 'data:')):
                       continue
