@@ -1364,15 +1364,28 @@ const products = [
 async function loadMercadoLivreImages(){
   const mlProducts=products.filter(p=>!p.image && p.affiliateUrl && /mercadolivre\.com\.br/i.test(p.affiliateUrl));
   await Promise.all(mlProducts.map(async p=>{
-    const ids=p.affiliateUrl.match(/MLB\d{6,}/gi)||[];
-    const itemId=ids.find(id=>/^MLB\d{6,}$/i.test(id));
-    if(!itemId)return;
     try{
-      const response=await fetch('https://api.mercadolibre.com/items/'+itemId.toUpperCase());
-      if(!response.ok)return;
-      const data=await response.json();
-      const photo=data.pictures?.[0]?.secure_url || data.thumbnail;
-      if(photo)p.image=photo;
+      const url=new URL(p.affiliateUrl);
+      // Prefer actual item ID in pdp_filters; product/catalog IDs often precede it.
+      const decoded=url.searchParams.get('pdp_filters')||'';
+      const itemMatch=decoded.match(/item_id\s*[:=]\s*(MLB\d{6,})/i);
+      const itemId=itemMatch?.[1];
+      const catalogMatch=url.pathname.match(/(?:\/p\/|\/up\/)(MLB\d{6,}|MLBU\d{6,})/i);
+      const catalogId=catalogMatch?.[1];
+      const endpoints=[];
+      if(itemId)endpoints.push('https://api.mercadolibre.com/items/'+itemId.toUpperCase());
+      if(catalogId)endpoints.push('https://api.mercadolibre.com/products/'+catalogId.toUpperCase());
+      if(!itemId&&catalogId&&/^MLB/i.test(catalogId))endpoints.push('https://api.mercadolibre.com/items/'+catalogId.toUpperCase());
+      for(const endpoint of [...new Set(endpoints)]){
+        const response=await fetch(endpoint);
+        if(!response.ok)continue;
+        const data=await response.json();
+        const photo=data.pictures?.[0]?.secure_url || data.pictures?.[0]?.url || data.thumbnail;
+        if(photo&&typeof photo==='string'&&photo.startsWith('http')){
+          p.image=photo;
+          break;
+        }
+      }
     }catch(err){console.warn('Imagem Mercado Livre indisponível para',p.name,err);}
   }));
   render();
