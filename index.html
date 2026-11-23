@@ -149,6 +149,7 @@ body.assistant-open .ai-launch{display:none}
 {"@type":"Question","name":"Como encontro um produto?","acceptedAnswer":{"@type":"Answer","text":"Use a busca ou selecione uma categoria. Também pode conversar com o Assistente Vitrine para receber sugestões a partir do catálogo disponível."}}
 ]}
 </script>
+<link rel="stylesheet" href="vitrine-enhancements.css">
 </head>
 <body>
 <header class="topbar"><div class="wrap nav">
@@ -1509,4 +1510,5 @@ document.querySelectorAll('.catbox').forEach(box=>box.addEventListener('click',(
 <!-- Assistente Vitrine flutuante: convite visível e chat -->
 <button class="ai-launch" id="aiLaunch" type="button" aria-label="Abrir Certinho, assistente da Vitrine Certeira"><span class="robot-face" aria-hidden="true">🤖</span><span class="launch-text"><b>Posso ajudar?</b><small>Encontre seu próximo achado</small></span><i class="launch-pulse" aria-hidden="true"></i></button>
 <section class="ai-panel" id="aiPanel" aria-label="Assistente Vitrine" aria-live="polite"><header class="ai-head"><span class="ai-avatar" aria-hidden="true">🤖</span><span class="ai-head-copy"><b>Certinho</b><small>Seu guia de achados da Vitrine</small></span><button class="ai-close" id="aiClose" type="button" aria-label="Fechar">×</button></header><div class="ai-messages" id="aiMessages"><div class="ai-msg bot">Olá! 👋 Eu sou o Certinho, seu guia da Vitrine Certeira. O que você quer encontrar ou comprar hoje?</div></div><div class="ai-suggestions"><button type="button" data-ask="Quero ver produtos de tecnologia">Tecnologia</button><button type="button" data-ask="Quero ferramentas úteis">Ferramentas</button><button type="button" data-ask="Quero produtos para carro">Automotivo</button><button type="button" data-ask="Me mostre os achados mais interessantes">Ver achados</button></div><form class="ai-form" id="aiForm"><input id="aiInput" type="text" placeholder="Escreva o que procura..." aria-label="Digite o que procura"><button type="submit">Enviar</button></form><div class="ai-note">Certinho • versão beta, sugestões baseadas no catálogo atual.</div></section>
+<script src="vitrine-enhancements.js"></script>
 </body></html>
