@@ -58,6 +58,40 @@ def photo_from(data):
         return photo.replace("-I.jpg", "-O.jpg")
     return None
 
+def scrape_page_image(url):
+    """Try extracting a product image from product-page HTML (not the API)."""
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+        "Accept-Language": "pt-BR,pt;q=0.9,en;q=0.8",
+    }
+    try:
+        req = urllib.request.Request(url, headers=headers)
+        with urllib.request.urlopen(req, timeout=25) as response:
+            html = response.read().decode("utf-8", errors="replace")
+        # Open Graph / Twitter image metadata
+        patterns = [
+            r'<meta[^>]+property=["\\']og:image["\\'][^>]+content=["\\']([^"\\']+)["\\']',
+            r'<meta[^>]+content=["\\']([^"\\']+)["\\'][^>]+property=["\\']og:image["\\']',
+            r'<meta[^>]+name=["\\']twitter:image["\\'][^>]+content=["\\']([^"\\']+)["\\']',
+            r'<meta[^>]+content=["\\']([^"\\']+)["\\'][^>]+name=["\\']twitter:image["\\']',
+        ]
+        for pattern in patterns:
+            match = re.search(pattern, html, re.I)
+            if match:
+                image = match.group(1).replace("&amp;", "&")
+                if image.startswith("http"):
+                    return image
+        # Fallback: image URLs embedded in page JSON
+        candidates = re.findall(r'["\\'](?:secure_url|original|image|thumbnail)["\\']\\s*:\\s*["\\'](https?://[^"\\']+)["\\']', html, re.I)
+        for candidate in candidates:
+            candidate = candidate.replace("\\/", "/").replace("&amp;", "&")
+            if "mlstatic.com" in candidate and candidate.startswith("http"):
+                return candidate
+    except Exception as exc:
+        print(f"Scraping HTML falhou para {url}: {exc}")
+    return None
+
 def search_by_title(title):
     url = "https://api.mercadolibre.com/sites/MLB/search?q=" + urllib.parse.quote(title) + "&limit=5"
     try:
@@ -94,6 +128,14 @@ def main():
                     break
             except Exception as exc:
                 print(f"Consulta falhou {endpoint}: {exc}")
+        # Fallback 1: scrape product-page HTML for OG/Twitter metadata or embedded JSON.
+        if affiliate not in image_map:
+            for page_url in dict.fromkeys([final_url, affiliate]):
+                photo = scrape_page_image(page_url)
+                if photo:
+                    image_map[affiliate] = photo
+                    break
+        # Fallback 2: title search through the public API (may be blocked).
         if affiliate not in image_map:
             photo = search_by_title(product["name"])
             if photo:
@@ -103,6 +145,8 @@ def main():
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps(image_map, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"Mapa atualizado: {len(image_map)} fotos para {len(products)} produtos Mercado Livre.")
+    if products and not image_map:
+        raise SystemExit("Falha: nenhuma imagem foi coletada. Verifique bloqueios do Mercado Livre e o log acima.")
 
 if __name__ == "__main__":
     main()
