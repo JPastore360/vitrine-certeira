@@ -2,23 +2,36 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://vitrinecerteira.com.br/</loc>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://vitrinecerteira.com.br/guia-compra.html</loc>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url><loc>https://vitrinecerteira.com.br/tecnologia.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://vitrinecerteira.com.br/categorias.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://vitrinecerteira.com.br/ferramentas.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://vitrinecerteira.com.br/automotivo.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://vitrinecerteira.com.br/casa-utilidades.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://vitrinecerteira.com.br/agro.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://vitrinecerteira.com.br/games.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://vitrinecerteira.com.br/perfumes.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://vitrinecerteira.com.br/guia-produtos-rurais.html</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
-  <url><loc>https://vitrinecerteira.com.br/guia-ferramentas-casa.html</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
-  <url><loc>https://vitrinecerteira.com.br/guia-tecnologia-acessorios.html</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://vitrinecerteira.com.br/tecnologia.html</loc>
+    <lastmod>2026-11-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://vitrinecerteira.com.br/categorias.html</loc>
+    <lastmod>2026-11-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vitrinecerteira.com.br/ferramentas.html</loc>
+    <lastmod>2026-11-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vitrinecerteira.com.br/automotivo.html</loc>
+    <lastmod>2026-11-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vitrinecerteira.com.br/casa-utilidades.html</loc>
+    <lastmod>2026-11-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vitrinecerteira.com.br/agro.html</loc>
+    <lastmod>2026-11-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vitrinecerteira.com.br/games.html</loc>
+    <lastmod>2026-11-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vitrinecerteira.com.br/perfumes.html</loc>
+    <lastmod>2026-11-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vitrinecerteira.com.br/guia-produtos-rurais.html</loc>
+    <lastmod>2026-11-23</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://vitrinecerteira.com.br/guia-ferramentas-casa.html</loc>
+    <lastmod>2026-11-23</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://vitrinecerteira.com.br/guia-tecnologia-acessorios.html</loc>
+    <lastmod>2026-11-23</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
 </urlset>
