@@ -1,0 +1,69 @@
+name: Recuperar imagens antigas da Shopee
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "index.html"
+      - "scripts/sync_shopee_images.py"
+      - ".github/workflows/shopee-images.yml"
+  workflow_dispatch:
+  schedule:
+    - cron: "15 12 * * *"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: shopee-image-recovery
+  cancel-in-progress: false
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do catálogo
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Recuperar imagens via API oficial de afiliados Shopee
+        id: sync
+        env:
+          SHOPEE_APP_ID: ${{ secrets.SHOPEE_APP_ID }}
+          SHOPEE_APP_SECRET: ${{ secrets.SHOPEE_APP_SECRET }}
+        run: python scripts/sync_shopee_images.py
+
+      - name: Salvar mapa de imagens e relatório
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/shopee-images.json data/shopee-image-sync-report.json
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração no mapa ou relatório."
+          else
+            git commit -m "Recupera imagens dos produtos antigos Shopee"
+            git push
+          fi
+
+      - name: Configurar GitHub Pages
+        if: steps.sync.outputs.images_changed == 'true'
+        uses: actions/configure-pages@v5
+
+      - name: Preparar site atualizado com as imagens
+        if: steps.sync.outputs.images_changed == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Publicar atualização no GitHub Pages
+        if: steps.sync.outputs.images_changed == 'true'
+        id: deployment
+        uses: actions/deploy-pages@v4
