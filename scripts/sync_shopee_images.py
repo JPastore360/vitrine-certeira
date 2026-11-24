@@ -408,7 +408,7 @@ def main():
         json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
 
-    set_output("images_changed", "true" if matched > 0 else "false")
+    set_output("images_changed", "true" if image_map else "false")
     print("========================================")
     print(f"Fotos recuperadas nesta execução: {matched}")
     print(f"Sem correspondência segura: {no_match}")
