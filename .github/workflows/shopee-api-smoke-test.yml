@@ -1,0 +1,71 @@
+name: Shopee API - Teste de credenciais
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  credential-smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validar secrets e consultar endpoint GraphQL
+        env:
+          SHOPEE_APP_ID: ${{ secrets.SHOPEE_APP_ID }}
+          SHOPEE_APP_SECRET: ${{ secrets.SHOPEE_APP_SECRET }}
+        run: |
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import os
+          import time
+          import urllib.request
+          import urllib.error
+
+          app_id = os.environ.get("SHOPEE_APP_ID", "").strip()
+          secret = os.environ.get("SHOPEE_APP_SECRET", "").strip()
+          if not app_id or not secret:
+              raise SystemExit("Falha: SHOPEE_APP_ID ou SHOPEE_APP_SECRET ausente nos GitHub Secrets.")
+
+          endpoint = "https://open-api.affiliate.shopee.com.br/graphql"
+          payload = json.dumps({"query": "query { __typename }"}, separators=(",", ":"))
+          timestamp = str(int(time.time()))
+          signature = hashlib.sha256((app_id + timestamp + payload + secret).encode("utf-8")).hexdigest()
+          authorization = f"SHA256 Credential={app_id}, Timestamp={timestamp}, Signature={signature}"
+
+          req = urllib.request.Request(
+              endpoint,
+              data=payload.encode("utf-8"),
+              headers={
+                  "Authorization": authorization,
+                  "Content-Type": "application/json",
+              },
+              method="POST",
+          )
+          try:
+              with urllib.request.urlopen(req, timeout=30) as response:
+                  raw = response.read().decode("utf-8", errors="replace")
+                  parsed = json.loads(raw)
+                  print("HTTP:", response.status)
+                  if parsed.get("errors"):
+                      print("GraphQL retornou erros:")
+                      for error in parsed["errors"]:
+                          print("-", error.get("message", "Erro GraphQL sem mensagem"))
+                      raise SystemExit(1)
+                  print("Resposta GraphQL recebida. Campos de topo:", list(parsed.keys()))
+                  print("Teste de credenciais/endpoint concluído; nenhum dado de produto foi solicitado.")
+          except urllib.error.HTTPError as e:
+              body = e.read().decode("utf-8", errors="replace")
+              print("HTTP:", e.code)
+              try:
+                  parsed = json.loads(body)
+                  for error in parsed.get("errors", []):
+                      print("-", error.get("message", "Erro API"))
+              except Exception:
+                  print("A API respondeu com erro HTTP; corpo não exibido por segurança.")
+              raise SystemExit(1)
+          except urllib.error.URLError as e:
+              print("Falha de conexão:", e.reason)
+              raise SystemExit(1)
+          PY
