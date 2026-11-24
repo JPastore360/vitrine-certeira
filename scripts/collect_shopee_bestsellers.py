@@ -87,6 +87,25 @@ def title_tokens(value):
     }
 
 
+def is_duplicate_selected(candidate, selected_names):
+    candidate_tokens = title_tokens(candidate)
+    candidate_normalized = normalize(candidate)
+    for name in selected_names:
+        existing_tokens = title_tokens(name)
+        if not candidate_tokens or not existing_tokens:
+            continue
+        overlap = len(candidate_tokens & existing_tokens) / max(
+            1, min(len(candidate_tokens), len(existing_tokens))
+        )
+        sequence = difflib.SequenceMatcher(
+            None, candidate_normalized, normalize(name)
+        ).ratio()
+        # Prevent duplicate listings of the same item even when seller/title suffixes differ.
+        if sequence >= 0.78 or (overlap >= 0.82 and len(candidate_tokens & existing_tokens) >= 4):
+            return True
+    return False
+
+
 def is_duplicate_name(candidate, existing_names):
     candidate_tokens = title_tokens(candidate)
     for name in existing_names:
@@ -360,7 +379,19 @@ def main():
         key=lambda x: (x["sales"], x["ratingStar"], x["commissionRate"]),
         reverse=True,
     )
-    selected = ranked[:DAILY_TARGET]
+    selected = []
+    selected_names = []
+    duplicate_candidates = 0
+    for candidate in ranked:
+        if is_duplicate_selected(candidate["name"], selected_names):
+            duplicate_candidates += 1
+            continue
+        selected.append(candidate)
+        selected_names.append(candidate["name"])
+        if len(selected) >= DAILY_TARGET:
+            break
+
+    report["duplicateCandidatesRemoved"] = duplicate_candidates
     for candidate in selected:
         new_product = {
             "id": f"shopee-{candidate['itemId']}",
