@@ -87,7 +87,7 @@ def keyword_variants(title):
         if token not in words:
             words.append(token)
     variants = []
-    for count in (6, 4, 3, 2, 1):
+    for count in (6, 4, 2):
         keyword = " ".join(words[:count])
         if keyword and keyword not in variants:
             variants.append(keyword)
@@ -194,6 +194,46 @@ def similarity(original, candidate):
     return (0.75 * f1 + 0.25 * sequence), recall, len(common)
 
 
+def rank_candidates(original, nodes):
+    ranked = []
+    seen = set()
+    for node in nodes:
+        candidate_name = node.get("productName") or ""
+        image_url = node.get("imageUrl") or ""
+        key = (candidate_name, image_url)
+        if key in seen:
+            continue
+        seen.add(key)
+        if not candidate_name or not image_url.startswith("https://"):
+            continue
+        if "shopee.com.br" not in image_url.lower():
+            continue
+        score, recall, common = similarity(original, candidate_name)
+        ranked.append({
+            "name": candidate_name,
+            "image": image_url,
+            "score": round(score, 4),
+            "recall": round(recall, 4),
+            "commonTokens": common,
+        })
+    ranked.sort(key=lambda result: result["score"], reverse=True)
+    return ranked
+
+
+def is_safe_match(ranked):
+    if not ranked:
+        return False
+    best = ranked[0]
+    second = ranked[1] if len(ranked) > 1 else None
+    margin_ok = not second or (best["score"] - second["score"] >= 0.04)
+    return bool(
+        best["score"] >= MIN_SCORE
+        and best["recall"] >= MIN_RECALL
+        and best["commonTokens"] >= MIN_COMMON_TOKENS
+        and margin_ok
+    )
+
+
 def main():
     app_id = os.environ.get("SHOPEE_APP_ID", "").strip()
     secret = os.environ.get("SHOPEE_APP_SECRET", "").strip()
@@ -230,14 +270,17 @@ def main():
         print(f"  Palavra-chave enviada: {keyword}")
         try:
             nodes = []
+            ranked = []
             last_search_error = None
             actual_keyword = keyword
             for candidate_keyword in keyword_variants(title):
                 try:
-                    nodes = search_products(app_id, secret, candidate_keyword)
+                    found = search_products(app_id, secret, candidate_keyword)
                     actual_keyword = candidate_keyword
-                    print(f"  Palavra-chave aceita pela API: {candidate_keyword}")
-                    if nodes:
+                    print(f"  Pesquisa Shopee: {candidate_keyword} ({len(found)} resultados)")
+                    nodes.extend(found)
+                    ranked = rank_candidates(title, nodes)
+                    if is_safe_match(ranked):
                         break
                 except RuntimeError as search_error:
                     last_search_error = str(search_error)
@@ -254,33 +297,9 @@ def main():
                 }
                 print(f"  API não conseguiu pesquisar este produto após reduzir os termos: {last_search_error}")
                 continue
-            ranked = []
-            for node in nodes:
-                candidate_name = node.get("productName") or ""
-                image_url = node.get("imageUrl") or ""
-                if not candidate_name or not image_url.startswith("https://"):
-                    continue
-                if "shopee.com.br" not in image_url.lower():
-                    continue
-                score, recall, common = similarity(title, candidate_name)
-                ranked.append({
-                    "name": candidate_name,
-                    "image": image_url,
-                    "score": round(score, 4),
-                    "recall": round(recall, 4),
-                    "commonTokens": common,
-                })
-            ranked.sort(key=lambda result: result["score"], reverse=True)
             best = ranked[0] if ranked else None
             second = ranked[1] if len(ranked) > 1 else None
-            margin_ok = not second or (best["score"] - second["score"] >= 0.04)
-            accepted = bool(
-                best
-                and best["score"] >= MIN_SCORE
-                and best["recall"] >= MIN_RECALL
-                and best["commonTokens"] >= MIN_COMMON_TOKENS
-                and margin_ok
-            )
+            accepted = is_safe_match(ranked)
             report["attempts"][affiliate_url] = report["attempts"].get(affiliate_url, 0) + 1
             if accepted:
                 image_map[affiliate_url] = best["image"]
