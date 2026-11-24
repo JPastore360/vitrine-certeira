@@ -1464,6 +1464,31 @@ async function loadShopeeProducts(){
 }
 loadShopeeProducts();
 
+// Recupera fotos dos produtos antigos da Shopee pelo mapa validado via API oficial.
+// A URL de afiliado original é a chave do mapa e nunca é substituída.
+async function loadShopeeImageMap(){
+  try{
+    const response=await fetch('./data/shopee-images.json?v='+Date.now(),{cache:'no-store'});
+    if(!response.ok)return;
+    const imageMap=await response.json();
+    let changed=false;
+    products.forEach(p=>{
+      const affiliateUrl=String(p.affiliateUrl||'');
+      if(p.image||!/^https:\/\/s\.shopee\.com\.br\/[A-Za-z0-9]+$/i.test(affiliateUrl))return;
+      const image=String(imageMap[affiliateUrl]||'');
+      if(/^https:\/\/cf\.shopee\.com\.br\/file\/[A-Za-z0-9-]+$/i.test(image)){
+        p.image=image;
+        changed=true;
+      }
+    });
+    if(changed)render();
+    console.info('Shopee: imagens antigas recuperadas:',changed);
+  }catch(err){
+    console.warn('Mapa de imagens antigas Shopee indisponível:',err);
+  }
+}
+loadShopeeImageMap();
+
 // GA4: eventos personalizados para medir interacoes no site
 // Clique em ofertas/links de afiliado
 document.addEventListener('click', function(event) {
