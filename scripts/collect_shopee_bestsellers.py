@@ -287,9 +287,11 @@ def main():
 
     today = local_today()
     if today in feed["dailyBatches"]:
-        print(f"A meta diária de {today} já foi processada. Nada será adicionado em duplicidade.")
-        set_output("products_added", "0")
-        set_output("feed_changed", "false")
+        today_products = [p for p in feed["products"] if p.get("addedAt") == today]
+        print(f"A meta diária de {today} já foi processada: {len(today_products)} produtos no feed.")
+        print("Não haverá nova coleta. Esta execução apenas disponibilizará o lote já salvo.")
+        set_output("products_added", str(len(today_products)))
+        set_output("feed_changed", "true" if today_products else "false")
         return
 
     existing_names, existing_links, existing_ids = extract_existing_html_products()
