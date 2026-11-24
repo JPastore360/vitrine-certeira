@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: write
+  actions: read
   pages: write
   id-token: write
 
@@ -61,7 +62,7 @@ jobs:
 
       - name: Preparar publicação
         if: steps.collector.outputs.feed_changed == 'true'
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: .
 
