@@ -116,14 +116,6 @@
       "category": "Ferramentas"
     },
     {
-      "itemId": "23794353497",
-      "name": "Batedor Misturador Mixer Elétrico portátil Recarregável Para Bebi Leite Café Ovo 2 em 1",
-      "sales": 9961,
-      "ratingStar": 4.8,
-      "commissionRate": 0.07,
-      "category": "Casa & Cozinha"
-    },
-    {
       "itemId": "58253145740",
       "name": "2L/3L Picador De Alimentos Moedor De Carne Mixer Elétrica Processador Cozinha Casa Alho - 110v-220v",
       "sales": 9036,
@@ -148,27 +140,11 @@
       "category": "Casa & Cozinha"
     },
     {
-      "itemId": "23393954691",
-      "name": "Batedor Misturador Mixer Elétrico para Bebidas Leite Café Clara de Ovo 2 em 1 taobiju",
-      "sales": 8072,
-      "ratingStar": 4.8,
-      "commissionRate": 0.07,
-      "category": "Casa & Cozinha"
-    },
-    {
       "itemId": "24740902631",
       "name": "Cozedor de Ovos Elétrico 110V – Portátil a Vapor para Cozinha Envio Imediato",
       "sales": 7983,
       "ratingStar": 4.9,
       "commissionRate": 0.03,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "22694204664",
-      "name": "Cozedor De Ovos Portátil Elétrico Cozinha A Vapor 110v/220v",
-      "sales": 7874,
-      "ratingStar": 4.9,
-      "commissionRate": 0.11,
       "category": "Casa & Cozinha"
     },
     {
@@ -188,18 +164,43 @@
       "category": "Casa & Cozinha"
     },
     {
-      "itemId": "29588922747",
-      "name": "Senbenbao X55 Fones De Ouvido TWS Sono Sem Fio Bluetooth Display Led Alta Fidelidade Estéreo Cancelamento Ruído À Prova",
-      "sales": 7571,
-      "ratingStar": 4.8,
-      "commissionRate": 0.04,
+      "itemId": "58204705757",
+      "name": "Air Fryer Oven Philco 11L 8 Funções Visor 1800W PAF11B",
+      "sales": 7408,
+      "ratingStar": 5.0,
+      "commissionRate": 0.03,
+      "category": "Casa & Cozinha"
+    },
+    {
+      "itemId": "22791523448",
+      "name": "Mini Aspirador De pó Portátil Automotivo e Casa Potente Recarregável",
+      "sales": 7300,
+      "ratingStar": 4.6,
+      "commissionRate": 0.07,
+      "category": "Automotivo"
+    },
+    {
+      "itemId": "22892686035",
+      "name": "Fone de Ouvido entrada lightning para Iphone Microfone Bluetooth",
+      "sales": 6998,
+      "ratingStar": 4.7,
+      "commissionRate": 0.11,
       "category": "Tecnologia"
+    },
+    {
+      "itemId": "23199020709",
+      "name": "Cozedor de Ovos Elétrico Portátil Cozinha à Vapor 110V/220V Cores disponíveis （Branco Azul Rosa Amarelo）",
+      "sales": 6903,
+      "ratingStar": 4.9,
+      "commissionRate": 0.11,
+      "category": "Casa & Cozinha"
     }
   ],
   "rejected": {
     "duplicate": 33,
     "rating_below_4_5_or_missing": 25
   },
+  "duplicateCandidatesRemoved": 4,
   "searchErrors": 0,
   "candidatePool": 436,
   "minimums": {
@@ -209,5 +210,5 @@
     "requiredImage": true,
     "requiredAffiliateLink": true
   },
-  "updatedAt": "2026-11-24T19:38:56.897154-03:00"
+  "updatedAt": "2026-11-24T19:42:39.974252-03:00"
 }
