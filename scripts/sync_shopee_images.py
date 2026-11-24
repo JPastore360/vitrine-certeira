@@ -74,9 +74,24 @@ def query_for_title(title):
             continue
         if token not in selected:
             selected.append(token)
-        if len(selected) >= 8:
+        if len(selected) >= 6:
             break
     return " ".join(selected)[:100]
+
+
+def keyword_variants(title):
+    words = []
+    for token in normalize(title).split():
+        if token in STOP_WORDS or (len(token) < 2 and not token.isdigit()):
+            continue
+        if token not in words:
+            words.append(token)
+    variants = []
+    for count in (6, 4, 3, 2, 1):
+        keyword = " ".join(words[:count])
+        if keyword and keyword not in variants:
+            variants.append(keyword)
+    return variants
 
 
 def extract_products(html):
@@ -109,7 +124,7 @@ def extract_products(html):
 
 def signed_request(app_id, secret, query):
     body = json.dumps({"query": query}, separators=(",", ":"), ensure_ascii=False)
-    for attempt in range(4):
+    for attempt in range(2):
         timestamp = str(int(time.time()))
         signature = hashlib.sha256(
             (app_id + timestamp + body + secret).encode("utf-8")
@@ -136,7 +151,7 @@ def signed_request(app_id, secret, query):
                     for error in payload["errors"]
                 ]
                 message = "Shopee GraphQL: " + " | ".join(messages)
-                if "system error" in message.lower() and attempt < 3:
+                if "system error" in message.lower() and attempt < 1:
                     wait = 2 ** attempt
                     print(f"  Shopee retornou erro temporário; nova tentativa em {wait}s.")
                     time.sleep(wait)
@@ -145,7 +160,7 @@ def signed_request(app_id, secret, query):
             return payload
         except urllib.error.HTTPError as exc:
             details = exc.read().decode("utf-8", errors="replace")
-            if exc.code in (429, 500, 502, 503, 504) and attempt < 3:
+            if exc.code in (429, 500, 502, 503, 504) and attempt < 1:
                 wait = 2 ** attempt
                 print(f"  HTTP {exc.code}; nova tentativa em {wait}s.")
                 time.sleep(wait)
@@ -214,7 +229,31 @@ def main():
         print(f"[{index}/{len(pending)}] Pesquisando: {title}")
         print(f"  Palavra-chave enviada: {keyword}")
         try:
-            nodes = search_products(app_id, secret, keyword)
+            nodes = []
+            last_search_error = None
+            actual_keyword = keyword
+            for candidate_keyword in keyword_variants(title):
+                try:
+                    nodes = search_products(app_id, secret, candidate_keyword)
+                    actual_keyword = candidate_keyword
+                    print(f"  Palavra-chave aceita pela API: {candidate_keyword}")
+                    if nodes:
+                        break
+                except RuntimeError as search_error:
+                    last_search_error = str(search_error)
+                    if "system error" in last_search_error.lower():
+                        print(f"  Busca '{candidate_keyword}' retornou erro temporário; tentando termo mais curto.")
+                        continue
+                    raise
+            if not nodes and last_search_error:
+                report["results"][affiliate_url] = {
+                    "status": "api_error",
+                    "originalName": title,
+                    "keyword": actual_keyword,
+                    "error": last_search_error[:500],
+                }
+                print(f"  API não conseguiu pesquisar este produto após reduzir os termos: {last_search_error}")
+                continue
             ranked = []
             for node in nodes:
                 candidate_name = node.get("productName") or ""
@@ -262,7 +301,7 @@ def main():
                 report["results"][affiliate_url] = {
                     "status": "needs_review" if best else "not_found",
                     "originalName": title,
-                    "keyword": keyword,
+                    "keyword": actual_keyword,
                     "bestCandidate": best,
                     "secondCandidate": second,
                 }
@@ -272,7 +311,7 @@ def main():
             report["results"][affiliate_url] = {
                 "status": "api_error",
                 "originalName": title,
-                "keyword": keyword,
+                "keyword": actual_keyword,
                 "error": str(exc)[:500],
             }
             print(f"  ERRO nesta pesquisa: {exc}")
