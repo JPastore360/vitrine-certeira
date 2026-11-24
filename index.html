@@ -1553,7 +1553,8 @@ function aiAnswer(query){
  let cat=null;
  for(const [c,terms] of categoryMap){if(terms.some(t=>q.includes(norm(t)))){cat=c;break}}
  const words=q.split(/\\s+/).filter(w=>w.length>2&&!['quero','veja','mostrar','mostre','encontre','produto','produtos','para','com','uma','uns','das','dos','mais','interessantes','buscar','pesquisar'].includes(w));
- let matches=products.filter(p=>hasProductImage(p)&&{
+ let matches=products.filter(p=>{
+  if(!hasProductImage(p))return false;
   if(cat&&p.category!==cat)return false;
   const hay=norm(p.name+' '+p.categoryName+' '+p.description+' '+p.category);
   if(cat&&words.length===0)return true;
