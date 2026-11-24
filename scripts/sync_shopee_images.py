@@ -74,7 +74,7 @@ def query_for_title(title):
             continue
         if token not in selected:
             selected.append(token)
-        if len(selected) >= 12:
+        if len(selected) >= 8:
             break
     return " ".join(selected)[:100]
 
@@ -109,38 +109,46 @@ def extract_products(html):
 
 def signed_request(app_id, secret, query):
     body = json.dumps({"query": query}, separators=(",", ":"), ensure_ascii=False)
-    timestamp = str(int(time.time()))
-    signature = hashlib.sha256(
-        (app_id + timestamp + body + secret).encode("utf-8")
-    ).hexdigest()
-    authorization = (
-        f"SHA256 Credential={app_id}, Timestamp={timestamp}, Signature={signature}"
-    )
-    request = urllib.request.Request(
-        ENDPOINT,
-        data=body.encode("utf-8"),
-        headers={
-            "Authorization": authorization,
-            "Content-Type": "application/json",
-            "User-Agent": USER_AGENT,
-        },
-        method="POST",
-    )
-    for attempt in range(3):
+    for attempt in range(4):
+        timestamp = str(int(time.time()))
+        signature = hashlib.sha256(
+            (app_id + timestamp + body + secret).encode("utf-8")
+        ).hexdigest()
+        authorization = (
+            f"SHA256 Credential={app_id}, Timestamp={timestamp}, Signature={signature}"
+        )
+        request = urllib.request.Request(
+            ENDPOINT,
+            data=body.encode("utf-8"),
+            headers={
+                "Authorization": authorization,
+                "Content-Type": "application/json",
+                "User-Agent": USER_AGENT,
+            },
+            method="POST",
+        )
         try:
             with urllib.request.urlopen(request, timeout=40) as response:
                 payload = json.loads(response.read().decode("utf-8", errors="replace"))
-                if payload.get("errors"):
-                    messages = [
-                        error.get("message", "Erro GraphQL")
-                        for error in payload["errors"]
-                    ]
-                    raise RuntimeError("Shopee GraphQL: " + " | ".join(messages))
-                return payload
+            if payload.get("errors"):
+                messages = [
+                    error.get("message", "Erro GraphQL")
+                    for error in payload["errors"]
+                ]
+                message = "Shopee GraphQL: " + " | ".join(messages)
+                if "system error" in message.lower() and attempt < 3:
+                    wait = 2 ** attempt
+                    print(f"  Shopee retornou erro temporário; nova tentativa em {wait}s.")
+                    time.sleep(wait)
+                    continue
+                raise RuntimeError(message)
+            return payload
         except urllib.error.HTTPError as exc:
             details = exc.read().decode("utf-8", errors="replace")
-            if exc.code in (429, 500, 502, 503, 504) and attempt < 2:
-                time.sleep(2 ** (attempt + 1))
+            if exc.code in (429, 500, 502, 503, 504) and attempt < 3:
+                wait = 2 ** attempt
+                print(f"  HTTP {exc.code}; nova tentativa em {wait}s.")
+                time.sleep(wait)
                 continue
             raise RuntimeError(f"Shopee HTTP {exc.code}: {details[:500]}") from exc
     raise RuntimeError("A API Shopee não respondeu após novas tentativas.")
@@ -204,6 +212,7 @@ def main():
         title = item["name"]
         keyword = query_for_title(title)
         print(f"[{index}/{len(pending)}] Pesquisando: {title}")
+        print(f"  Palavra-chave enviada: {keyword}")
         try:
             nodes = search_products(app_id, secret, keyword)
             ranked = []
@@ -246,6 +255,10 @@ def main():
                 matched += 1
                 print(f"  FOTO ENCONTRADA (score {best['score']:.2f}): {best['name']}")
             else:
+                if ranked:
+                    print("  Melhor candidato:", best["name"], "| score:", best["score"], "| cobertura:", best["recall"])
+                    if second:
+                        print("  Segundo candidato:", second["name"], "| score:", second["score"])
                 report["results"][affiliate_url] = {
                     "status": "needs_review" if best else "not_found",
                     "originalName": title,
@@ -264,7 +277,7 @@ def main():
             }
             print(f"  ERRO nesta pesquisa: {exc}")
             # Do not continue a hundred requests if authentication/schema failed globally.
-            if "HTTP 401" in str(exc) or "HTTP 403" in str(exc) or "GraphQL:" in str(exc):
+            if "HTTP 401" in str(exc) or "HTTP 403" in str(exc) or "unauthorized" in str(exc).lower() or "signature" in str(exc).lower():
                 raise
         time.sleep(REQUEST_PAUSE_SECONDS)
 
