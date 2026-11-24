@@ -1,0 +1,41 @@
+/* Vitrine Certeira visual refresh v1: orange-charcoal, responsive storefront, mascot motion */
+:root{--vc-orange:#ff8a18;--vc-amber:#ffb34d;--vc-bg:#0b0c0f;--vc-panel:#171a1f;--vc-line:#2a2e35}
+body{background:radial-gradient(ellipse at 80% 8%,#ff841311,transparent 36%),#0b0c0f!important}
+.topbar,.top,.header,.head{background:rgba(10,11,14,.94)!important;backdrop-filter:blur(18px)!important;border-bottom:1px solid #292d33!important}
+.brand,.footbrand{letter-spacing:.1px}
+.hero.wrap{background:radial-gradient(ellipse at 70% 55%,#ff8a1817,transparent 50%);border-radius:0}
+.heroVisual{border-color:#393027!important;background:radial-gradient(circle at 72% 30%,#ff8a182b,transparent 48%),linear-gradient(145deg,#202228,#101114)!important;box-shadow:inset 0 0 0 1px #ff8a1808,0 16px 50px #0005}
+.heroVisual:before{content:"";position:absolute;right:3%;top:4%;width:min(50%,240px);aspect-ratio:1;background:url('/certinho.svg') center/contain no-repeat;filter:drop-shadow(0 0 18px #ff8a1833);animation:vcMascotFloat 4s ease-in-out infinite;pointer-events:none}
+.visualHeadline{position:relative;z-index:1}.visualTiles{position:relative;z-index:1}
+.featuretile,.catbox,.step,.faq article,.about,.editorial,.card,.panel{border-color:#2b2e34!important;box-shadow:0 12px 28px #0002}
+.featuretile:hover,.catbox:hover,.card:hover{border-color:#ff8a185c!important}
+.featuretile{background:linear-gradient(145deg,#191b20,#111216)!important}
+.featuretile:after{background:#ff8a1817!important}
+.catbox{background:linear-gradient(145deg,#1b1d22,#111216)!important}
+.editorial{background:linear-gradient(110deg,#25170d,#17191d 68%)!important;border-color:#49311b!important}
+.sectiontitle,.sectionhead h2{letter-spacing:-.6px}
+.filter{transition:.18s}.filter.active,.filter:hover{background:#2b1c0f!important;border-color:#ff8a18!important;color:#ffb34d!important}
+.card{background:linear-gradient(145deg,#1b1c21,#121316)!important}
+.photo{background:radial-gradient(circle at 50% 25%,#292a30,#121316)!important}
+.offer,.btn.primary,.navcta{background:linear-gradient(110deg,#ffb34d,#ff8200)!important;color:#161616!important;box-shadow:0 6px 22px #ff8a1817}
+.offer:hover,.btn.primary:hover,.navcta:hover{filter:brightness(1.08)}
+.search{border-radius:15px!important;background:#17191d!important;border-color:#32353c!important}
+.search:focus-within{border-color:#ff8a18!important;box-shadow:0 0 0 3px #ff8a1818}
+.ai-launch{background:linear-gradient(135deg,#ffb34d,#ff8000)!important;border:1px solid #ffc36c!important;box-shadow:0 9px 35px #0008,0 0 24px #ff8a181e!important}
+.ai-launch .robot-face{background:transparent!important;width:54px!important;height:54px!important;font-size:0!important;overflow:hidden}
+.ai-launch .robot-face:after{content:"";display:block;width:100%;height:100%;background:url('/certinho.svg') center/contain no-repeat;animation:vcMascotFloat 3s ease-in-out infinite}
+.ai-panel{border-color:#ff8a18!important;box-shadow:0 24px 80px #000c,0 0 0 1px #ff8a1812!important;background:#14161a!important}
+.ai-head{background:linear-gradient(110deg,#271a0d,#17181c)!important}
+.ai-avatar{font-size:0!important;background:transparent!important;width:48px!important;height:48px!important;overflow:hidden}
+.ai-avatar:after{content:"";display:block;width:100%;height:100%;background:url('/certinho.svg') center/contain no-repeat}
+.ai-head-copy b{font-size:15px!important}.ai-head-copy small:before{content:"● ";color:#22c55e}
+.ai-msg.bot{background:linear-gradient(145deg,#24262c,#1b1c21)!important;border:1px solid #2e3037}
+.ai-msg.user{background:linear-gradient(110deg,#ffb34d,#ff8200)!important}
+.ai-suggestions button{border-color:#363941!important;background:#202228!important;transition:.18s}
+.ai-suggestions button:hover{border-color:#ff8a18!important;color:#ffb34d!important}
+.ai-form input:focus{border-color:#ff8a18!important;box-shadow:0 0 0 3px #ff8a1818}
+.ai-form button{background:linear-gradient(110deg,#ffb34d,#ff8200)!important}
+@keyframes vcMascotFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-9px) rotate(1deg)}}
+@keyframes vcMascotBlink{0%,94%,100%{transform:scaleY(1)}96%{transform:scaleY(.85)}}
+@media(max-width:620px){.heroVisual:before{right:1%;top:3%;width:38%;opacity:.9}.ai-launch .robot-face{width:48px!important;height:48px!important}.ai-panel{border-radius:20px!important}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
