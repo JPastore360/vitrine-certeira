@@ -1396,12 +1396,14 @@ async function loadMercadoLivreImages(){
   render();
 }
 const grid=document.getElementById('productGrid');let selected='all';
+const failedProductImages=new Set();
+function hasProductImage(product){const image=String(product.image||'').trim();return /^https:\/\/\S+$/i.test(image)&&!failedProductImages.has(image);}
 // Não mantém cards cuja imagem falhe ao carregar: sem foto válida, não há publicação visual.
 grid.addEventListener('error',function(event){
  const image=event.target;
  if(!image||!image.matches||!image.matches('img.product-image'))return;
- image.closest('.card')?.remove();
- if(!grid.querySelector('.card'))grid.innerHTML='<div class="empty">Nenhum produto com imagem disponível foi encontrado nesta busca.</div>';
+ failedProductImages.add(image.currentSrc||image.src);
+ render();
 },true);
 function card(p){
  const photo='<img class="product-image" loading="lazy" src="'+p.image+'" alt="'+p.name+'" style="width:100%;height:100%;object-fit:contain;background:#f6f6f6">';
@@ -1409,7 +1411,7 @@ function card(p){
  const link=p.affiliateUrl?'<a class="offer" href="'+p.affiliateUrl+'" target="_blank" rel="nofollow sponsored noopener">VER OFERTA NA LOJA ↗</a>':'<span class="offer disabled">LINK EM PREPARAÇÃO</span>';
  return '<article class="card"><div class="photo">'+photo+'<span class="tag">'+(p.tag||"ACHADO SELECIONADO")+'</span></div><div class="cardbody"><div class="catlabel">'+p.categoryName+'</div><h3>'+p.name+'</h3><div class="desc">'+(p.description||"Produto selecionado pela Vitrine Certeira.")+'</div><div class="price">'+price+'</div>'+link+'</div></article>';
 }
-function render(){const q=document.getElementById('search').value.trim().toLowerCase();const filtered=products.filter(p=>typeof p.image==='string'&&/^https:\/\/\S+$/i.test(p.image.trim())&&(selected==='all'||p.category===selected)&&(`${p.name} ${p.categoryName} ${p.description}`.toLowerCase().includes(q)));grid.innerHTML=filtered.length?filtered.map(card).join(''):`<div class="empty">Nenhum produto com imagem disponível foi encontrado nesta busca.</div>`}
+function render(){const q=document.getElementById('search').value.trim().toLowerCase();const filtered=products.filter(p=>hasProductImage(p)&&(selected==='all'||p.category===selected)&&((p.name+' '+p.categoryName+' '+p.description).toLowerCase().includes(q)));grid.innerHTML=filtered.length?filtered.map(card).join(''):'<div class="empty">Nenhum produto com imagem disponível foi encontrado nesta busca.</div>'}
 document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');selected=b.dataset.cat;render()}));document.getElementById('search').addEventListener('input',render);document.getElementById('year').textContent=new Date().getFullYear();
 render();
 // Atualiza fotos de produtos Mercado Livre pelo mapa gerado no GitHub Actions.
@@ -1551,13 +1553,13 @@ function aiAnswer(query){
  let cat=null;
  for(const [c,terms] of categoryMap){if(terms.some(t=>q.includes(norm(t)))){cat=c;break}}
  const words=q.split(/\\s+/).filter(w=>w.length>2&&!['quero','veja','mostrar','mostre','encontre','produto','produtos','para','com','uma','uns','das','dos','mais','interessantes','buscar','pesquisar'].includes(w));
- let matches=products.filter(p=>{
+ let matches=products.filter(p=>hasProductImage(p)&&{
   if(cat&&p.category!==cat)return false;
   const hay=norm(p.name+' '+p.categoryName+' '+p.description+' '+p.category);
   if(cat&&words.length===0)return true;
   return words.length===0?(!cat):words.some(w=>hay.includes(w));
  });
- if(!matches.length&&cat) matches=products.filter(p=>p.category===cat);
+ if(!matches.length&&cat) matches=products.filter(p=>hasProductImage(p)&&p.category===cat);
  if(matches.length){
   aiSay('Achei '+matches.length+' produto(s) no catálogo. Veja as opções e toque em “Ver na loja” para ir direto à página de compra:');
   const results=document.createElement('div');results.className='ai-results';
