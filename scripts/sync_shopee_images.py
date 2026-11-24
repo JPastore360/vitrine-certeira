@@ -37,6 +37,13 @@ STOP_WORDS = {
 }
 
 
+def set_output(name, value):
+    output_path = os.environ.get("GITHUB_OUTPUT")
+    if output_path:
+        with open(output_path, "a", encoding="utf-8") as output:
+            output.write(f"{name}={value}\n")
+
+
 def load_json(path, default):
     if not path.exists():
         return default
@@ -185,6 +192,10 @@ def main():
     print(f"Produtos Shopee antigos sem imagem: {len(catalog)}")
     print(f"Imagens já recuperadas anteriormente: {len(image_map)}")
     print(f"Produtos que serão pesquisados nesta execução: {len(pending)}")
+    if not pending:
+        print("Não há produtos pendentes para nova tentativa.")
+        set_output("images_changed", "false")
+        return
 
     matched = 0
     no_match = 0
@@ -273,6 +284,7 @@ def main():
         json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
 
+    set_output("images_changed", "true" if matched > 0 else "false")
     print("========================================")
     print(f"Fotos recuperadas nesta execução: {matched}")
     print(f"Sem correspondência segura: {no_match}")
