@@ -1,4 +1,4 @@
-name: Shopee API - Teste de credenciais
+name: Shopee API - Teste de produtos
 
 on:
   workflow_dispatch:
@@ -7,10 +7,10 @@ permissions:
   contents: read
 
 jobs:
-  credential-smoke-test:
+  product-query-test:
     runs-on: ubuntu-latest
     steps:
-      - name: Validar secrets e consultar endpoint GraphQL
+      - name: Consultar produtos reais na Shopee GraphQL
         env:
           SHOPEE_APP_ID: ${{ secrets.SHOPEE_APP_ID }}
           SHOPEE_APP_SECRET: ${{ secrets.SHOPEE_APP_SECRET }}
@@ -29,7 +29,24 @@ jobs:
               raise SystemExit("Falha: SHOPEE_APP_ID ou SHOPEE_APP_SECRET ausente nos GitHub Secrets.")
 
           endpoint = "https://open-api.affiliate.shopee.com.br/graphql"
-          payload = json.dumps({"query": "query { __typename }"}, separators=(",", ":"))
+          query = """{
+            productOfferV2(keyword: "fone bluetooth", listType: 0, sortType: 1, page: 1, limit: 5) {
+              nodes {
+                productName
+                imageUrl
+                productLink
+                offerLink
+                priceMin
+                priceMax
+                priceDiscountRate
+                commissionRate
+                sales
+                shopName
+              }
+              pageInfo { page limit hasNextPage }
+            }
+          }"""
+          payload = json.dumps({"query": query}, separators=(",", ":"))
           timestamp = str(int(time.time()))
           signature = hashlib.sha256((app_id + timestamp + payload + secret).encode("utf-8")).hexdigest()
           authorization = f"SHA256 Credential={app_id}, Timestamp={timestamp}, Signature={signature}"
@@ -37,10 +54,7 @@ jobs:
           req = urllib.request.Request(
               endpoint,
               data=payload.encode("utf-8"),
-              headers={
-                  "Authorization": authorization,
-                  "Content-Type": "application/json",
-              },
+              headers={"Authorization": authorization, "Content-Type": "application/json"},
               method="POST",
           )
           try:
@@ -53,8 +67,22 @@ jobs:
                       for error in parsed["errors"]:
                           print("-", error.get("message", "Erro GraphQL sem mensagem"))
                       raise SystemExit(1)
-                  print("Resposta GraphQL recebida. Campos de topo:", list(parsed.keys()))
-                  print("Teste de credenciais/endpoint concluído; nenhum dado de produto foi solicitado.")
+                  data = parsed.get("data") or {}
+                  result = data.get("productOfferV2") or {}
+                  nodes = result.get("nodes") or []
+                  print("Consulta GraphQL de produtos: OK")
+                  print("Produtos retornados:", len(nodes))
+                  print("pageInfo:", result.get("pageInfo"))
+                  if not nodes:
+                      raise SystemExit("Consulta autenticou, mas não retornou produtos. Teste de dados falhou.")
+                  first = nodes[0]
+                  print("Produto exemplo:", first.get("productName", "(sem nome)"))
+                  print("Campos preenchidos no primeiro produto:", [k for k in ("imageUrl", "productLink", "offerLink", "priceMin", "priceMax", "priceDiscountRate", "commissionRate", "sales", "shopName") if first.get(k) not in (None, "")])
+                  if not first.get("imageUrl"):
+                      print("AVISO: primeiro produto não possui imageUrl.")
+                  if not first.get("offerLink"):
+                      print("AVISO: primeiro produto não possui offerLink de afiliado.")
+                  print("Teste de consulta de produtos concluído.")
           except urllib.error.HTTPError as e:
               body = e.read().decode("utf-8", errors="replace")
               print("HTTP:", e.code)
@@ -63,7 +91,7 @@ jobs:
                   for error in parsed.get("errors", []):
                       print("-", error.get("message", "Erro API"))
               except Exception:
-                  print("A API respondeu com erro HTTP; corpo não exibido por segurança.")
+                  print("A API respondeu com erro HTTP; corpo não exibido.")
               raise SystemExit(1)
           except urllib.error.URLError as e:
               print("Falha de conexão:", e.reason)
