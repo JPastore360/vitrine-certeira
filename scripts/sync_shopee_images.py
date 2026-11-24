@@ -143,7 +143,7 @@ def signed_request(app_id, secret, query):
             method="POST",
         )
         try:
-            with urllib.request.urlopen(request, timeout=40) as response:
+            with urllib.request.urlopen(request, timeout=15) as response:
                 payload = json.loads(response.read().decode("utf-8", errors="replace"))
             if payload.get("errors"):
                 messages = [
@@ -310,7 +310,7 @@ def main():
                 nodes = []
                 last_error = batch_error
                 used_keyword = keyword
-                for candidate_keyword in variants[start_variant:]:
+                for candidate_keyword in variants[start_variant:start_variant + 1]:
                     try:
                         nodes = search_products(app_id, secret, candidate_keyword)
                         used_keyword = candidate_keyword
