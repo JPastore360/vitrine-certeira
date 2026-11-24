@@ -1,7 +1,11 @@
-name: Shopee API - Teste de produtos
+name: SHOPEE API - TESTE REAL BR (AUTO)
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/shopee-api-smoke-test.yml
 
 permissions:
   contents: read
@@ -70,12 +74,22 @@ jobs:
                   data = parsed.get("data") or {}
                   result = data.get("productOfferV2") or {}
                   nodes = result.get("nodes") or []
+                  print("=== TESTE REAL SHOPEE BR - REVISAO AUTOMATICA ===")
+                  print("Commit/branch:", os.environ.get("GITHUB_SHA", "unknown"), os.environ.get("GITHUB_REF", "unknown"))
                   print("Consulta GraphQL de produtos: OK")
                   print("Produtos retornados:", len(nodes))
                   print("pageInfo:", result.get("pageInfo"))
                   if not nodes:
                       raise SystemExit("Consulta autenticou, mas não retornou produtos. Teste de dados falhou.")
                   first = nodes[0]
+                  print("=== PRODUTOS RETORNADOS ===")
+                  for index, product in enumerate(nodes, 1):
+                      print(f"Produto {index}: {product.get('productName', '(sem nome)")}")
+                      print(f"  Preço: {product.get('priceMin')} - {product.get('priceMax")}")
+                      print(f"  Comissão: {product.get('commissionRate")} | Vendas: {product.get('sales")}")
+                      print(f"  Imagem: {product.get('imageUrl")}")
+                      print(f"  Link afiliado: {product.get('offerLink")}")
+                  print("=== FIM DA LISTA ===
                   print("Produto exemplo:", first.get("productName", "(sem nome)"))
                   print("Campos preenchidos no primeiro produto:", [k for k in ("imageUrl", "productLink", "offerLink", "priceMin", "priceMax", "priceDiscountRate", "commissionRate", "sales", "shopName") if first.get(k) not in (None, "")])
                   if not first.get("imageUrl"):
