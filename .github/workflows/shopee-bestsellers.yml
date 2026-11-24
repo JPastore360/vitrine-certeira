@@ -1,0 +1,71 @@
+name: Shopee - 15 mais vendidos por dia
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/collect_shopee_bestsellers.py"
+      - ".github/workflows/shopee-bestsellers.yml"
+  schedule:
+    - cron: "45 11 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: shopee-daily-bestsellers
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout do catálogo
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Buscar os produtos mais vendidos na Shopee
+        id: collector
+        env:
+          SHOPEE_APP_ID: ${{ secrets.SHOPEE_APP_ID }}
+          SHOPEE_APP_SECRET: ${{ secrets.SHOPEE_APP_SECRET }}
+        run: python scripts/collect_shopee_bestsellers.py
+
+      - name: Salvar catálogo e relatório diário
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/shopee-products.json data/shopee-bestsellers-report.json
+          if git diff --cached --quiet; then
+            echo "Nenhum produto novo ou alteração no relatório."
+          else
+            git commit -m "Atualiza os 15 mais vendidos da Shopee"
+            git push
+          fi
+
+      - name: Configurar GitHub Pages
+        if: steps.collector.outputs.feed_changed == 'true'
+        uses: actions/configure-pages@v5
+
+      - name: Preparar publicação
+        if: steps.collector.outputs.feed_changed == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Publicar os novos produtos
+        if: steps.collector.outputs.feed_changed == 'true'
+        id: deployment
+        uses: actions/deploy-pages@v4
