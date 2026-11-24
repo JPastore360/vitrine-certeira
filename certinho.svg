@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+<defs><linearGradient id="shell" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff8e9"/><stop offset=".55" stop-color="#f7f2e8"/><stop offset="1" stop-color="#d8dce1"/></linearGradient><linearGradient id="orange" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffb64c"/><stop offset="1" stop-color="#ff7900"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<ellipse cx="120" cy="218" rx="65" ry="12" fill="#ff8500" opacity=".22"/>
+<path d="M106 29 Q118 12 134 28 L132 45" fill="none" stroke="url(#orange)" stroke-width="12" stroke-linecap="round"/>
+<circle cx="131" cy="25" r="7" fill="#ff9c24"/>
+<path d="M61 88 Q51 50 81 38 Q120 18 158 39 Q188 57 177 91 L190 132 Q196 159 170 178 L155 193 Q120 212 85 191 L66 174 Q42 157 50 132Z" fill="url(#shell)" stroke="#c7ccd3" stroke-width="3"/>
+<rect x="61" y="73" width="118" height="81" rx="28" fill="#171a20" stroke="#3c4148" stroke-width="3"/>
+<g stroke="#ff9a24" stroke-width="8" stroke-linecap="round" fill="none" filter="url(#glow)"><path d="M84 109 Q84 89 99 89 Q114 89 114 109"/><path d="M126 109 Q126 89 141 89 Q156 89 156 109"/><path d="M103 128 Q120 139 137 128"/></g>
+<path d="M46 112 Q24 106 26 130 Q28 145 51 145" fill="url(#orange)" stroke="#d06a00" stroke-width="3"/>
+<path d="M194 112 Q216 106 214 130 Q212 145 189 145" fill="url(#orange)" stroke="#d06a00" stroke-width="3"/>
+<path d="M86 185 L77 204 Q70 216 86 219 L101 219 L113 196 M151 185 L162 205 Q170 216 155 219 L140 219 L128 196" fill="url(#shell)" stroke="#c5cbd2" stroke-width="3" stroke-linejoin="round"/>
+<rect x="94" y="168" width="52" height="31" rx="10" fill="#20232a" stroke="#ff9220" stroke-width="3"/>
+<path d="M109 182 L116 189 L131 176" fill="none" stroke="#ff9d27" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M64 154 Q39 160 45 181 Q49 198 67 189 L81 177" fill="url(#shell)" stroke="#c5cbd2" stroke-width="3"/>
+<path d="M178 154 Q201 159 197 180 Q193 198 175 189 L162 177" fill="url(#shell)" stroke="#c5cbd2" stroke-width="3"/>
+</svg>
