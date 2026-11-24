@@ -1,0 +1,213 @@
+{
+  "date": "2026-11-24",
+  "target": 15,
+  "added": 15,
+  "searches": [
+    {
+      "keyword": "fone bluetooth",
+      "category": "Tecnologia",
+      "returned": 50,
+      "sort": "sales_desc",
+      "status": "ok"
+    },
+    {
+      "keyword": "celular smartphone",
+      "category": "Tecnologia",
+      "returned": 50,
+      "sort": "sales_desc",
+      "status": "ok"
+    },
+    {
+      "keyword": "utensilios cozinha",
+      "category": "Casa & Cozinha",
+      "returned": 50,
+      "sort": "sales_desc",
+      "status": "ok"
+    },
+    {
+      "keyword": "liquidificador",
+      "category": "Casa & Cozinha",
+      "returned": 50,
+      "sort": "sales_desc",
+      "status": "ok"
+    },
+    {
+      "keyword": "ferramentas eletricas",
+      "category": "Ferramentas",
+      "returned": 50,
+      "sort": "sales_desc",
+      "status": "ok"
+    },
+    {
+      "keyword": "controle gamer",
+      "category": "Games",
+      "returned": 50,
+      "sort": "sales_desc",
+      "status": "ok"
+    },
+    {
+      "keyword": "perfume feminino",
+      "category": "Perfumes",
+      "returned": 50,
+      "sort": "sales_desc",
+      "status": "ok"
+    },
+    {
+      "keyword": "acessorios automotivos",
+      "category": "Automotivo",
+      "returned": 50,
+      "sort": "sales_desc",
+      "status": "ok"
+    },
+    {
+      "keyword": "jardinagem ferramentas",
+      "category": "Agro",
+      "returned": 50,
+      "sort": "sales_desc",
+      "status": "ok"
+    },
+    {
+      "keyword": "utilidades domesticas",
+      "category": "Utilidades",
+      "returned": 50,
+      "sort": "sales_desc",
+      "status": "ok"
+    }
+  ],
+  "selected": [
+    {
+      "itemId": "20797743913",
+      "name": "Cera Carnaúba Automotiva Renove 120g - Brilho Profundo, Toque Liso e Repelência à Água",
+      "sales": 27727,
+      "ratingStar": 4.7,
+      "commissionRate": 0.14,
+      "category": "Automotivo"
+    },
+    {
+      "itemId": "40331456554",
+      "name": "Senbenbao X55 Fones De Ouvido TWS Sono Sem Fio Bluetooth Display Led Alta Fidelidade Estéreo Cancelamento Ruído À Prova",
+      "sales": 18434,
+      "ratingStar": 4.8,
+      "commissionRate": 0.13,
+      "category": "Tecnologia"
+    },
+    {
+      "itemId": "22392992790",
+      "name": "Batedor Misturador Mixer Elétrico para Bebidas Leite Café Clara de Ovo 2 em 1",
+      "sales": 13281,
+      "ratingStar": 4.8,
+      "commissionRate": 0.13,
+      "category": "Casa & Cozinha"
+    },
+    {
+      "itemId": "21197690424",
+      "name": "Chaleira Jarra Elétrica 110V ou 220V 1.8 Litros Inox Prateada",
+      "sales": 13213,
+      "ratingStar": 4.9,
+      "commissionRate": 0.07,
+      "category": "Casa & Cozinha"
+    },
+    {
+      "itemId": "18297619389",
+      "name": "Lixador de Pé Elétrico - Esfoliador Tira Calos Pedicure Portátil",
+      "sales": 11896,
+      "ratingStar": 4.8,
+      "commissionRate": 0.03,
+      "category": "Ferramentas"
+    },
+    {
+      "itemId": "23794353497",
+      "name": "Batedor Misturador Mixer Elétrico portátil Recarregável Para Bebi Leite Café Ovo 2 em 1",
+      "sales": 9961,
+      "ratingStar": 4.8,
+      "commissionRate": 0.07,
+      "category": "Casa & Cozinha"
+    },
+    {
+      "itemId": "58253145740",
+      "name": "2L/3L Picador De Alimentos Moedor De Carne Mixer Elétrica Processador Cozinha Casa Alho - 110v-220v",
+      "sales": 9036,
+      "ratingStar": 4.8,
+      "commissionRate": 0.03,
+      "category": "Casa & Cozinha"
+    },
+    {
+      "itemId": "58258562285",
+      "name": "Suporte Organizador De Ovos Dispenser Para Geladeira Prático Anti-Queda Utensílios De Cozinha Original",
+      "sales": 8847,
+      "ratingStar": 4.9,
+      "commissionRate": 0.09,
+      "category": "Casa & Cozinha"
+    },
+    {
+      "itemId": "22993518481",
+      "name": "BombaElétricaUniversalcomCarregamentoUSBparaGalãoGarrafãodeÁguaBomba de Agua Bomba Eétrica Para Galão",
+      "sales": 8093,
+      "ratingStar": 4.8,
+      "commissionRate": 0.03,
+      "category": "Casa & Cozinha"
+    },
+    {
+      "itemId": "23393954691",
+      "name": "Batedor Misturador Mixer Elétrico para Bebidas Leite Café Clara de Ovo 2 em 1 taobiju",
+      "sales": 8072,
+      "ratingStar": 4.8,
+      "commissionRate": 0.07,
+      "category": "Casa & Cozinha"
+    },
+    {
+      "itemId": "24740902631",
+      "name": "Cozedor de Ovos Elétrico 110V – Portátil a Vapor para Cozinha Envio Imediato",
+      "sales": 7983,
+      "ratingStar": 4.9,
+      "commissionRate": 0.03,
+      "category": "Casa & Cozinha"
+    },
+    {
+      "itemId": "22694204664",
+      "name": "Cozedor De Ovos Portátil Elétrico Cozinha A Vapor 110v/220v",
+      "sales": 7874,
+      "ratingStar": 4.9,
+      "commissionRate": 0.11,
+      "category": "Casa & Cozinha"
+    },
+    {
+      "itemId": "23025155762",
+      "name": "Grill e Sanduicheira Fama FGR01 Revestimento Cerâmico 750W",
+      "sales": 7815,
+      "ratingStar": 4.9,
+      "commissionRate": 0.03,
+      "category": "Casa & Cozinha"
+    },
+    {
+      "itemId": "8020679826",
+      "name": "Liquidificador Mondial L‑99 Turbo 550 W 3 Velocidades",
+      "sales": 7597,
+      "ratingStar": 4.9,
+      "commissionRate": 0.06,
+      "category": "Casa & Cozinha"
+    },
+    {
+      "itemId": "29588922747",
+      "name": "Senbenbao X55 Fones De Ouvido TWS Sono Sem Fio Bluetooth Display Led Alta Fidelidade Estéreo Cancelamento Ruído À Prova",
+      "sales": 7571,
+      "ratingStar": 4.8,
+      "commissionRate": 0.04,
+      "category": "Tecnologia"
+    }
+  ],
+  "rejected": {
+    "duplicate": 33,
+    "rating_below_4_5_or_missing": 25
+  },
+  "searchErrors": 0,
+  "candidatePool": 436,
+  "minimums": {
+    "sales": 1,
+    "rating": 4.5,
+    "commissionRate": 0.0001,
+    "requiredImage": true,
+    "requiredAffiliateLink": true
+  },
+  "updatedAt": "2026-11-24T19:38:56.897154-03:00"
+}
