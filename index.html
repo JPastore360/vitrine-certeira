@@ -1423,6 +1423,47 @@ async function loadMercadoLivreImageMap(){
 loadMercadoLivreImageMap();
 loadMercadoLivreImages();
 
+// Produtos Shopee vindos do feed oficial de afiliados.
+// Regra de publicação: somente produtos com imagem HTTPS e offerLink de afiliado válido.
+async function loadShopeeProducts(){
+  try{
+    const response=await fetch('./data/shopee-products.json?v='+Date.now(),{cache:'no-store'});
+    if(!response.ok)return;
+    const feed=await response.json();
+    const incoming=Array.isArray(feed.products)?feed.products:[];
+    const existingLinks=new Set(products.map(p=>p.affiliateUrl).filter(Boolean));
+    let added=0;
+    incoming.forEach(p=>{
+      const affiliateUrl=String(p.affiliateUrl||'');
+      const image=String(p.image||'');
+      const validAffiliate=/^https:\/\/s\.shopee\.com\.br\/[A-Za-z0-9]+$/i.test(affiliateUrl);
+      const validImage=/^https:\/\/cf\.shopee\.com\.br\/file\/[A-Za-z0-9-]+$/i.test(image);
+      if(!validAffiliate||!validImage||!p.name||!p.price||existingLinks.has(affiliateUrl))return;
+      products.push({
+        name:String(p.name),
+        category:String(p.category||'util'),
+        categoryName:String(p.categoryName||'Achados'),
+        description:String(p.description||'Produto selecionado pela Vitrine Certeira.'),
+        price:String(p.price),
+        image,
+        affiliateUrl,
+        tag:String(p.tag||'SHOPEE • OFERTA AFILIADA'),
+        icon:String(p.icon||'🛍️'),
+        commissionRate:Number(p.commissionRate)||0,
+        sales:Number(p.sales)||0,
+        store:'Shopee'
+      });
+      existingLinks.add(affiliateUrl);
+      added++;
+    });
+    if(added)render();
+    console.info('Shopee: produtos afiliados adicionados à vitrine:',added);
+  }catch(err){
+    console.warn('Feed de produtos Shopee indisponível:',err);
+  }
+}
+loadShopeeProducts();
+
 // GA4: eventos personalizados para medir interacoes no site
 // Clique em ofertas/links de afiliado
 document.addEventListener('click', function(event) {
