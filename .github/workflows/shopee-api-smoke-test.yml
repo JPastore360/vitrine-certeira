@@ -30,7 +30,7 @@ jobs:
 
           endpoint = "https://open-api.affiliate.shopee.com.br/graphql"
           query = """{
-            productOfferV2(keyword: "fone bluetooth", listType: 0, sortType: 1, page: 1, limit: 5) {
+            productOfferV2(keyword: "fone bluetooth", sortType: 1, page: 1, limit: 5) {
               nodes {
                 productName
                 imageUrl
