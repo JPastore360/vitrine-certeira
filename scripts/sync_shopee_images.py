@@ -181,6 +181,20 @@ def search_products(app_id, secret, keyword):
     return result.get("nodes") or []
 
 
+
+def search_products_batch(app_id, secret, keywords):
+    selections = []
+    for index, keyword in enumerate(keywords):
+        selections.append(
+            f'p{index}: productOfferV2(keyword: {json.dumps(keyword, ensure_ascii=False)}, '
+            'sortType: 1, page: 1, limit: 5) { nodes { productName imageUrl } }'
+        )
+    query = "query {\n" + "\n".join(selections) + "\n}"
+    payload = signed_request(app_id, secret, query)
+    data = payload.get("data") or {}
+    return [(data.get(f"p{index}") or {}).get("nodes") or [] for index in range(len(keywords))]
+
+
 def similarity(original, candidate):
     original_tokens = tokens(original)
     candidate_tokens = tokens(candidate)
@@ -262,46 +276,98 @@ def main():
 
     matched = 0
     no_match = 0
-    for index, item in enumerate(pending, 1):
-        affiliate_url = item["affiliateUrl"]
-        title = item["name"]
-        keyword = query_for_title(title)
-        print(f"[{index}/{len(pending)}] Pesquisando: {title}")
-        print(f"  Palavra-chave enviada: {keyword}")
+    api_errors = 0
+    batch_size = 5
+
+    for batch_start in range(0, len(pending), batch_size):
+        batch_items = pending[batch_start:batch_start + batch_size]
+        batch_keywords = []
+        for item in batch_items:
+            attempts = report["attempts"].get(item["affiliateUrl"], 0)
+            variants = keyword_variants(item["name"])
+            variant_index = min(attempts, len(variants) - 1)
+            batch_keywords.append(variants[variant_index])
+
+        batch_number = batch_start // batch_size + 1
+        batch_total = (len(pending) + batch_size - 1) // batch_size
+        print(f"Lote {batch_number}/{batch_total}: consultando {len(batch_items)} produtos.")
+        batch_results = None
+        batch_error = None
         try:
-            nodes = []
-            ranked = []
-            last_search_error = None
-            actual_keyword = keyword
-            for candidate_keyword in keyword_variants(title):
-                try:
-                    found = search_products(app_id, secret, candidate_keyword)
-                    actual_keyword = candidate_keyword
-                    print(f"  Pesquisa Shopee: {candidate_keyword} ({len(found)} resultados)")
-                    nodes.extend(found)
-                    ranked = rank_candidates(title, nodes)
-                    if is_safe_match(ranked):
+            batch_results = search_products_batch(app_id, secret, batch_keywords)
+            print("  Consulta GraphQL em lote: OK")
+        except Exception as exc:
+            batch_error = str(exc)
+            print(f"  Consulta em lote não foi aceita: {batch_error}")
+            print("  Tentando consultas individuais para este lote.")
+
+        if batch_results is None:
+            batch_results = []
+            for item, keyword in zip(batch_items, batch_keywords):
+                variants = keyword_variants(item["name"])
+                attempts = report["attempts"].get(item["affiliateUrl"], 0)
+                start_variant = min(attempts, len(variants) - 1)
+                nodes = []
+                last_error = batch_error
+                used_keyword = keyword
+                for candidate_keyword in variants[start_variant:]:
+                    try:
+                        nodes = search_products(app_id, secret, candidate_keyword)
+                        used_keyword = candidate_keyword
+                        if nodes:
+                            break
+                    except RuntimeError as exc:
+                        last_error = str(exc)
+                        if "system error" in last_error.lower():
+                            continue
                         break
-                except RuntimeError as search_error:
-                    last_search_error = str(search_error)
-                    if "system error" in last_search_error.lower():
-                        print(f"  Busca '{candidate_keyword}' retornou erro temporário; tentando termo mais curto.")
-                        continue
-                    raise
-            if not nodes and last_search_error:
-                report["results"][affiliate_url] = {
-                    "status": "api_error",
-                    "originalName": title,
-                    "keyword": actual_keyword,
-                    "error": last_search_error[:500],
-                }
-                print(f"  API não conseguiu pesquisar este produto após reduzir os termos: {last_search_error}")
-                continue
+                batch_results.append(nodes)
+                if not nodes and last_error:
+                    report["results"][item["affiliateUrl"]] = {
+                        "status": "api_error",
+                        "originalName": item["name"],
+                        "keyword": used_keyword,
+                        "error": last_error[:500],
+                    }
+                    api_errors += 1
+                else:
+                    report["attempts"][item["affiliateUrl"]] = attempts + 1
+                    ranked = rank_candidates(item["name"], nodes)
+                    best = ranked[0] if ranked else None
+                    second = ranked[1] if len(ranked) > 1 else None
+                    if is_safe_match(ranked):
+                        image_map[item["affiliateUrl"]] = best["image"]
+                        report["results"][item["affiliateUrl"]] = {
+                            "status": "matched",
+                            "originalName": item["name"],
+                            "matchedName": best["name"],
+                            "score": best["score"],
+                            "image": best["image"],
+                            "keyword": used_keyword,
+                        }
+                        matched += 1
+                        print(f"  FOTO ENCONTRADA: {item['name']} -> {best['name']}")
+                    else:
+                        report["results"][item["affiliateUrl"]] = {
+                            "status": "needs_review" if best else "not_found",
+                            "originalName": item["name"],
+                            "keyword": used_keyword,
+                            "bestCandidate": best,
+                            "secondCandidate": second,
+                        }
+                        no_match += 1
+                        print(f"  Sem correspondência segura: {item['name']}")
+            time.sleep(REQUEST_PAUSE_SECONDS)
+            continue
+
+        for item, keyword, nodes in zip(batch_items, batch_keywords, batch_results):
+            affiliate_url = item["affiliateUrl"]
+            title = item["name"]
+            ranked = rank_candidates(title, nodes)
             best = ranked[0] if ranked else None
             second = ranked[1] if len(ranked) > 1 else None
-            accepted = is_safe_match(ranked)
             report["attempts"][affiliate_url] = report["attempts"].get(affiliate_url, 0) + 1
-            if accepted:
+            if is_safe_match(ranked):
                 image_map[affiliate_url] = best["image"]
                 report["results"][affiliate_url] = {
                     "status": "matched",
@@ -309,34 +375,20 @@ def main():
                     "matchedName": best["name"],
                     "score": best["score"],
                     "image": best["image"],
+                    "keyword": keyword,
                 }
                 matched += 1
-                print(f"  FOTO ENCONTRADA (score {best['score']:.2f}): {best['name']}")
+                print(f"  FOTO ENCONTRADA (score {best['score']:.2f}): {title}")
             else:
-                if ranked:
-                    print("  Melhor candidato:", best["name"], "| score:", best["score"], "| cobertura:", best["recall"])
-                    if second:
-                        print("  Segundo candidato:", second["name"], "| score:", second["score"])
                 report["results"][affiliate_url] = {
                     "status": "needs_review" if best else "not_found",
                     "originalName": title,
-                    "keyword": actual_keyword,
+                    "keyword": keyword,
                     "bestCandidate": best,
                     "secondCandidate": second,
                 }
                 no_match += 1
-                print("  Sem correspondência segura; imagem não será atribuída.")
-        except Exception as exc:
-            report["results"][affiliate_url] = {
-                "status": "api_error",
-                "originalName": title,
-                "keyword": actual_keyword,
-                "error": str(exc)[:500],
-            }
-            print(f"  ERRO nesta pesquisa: {exc}")
-            # Do not continue a hundred requests if authentication/schema failed globally.
-            if "HTTP 401" in str(exc) or "HTTP 403" in str(exc) or "unauthorized" in str(exc).lower() or "signature" in str(exc).lower():
-                raise
+                print(f"  Sem correspondência segura: {title}")
         time.sleep(REQUEST_PAUSE_SECONDS)
 
     IMAGE_MAP_FILE.parent.mkdir(parents=True, exist_ok=True)
@@ -349,6 +401,7 @@ def main():
         "searchedThisRun": len(pending),
         "matchedThisRun": matched,
         "notMatchedThisRun": no_match,
+        "apiErrorsThisRun": api_errors,
         "updatedAt": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
     }
     REPORT_FILE.write_text(
@@ -359,6 +412,7 @@ def main():
     print("========================================")
     print(f"Fotos recuperadas nesta execução: {matched}")
     print(f"Sem correspondência segura: {no_match}")
+    print(f"Erros temporários de API: {api_errors}")
     print(f"Total de imagens no mapa Shopee: {len(image_map)}")
     print("Links de afiliado originais não foram alterados.")
     if pending and matched == 0 and no_match == 0:
