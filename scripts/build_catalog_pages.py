@@ -260,23 +260,23 @@ header{{border-bottom:1px solid var(--border);background:#101012}}.nav{{min-heig
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRZ9ZCZJEH"></script>
 <script>
 window.dataLayer=window.dataLayer||[];
-function gtag(){dataLayer.push(arguments);}
+function gtag(){{dataLayer.push(arguments);}}
 gtag('js',new Date());
 gtag('config','G-ZRZ9ZCZJEH');
-document.addEventListener('click',function(event){
+document.addEventListener('click',function(event){{
   const link=event.target.closest('a[rel~="sponsored"]');
   if(!link || typeof gtag!=='function')return;
   const card=link.closest('.product-card,.card');
   const title=card?.querySelector('h2,h3')?.textContent?.trim() || link.getAttribute('aria-label') || '';
   const category=card?.querySelector('.product-category,.catlabel')?.textContent?.trim() || '';
-  gtag('event','affiliate_click',{
+  gtag('event','affiliate_click',{{ 
     product_name:title,
     product_category:category,
     link_url:link.href,
     page_path:location.pathname,
     transport_type:'beacon'
-  });
-});
+  }});
+}});
 </script>
 </head>
 <body>
