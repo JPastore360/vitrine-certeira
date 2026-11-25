@@ -11,6 +11,18 @@ on:
   schedule:
     - cron: "45 11,17,23 * * *"
   workflow_dispatch:
+    inputs:
+      target_products:
+        description: "Quantidade máxima de produtos para esta coleta"
+        required: true
+        type: choice
+        options: ["15", "100"]
+        default: "15"
+      allow_supplemental:
+        description: "Permite adicionar um lote extra mesmo que a coleta diária já tenha ocorrido"
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -40,6 +52,8 @@ jobs:
         env:
           SHOPEE_APP_ID: ${{ secrets.SHOPEE_APP_ID }}
           SHOPEE_APP_SECRET: ${{ secrets.SHOPEE_APP_SECRET }}
+          SHOPEE_TARGET_PRODUCTS: ${{ github.event_name == 'workflow_dispatch' && inputs.target_products || (contains(github.event.head_commit.message || '', '[bulk-100]') && '100' || '15') }}
+          SHOPEE_ALLOW_SUPPLEMENTAL: ${{ (github.event_name == 'workflow_dispatch' && inputs.allow_supplemental) || contains(github.event.head_commit.message || '', '[bulk-100]') }}
         run: python scripts/collect_shopee_bestsellers.py
 
       - name: Salvar catálogo e relatório diário
