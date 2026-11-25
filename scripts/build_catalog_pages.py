@@ -257,6 +257,27 @@ header{{border-bottom:1px solid var(--border);background:#101012}}.nav{{min-heig
 @media(max-width:820px){{.products{{grid-template-columns:repeat(2,minmax(0,1fr))}}.product-photo{{height:190px}}}}
 @media(max-width:500px){{.wrap{{width:min(100% - 24px,1180px)}}.nav{{align-items:flex-start;flex-direction:column;padding:13px 0}}.navlinks{{gap:12px;font-size:13px}}.products{{gap:10px}}.product-photo{{height:145px;padding:7px}}.product-body{{padding:11px}}.product-body h2{{font-size:14px}}.product-description{{font-size:12px}}.product-price{{font-size:15px}}.product-button{{font-size:11px;padding:9px}}.countline{{align-items:flex-start;flex-direction:column}}}}
 </style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRZ9ZCZJEH"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-ZRZ9ZCZJEH');
+document.addEventListener('click',function(event){
+  const link=event.target.closest('a[rel~="sponsored"]');
+  if(!link || typeof gtag!=='function')return;
+  const card=link.closest('.product-card,.card');
+  const title=card?.querySelector('h2,h3')?.textContent?.trim() || link.getAttribute('aria-label') || '';
+  const category=card?.querySelector('.product-category,.catlabel')?.textContent?.trim() || '';
+  gtag('event','affiliate_click',{
+    product_name:title,
+    product_category:category,
+    link_url:link.href,
+    page_path:location.pathname,
+    transport_type:'beacon'
+  });
+});
+</script>
 </head>
 <body>
 <header><div class="wrap nav"><a class="brand" href="/">VITRINE <b>CERTEIRA</b></a><nav class="navlinks"><a href="/">Início</a><a href="/categorias.html">Categorias</a><a href="/guia-compra.html">Guias de compra</a><a href="/#achados">Todas as ofertas</a></nav></div></header>
@@ -288,10 +309,11 @@ def main() -> None:
             products_by_category[key].append(product)
 
     # Generate indexable category landing pages with real products in the initial HTML.
-    updated = max(
-        [str(p.get("addedAt") or "") for p in feed_products] + [str(date.today())],
-        default=str(date.today()),
-    )
+    update_candidates = [str(p.get("addedAt") or "") for p in feed_products if p.get("addedAt")]
+    validated_date = str(feed.get("lastValidatedAt") or "")[:10]
+    if re.fullmatch(r"\\d{4}-\\d{2}-\\d{2}", validated_date):
+        update_candidates.append(validated_date)
+    updated = max(update_candidates, default=str(date.today().isoformat()))
     generated_paths = []
     for key, products in products_by_category.items():
         if not products:
@@ -300,7 +322,11 @@ def main() -> None:
         page_dir = ROOT / "achados" / meta["slug"]
         page_dir.mkdir(parents=True, exist_ok=True)
         page_path = page_dir / "index.html"
-        content = category_page(key, meta, products, updated)
+        category_updated = max(
+            [str(p.get("addedAt") or "") for p in products if p.get("addedAt")],
+            default=updated,
+        )
+        content = category_page(key, meta, products, category_updated)
         page_path.write_text(content, encoding="utf-8")
         generated_paths.append((key, page_path, meta, products))
 
@@ -422,6 +448,7 @@ def main() -> None:
         lastmod.text = max((str(p.get("addedAt") or today) for p in products), default=today)
 
     ET.indent(tree, space="  ")
+    ET.register_namespace("", NS["sm"])
     tree.write(SITEMAP_FILE, encoding="utf-8", xml_declaration=True)
 
     summary = {CATEGORY_META[key]["name"]: len(products) for key, products in products_by_category.items() if products}
