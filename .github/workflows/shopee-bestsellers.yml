@@ -6,8 +6,10 @@ on:
     paths:
       - "scripts/collect_shopee_bestsellers.py"
       - ".github/workflows/shopee-bestsellers.yml"
+  # Three daily windows provide automatic retries if GitHub delays or drops a scheduled event.
+  # Times are UTC: 08:45, 14:45 and 20:45 in America/Sao_Paulo.
   schedule:
-    - cron: "45 11 * * *"
+    - cron: "45 11,17,23 * * *"
   workflow_dispatch:
 
 permissions:
@@ -18,11 +20,12 @@ permissions:
 
 concurrency:
   group: shopee-daily-bestsellers
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   collect:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
