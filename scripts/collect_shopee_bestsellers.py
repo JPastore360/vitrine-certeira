@@ -26,7 +26,15 @@ HTML_FILE = ROOT / "index.html"
 ENDPOINT = "https://open-api.affiliate.shopee.com.br/graphql"
 USER_AGENT = "VitrineCerteiraBestsellers/1.0"
 
-DAILY_TARGET = 15
+try:
+    DAILY_TARGET = int(os.environ.get("SHOPEE_TARGET_PRODUCTS", "15"))
+except ValueError as exc:
+    raise SystemExit("SHOPEE_TARGET_PRODUCTS precisa ser um número inteiro.") from exc
+
+if not 1 <= DAILY_TARGET <= 100:
+    raise SystemExit("SHOPEE_TARGET_PRODUCTS deve ficar entre 1 e 100.")
+
+ALLOW_SUPPLEMENTAL = os.environ.get("SHOPEE_ALLOW_SUPPLEMENTAL", "").strip().lower() == "true"
 RESULTS_PER_KEYWORD = 50
 MIN_SALES = 1
 MIN_RATING = 4.5
@@ -279,6 +287,7 @@ def main():
     report = {
         "date": local_today(),
         "target": DAILY_TARGET,
+        "mode": "supplemental_bulk" if ALLOW_SUPPLEMENTAL else "daily",
         "added": 0,
         "searches": [],
         "selected": [],
@@ -286,13 +295,16 @@ def main():
     }
 
     today = local_today()
-    if today in feed["dailyBatches"]:
+    if today in feed["dailyBatches"] and not ALLOW_SUPPLEMENTAL:
         today_products = [p for p in feed["products"] if p.get("addedAt") == today]
         print(f"A meta diária de {today} já foi processada: {len(today_products)} produtos no feed.")
-        print("Não haverá nova coleta. Esta execução apenas disponibilizará o lote já salvo.")
-        set_output("products_added", str(len(today_products)))
-        set_output("feed_changed", "true" if today_products else "false")
+        print("Execução ignorada para evitar duplicar a coleta diária.")
+        set_output("products_added", "0")
+        set_output("feed_changed", "false")
         return
+
+    if today in feed["dailyBatches"] and ALLOW_SUPPLEMENTAL:
+        print(f"Modo de lote extra habilitado para {today}; a coleta pode acrescentar novos produtos sem repetir os já existentes.")
 
     existing_names, existing_links, existing_ids = extract_existing_html_products()
     feed_names = [p.get("name", "") for p in feed["products"]]
@@ -446,12 +458,13 @@ def main():
     # Mark the day only if enough searches succeeded to make a meaningful decision.
     successful_searches = sum(1 for item in report["searches"] if item.get("status") == "ok")
     if successful_searches >= 5:
-        feed["dailyBatches"].append(today)
+        if today not in feed["dailyBatches"]:
+            feed["dailyBatches"].append(today)
         feed["dailyBatches"] = feed["dailyBatches"][-90:]
         feed["lastValidatedAt"] = report["updatedAt"]
         feed["lastDailyAdded"] = len(selected)
         feed["selectionRule"] = (
-            "Top 15 by sales (sortType=2), rating >= 4.5, positive commission, "
+            f"Top {DAILY_TARGET} by sales (sortType=2), rating >= 4.5, positive commission, "
             "valid affiliate link, valid image, valid price and no duplicates."
         )
     else:
@@ -464,7 +477,7 @@ def main():
     set_output("feed_changed", "true" if feed_changed else "false")
 
     print("========================================")
-    print(f"Produtos novos adicionados hoje: {len(selected)} de {DAILY_TARGET}")
+    print(f"Produtos novos adicionados nesta execução: {len(selected)} de {DAILY_TARGET}")
     print(f"Pool aprovado antes do corte diário: {len(ranked)}")
     print(f"Buscas com erro: {search_errors}")
     print("Critérios: vendidos, avaliação mínima 4,5, comissão positiva, foto, preço e link afiliado.")
