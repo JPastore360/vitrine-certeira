@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-24",
+  "date": "2026-11-25",
   "target": 15,
   "added": 15,
   "searches": [
@@ -76,133 +76,133 @@
   ],
   "selected": [
     {
-      "itemId": "20797743913",
-      "name": "Cera Carnaúba Automotiva Renove 120g - Brilho Profundo, Toque Liso e Repelência à Água",
-      "sales": 27727,
-      "ratingStar": 4.7,
-      "commissionRate": 0.14,
-      "category": "Automotivo"
-    },
-    {
-      "itemId": "40331456554",
-      "name": "Senbenbao X55 Fones De Ouvido TWS Sono Sem Fio Bluetooth Display Led Alta Fidelidade Estéreo Cancelamento Ruído À Prova",
-      "sales": 18434,
+      "itemId": "23794353497",
+      "name": "Batedor Misturador Mixer Elétrico portátil Recarregável Para Bebi Leite Café Ovo 2 em 1",
+      "sales": 9961,
       "ratingStar": 4.8,
-      "commissionRate": 0.13,
-      "category": "Tecnologia"
-    },
-    {
-      "itemId": "22392992790",
-      "name": "Batedor Misturador Mixer Elétrico para Bebidas Leite Café Clara de Ovo 2 em 1",
-      "sales": 13281,
-      "ratingStar": 4.8,
-      "commissionRate": 0.13,
+      "commissionRate": 0.07,
       "category": "Casa & Cozinha"
     },
     {
-      "itemId": "21197690424",
-      "name": "Chaleira Jarra Elétrica 110V ou 220V 1.8 Litros Inox Prateada",
-      "sales": 13213,
+      "itemId": "23098579259",
+      "name": "Mini Máquina de Waffles Elétrica Portátil Casa Cozinha Fazer Waffle Panquecas Automático  110V- 220V",
+      "sales": 6865,
       "ratingStar": 4.9,
       "commissionRate": 0.07,
       "category": "Casa & Cozinha"
     },
     {
-      "itemId": "18297619389",
-      "name": "Lixador de Pé Elétrico - Esfoliador Tira Calos Pedicure Portátil",
-      "sales": 11896,
+      "itemId": "23297548342",
+      "name": "Haste Eixo Suporte Adaptador Universal Disco De Corte Desbaste Rebolo Lixa Furadeira Parafusadeira Furo 16 - 20 - 22mm",
+      "sales": 6670,
       "ratingStar": 4.8,
       "commissionRate": 0.03,
       "category": "Ferramentas"
     },
     {
-      "itemId": "58253145740",
-      "name": "2L/3L Picador De Alimentos Moedor De Carne Mixer Elétrica Processador Cozinha Casa Alho - 110v-220v",
-      "sales": 9036,
+      "itemId": "58254256002",
+      "name": "Jogo Completo de Utensílios de Cozinha de Silicone Itens Essenciais para sua Casa KITC/12",
+      "sales": 6499,
       "ratingStar": 4.8,
       "commissionRate": 0.03,
       "category": "Casa & Cozinha"
     },
     {
-      "itemId": "58258562285",
-      "name": "Suporte Organizador De Ovos Dispenser Para Geladeira Prático Anti-Queda Utensílios De Cozinha Original",
-      "sales": 8847,
+      "itemId": "22093291651",
+      "name": "Cozedor Aquecedor Portátil para até 7 Ovos Elétrico Prático Cozinha",
+      "sales": 6386,
       "ratingStar": 4.9,
-      "commissionRate": 0.09,
+      "commissionRate": 0.03,
       "category": "Casa & Cozinha"
     },
     {
-      "itemId": "22993518481",
-      "name": "BombaElétricaUniversalcomCarregamentoUSBparaGalãoGarrafãodeÁguaBomba de Agua Bomba Eétrica Para Galão",
-      "sales": 8093,
+      "itemId": "22094238842",
+      "name": "BODY SPLASH FEMININO ARABE AYRA 100ML - PRIMACIAL PERFUME FLORAL",
+      "sales": 6240,
+      "ratingStar": 4.8,
+      "commissionRate": 0.31,
+      "category": "Perfumes"
+    },
+    {
+      "itemId": "20098032388",
+      "name": "Mangueira Mágica Expansível Elástica Flexível Tamanhos 15m /30m Metros Jardim Retrátil Multiuso Plantas",
+      "sales": 6017,
+      "ratingStar": 4.8,
+      "commissionRate": 0.08,
+      "category": "Agro"
+    },
+    {
+      "itemId": "58255641529",
+      "name": "Fone Pro Sem Fio Som HiFi 8D Pop-Up Automático Toque Inteligente Bateria 5–7h Bluetooth Universal",
+      "sales": 5491,
       "ratingStar": 4.8,
       "commissionRate": 0.03,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "24740902631",
-      "name": "Cozedor de Ovos Elétrico 110V – Portátil a Vapor para Cozinha Envio Imediato",
-      "sales": 7983,
-      "ratingStar": 4.9,
-      "commissionRate": 0.03,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "23025155762",
-      "name": "Grill e Sanduicheira Fama FGR01 Revestimento Cerâmico 750W",
-      "sales": 7815,
-      "ratingStar": 4.9,
-      "commissionRate": 0.03,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "8020679826",
-      "name": "Liquidificador Mondial L‑99 Turbo 550 W 3 Velocidades",
-      "sales": 7597,
-      "ratingStar": 4.9,
-      "commissionRate": 0.06,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "58204705757",
-      "name": "Air Fryer Oven Philco 11L 8 Funções Visor 1800W PAF11B",
-      "sales": 7408,
-      "ratingStar": 5.0,
-      "commissionRate": 0.03,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "22791523448",
-      "name": "Mini Aspirador De pó Portátil Automotivo e Casa Potente Recarregável",
-      "sales": 7300,
-      "ratingStar": 4.6,
-      "commissionRate": 0.07,
-      "category": "Automotivo"
-    },
-    {
-      "itemId": "22892686035",
-      "name": "Fone de Ouvido entrada lightning para Iphone Microfone Bluetooth",
-      "sales": 6998,
-      "ratingStar": 4.7,
-      "commissionRate": 0.11,
       "category": "Tecnologia"
     },
     {
-      "itemId": "23199020709",
-      "name": "Cozedor de Ovos Elétrico Portátil Cozinha à Vapor 110V/220V Cores disponíveis （Branco Azul Rosa Amarelo）",
-      "sales": 6903,
-      "ratingStar": 4.9,
-      "commissionRate": 0.11,
+      "itemId": "58267928915",
+      "name": "TWS Fones De Ouvido Bluetooth 5.3 Sem Fio Com Controle De Toque Pro4 Para Android & iOS",
+      "sales": 5486,
+      "ratingStar": 4.7,
+      "commissionRate": 0.13,
+      "category": "Tecnologia"
+    },
+    {
+      "itemId": "22319639419",
+      "name": "Pulverizador E Borrifador Pressão Manual Para Garrafa Pet Adaptável Pulverizador De Espuma Borrifador De Água",
+      "sales": 5473,
+      "ratingStar": 4.8,
+      "commissionRate": 0.08,
+      "category": "Agro"
+    },
+    {
+      "itemId": "21997150349",
+      "name": "Kit 6 Forma de Silicone para Fritadeira Air Fryer com Alça Antiaderente Cozinha",
+      "sales": 5366,
+      "ratingStar": 4.6,
+      "commissionRate": 0.03,
       "category": "Casa & Cozinha"
+    },
+    {
+      "itemId": "22593832914",
+      "name": "Fones De Ouvido Bluetooth HiFi Estéreo Com Redução De Ruído ENC À Prova D'água i12 TWS  FON-I12",
+      "sales": 5309,
+      "ratingStar": 4.7,
+      "commissionRate": 0.03,
+      "category": "Tecnologia"
+    },
+    {
+      "itemId": "52905774499",
+      "name": "Espremedor Elétrico de Frutas Automático | Laranja, Limão e Outras Frutas | Suco Natural Rápido | Design Premium",
+      "sales": 5236,
+      "ratingStar": 4.7,
+      "commissionRate": 0.03,
+      "category": "Casa & Cozinha"
+    },
+    {
+      "itemId": "20699665137",
+      "name": "Fogão Elétrico Portátil 2 Bocas Ou 1 Boca Cooktop Mesa Inox com Controle de Temperatura 1000W/2000W",
+      "sales": 5201,
+      "ratingStar": 4.9,
+      "commissionRate": 0.03,
+      "category": "Casa & Cozinha"
+    },
+    {
+      "itemId": "23894093222",
+      "name": "Mangueira Jardim Anti Torção Não Dobra Reforçada 5 a 50 Metros",
+      "sales": 5039,
+      "ratingStar": 4.7,
+      "commissionRate": 0.03,
+      "category": "Agro"
     }
   ],
   "rejected": {
-    "duplicate": 33,
-    "rating_below_4_5_or_missing": 25
+    "duplicate": 60,
+    "rating_below_4_5_or_missing": 24
   },
-  "duplicateCandidatesRemoved": 4,
+  "duplicateCandidatesRemoved": 0,
   "searchErrors": 0,
-  "candidatePool": 436,
+  "candidatePool": 411,
   "minimums": {
     "sales": 1,
     "rating": 4.5,
@@ -210,5 +210,5 @@
     "requiredImage": true,
     "requiredAffiliateLink": true
   },
-  "updatedAt": "2026-11-24T19:42:39.974252-03:00"
+  "updatedAt": "2026-11-25T15:49:32.396307-03:00"
 }
