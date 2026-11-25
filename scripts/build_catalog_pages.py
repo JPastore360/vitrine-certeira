@@ -332,15 +332,24 @@ def main() -> None:
 
     # Server-render product cards in the homepage HTML, before any JavaScript runs.
     cards = "\n".join(card_html(p) for p in all_products)
-    grid_pattern = re.compile(r'(<div\b[^>]*\bid="productGrid"[^>]*>)([\s\S]*?)(</div>)')
-    home, grid_count = grid_pattern.subn(
-        lambda m: m.group(1) + "\n<!-- VC:PRERENDERED_PRODUCTS_START -->\n" + cards +
-                  "\n<!-- VC:PRERENDERED_PRODUCTS_END -->\n" + m.group(3),
-        home,
-        count=1,
-    )
-    if grid_count != 1:
+    grid_open = re.search(r'<div\\b[^>]*\\bid="productGrid"[^>]*>', home)
+    if not grid_open:
         raise RuntimeError("Não foi possível localizar o productGrid da página inicial.")
+    div_tags = re.compile(r'</?div\\b[^>]*>', re.I)
+    depth = 1
+    grid_close = None
+    for tag in div_tags.finditer(home, grid_open.end()):
+        if tag.group(0).lower().startswith("</div"):
+            depth -= 1
+        else:
+            depth += 1
+        if depth == 0:
+            grid_close = tag.start()
+            break
+    if grid_close is None:
+        raise RuntimeError("O bloco productGrid não possui fechamento HTML correspondente.")
+    grid_content = "\\n<!-- VC:PRERENDERED_PRODUCTS_START -->\\n" + cards + "\\n<!-- VC:PRERENDERED_PRODUCTS_END -->\\n"
+    home = home[:grid_open.end()] + grid_content + home[grid_close:]
 
     # Embed the same feed in the initial document so the existing filters/search work immediately.
     safe_feed_json = json.dumps({"products": feed_products}, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
