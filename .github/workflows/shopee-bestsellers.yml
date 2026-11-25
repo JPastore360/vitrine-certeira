@@ -15,8 +15,6 @@ on:
 permissions:
   contents: write
   actions: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: shopee-daily-bestsellers
@@ -26,9 +24,6 @@ jobs:
   collect:
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout do catálogo
         uses: actions/checkout@v4
@@ -59,17 +54,5 @@ jobs:
             git push
           fi
 
-      - name: Configurar GitHub Pages
-        if: steps.collector.outputs.feed_changed == 'true'
-        uses: actions/configure-pages@v5
-
-      - name: Preparar publicação
-        if: steps.collector.outputs.feed_changed == 'true'
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: .
-
-      - name: Publicar os novos produtos
-        if: steps.collector.outputs.feed_changed == 'true'
-        id: deployment
-        uses: actions/deploy-pages@v4
+      # GitHub Pages already deploys automatically from the main branch on every push.
+      # A second manual upload/deploy here was redundant and produced intermittent artifact-not-found errors.
