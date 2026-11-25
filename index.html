@@ -6139,6 +6139,7 @@ document.getElementById('aiForm').addEventListener('submit',e=>{e.preventDefault
 document.querySelectorAll('.ai-suggestions button').forEach(b=>b.addEventListener('click',()=>aiSubmit(b.dataset.ask)));
 document.querySelectorAll('.catbox[data-target]').forEach(box=>box.addEventListener('click',()=>{if(box.tagName==='A')return;const cat=box.dataset.target;const filter=document.querySelector('.filter[data-cat="'+cat+'"]');if(filter){filter.click();document.getElementById('achados').scrollIntoView({behavior:'smooth'})}}));
 
+
 // VC:AFFILIATE_TRACKING_START
 if(!window.__vcAffiliateTrackingBound){
   window.__vcAffiliateTrackingBound=true;
