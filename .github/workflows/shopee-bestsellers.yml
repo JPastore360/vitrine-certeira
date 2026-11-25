@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "scripts/collect_shopee_bestsellers.py"
+      - "scripts/build_catalog_pages.py"
       - ".github/workflows/shopee-bestsellers.yml"
   # Three daily windows provide automatic retries if GitHub delays or drops a scheduled event.
   # Times are UTC: 08:45, 14:45 and 20:45 in America/Sao_Paulo.
@@ -56,11 +57,14 @@ jobs:
           SHOPEE_ALLOW_SUPPLEMENTAL: ${{ (github.event_name == 'workflow_dispatch' && inputs.allow_supplemental) || contains(github.event.head_commit.message || '', '[bulk-100]') }}
         run: python scripts/collect_shopee_bestsellers.py
 
+      - name: Gerar HTML estático, páginas de categoria e sitemap
+        run: python scripts/build_catalog_pages.py
+
       - name: Salvar catálogo e relatório diário
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/shopee-products.json data/shopee-bestsellers-report.json
+          git add data/shopee-products.json data/shopee-bestsellers-report.json index.html sitemap.xml achados/
           if git diff --cached --quiet; then
             echo "Nenhum produto novo ou alteração no relatório."
           else
