@@ -26,6 +26,27 @@ header{border-bottom:1px solid var(--border);background:#101012}.nav{min-height:
 @media(max-width:820px){.products{grid-template-columns:repeat(2,minmax(0,1fr))}.product-photo{height:190px}}
 @media(max-width:500px){.wrap{width:min(100% - 24px,1180px)}.nav{align-items:flex-start;flex-direction:column;padding:13px 0}.navlinks{gap:12px;font-size:13px}.products{gap:10px}.product-photo{height:145px;padding:7px}.product-body{padding:11px}.product-body h2{font-size:14px}.product-description{font-size:12px}.product-price{font-size:15px}.product-button{font-size:11px;padding:9px}.countline{align-items:flex-start;flex-direction:column}}
 </style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRZ9ZCZJEH"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-ZRZ9ZCZJEH');
+document.addEventListener('click',function(event){
+  const link=event.target.closest('a[rel~="sponsored"]');
+  if(!link || typeof gtag!=='function')return;
+  const card=link.closest('.product-card,.card');
+  const title=card?.querySelector('h2,h3')?.textContent?.trim() || link.getAttribute('aria-label') || '';
+  const category=card?.querySelector('.product-category,.catlabel')?.textContent?.trim() || '';
+  gtag('event','affiliate_click',{ 
+    product_name:title,
+    product_category:category,
+    link_url:link.href,
+    page_path:location.pathname,
+    transport_type:'beacon'
+  });
+});
+</script>
 </head>
 <body>
 <header><div class="wrap nav"><a class="brand" href="/">VITRINE <b>CERTEIRA</b></a><nav class="navlinks"><a href="/">Início</a><a href="/categorias.html">Categorias</a><a href="/guia-compra.html">Guias de compra</a><a href="/#achados">Todas as ofertas</a></nav></div></header>
