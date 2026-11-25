@@ -412,6 +412,34 @@ def main() -> None:
     new_handler = """document.querySelectorAll('.catbox[data-target]').forEach(box=>box.addEventListener('click',()=>{if(box.tagName==='A')return;const cat=box.dataset.target;const filter=document.querySelector('.filter[data-cat="'+cat+'"]');if(filter){filter.click();document.getElementById('achados').scrollIntoView({behavior:'smooth'})}}));"""
     home = home.replace(old_handler, new_handler)
 
+    # Measure affiliate clicks in GA4 from both server-rendered and hydrated product cards.
+    tracking_start = "// VC:AFFILIATE_TRACKING_START"
+    tracking_end = "// VC:AFFILIATE_TRACKING_END"
+    if tracking_start in home and tracking_end in home:
+        start = home.index(tracking_start)
+        end = home.index(tracking_end, start) + len(tracking_end)
+        home = home[:start] + home[end:]
+    tracking = r"""// VC:AFFILIATE_TRACKING_START
+if(!window.__vcAffiliateTrackingBound){
+  window.__vcAffiliateTrackingBound=true;
+  document.addEventListener('click',function(event){
+    const link=event.target.closest('a[rel~="sponsored"]');
+    if(!link || typeof gtag!=='function')return;
+    const card=link.closest('.product-card,.card');
+    const title=card?.querySelector('h2,h3')?.textContent?.trim() || link.getAttribute('aria-label') || '';
+    const category=card?.querySelector('.product-category,.catlabel')?.textContent?.trim() || '';
+    gtag('event','affiliate_click',{
+      product_name:title,product_category:category,link_url:link.href,
+      page_path:location.pathname,transport_type:'beacon'
+    });
+  });
+}
+// VC:AFFILIATE_TRACKING_END"""
+    close_script = home.rfind("\n});\n</script>")
+    if close_script < home.find("const products = ["):
+        raise RuntimeError("Não encontrei o fechamento do script principal para instalar o rastreamento GA4.")
+    home = home[:close_script] + "\n" + tracking + home[close_script:]
+
     HOME_FILE.write_text(home, encoding="utf-8")
 
     # Update an accurate sitemap: only generated category URLs are added; existing pages are preserved.
