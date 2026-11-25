@@ -348,6 +348,15 @@ def main() -> None:
             break
     if grid_close is None:
         raise RuntimeError("O bloco productGrid não possui fechamento HTML correspondente.")
+
+    # Remove orphaned cards left behind by the earlier non-balanced HTML replacement.
+    grid_close_end = grid_close + len("</div>")
+    editorial_start = home.find('<section class="wrap editorial"', grid_close_end)
+    if editorial_start >= 0:
+        stale_tail = home[grid_close_end:editorial_start]
+        if 'class="product-card"' in stale_tail or "VC:PRERENDERED_PRODUCTS_END" in stale_tail:
+            home = home[:grid_close_end] + "\n</section>\n" + home[editorial_start:]
+
     grid_content = "\n<!-- VC:PRERENDERED_PRODUCTS_START -->\n" + cards + "\n<!-- VC:PRERENDERED_PRODUCTS_END -->\n"
     home = home[:grid_open.end()] + grid_content + home[grid_close:]
 
