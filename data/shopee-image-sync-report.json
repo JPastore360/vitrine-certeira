@@ -24,7 +24,7 @@
     "https://s.shopee.com.br/20x9fdU2zt": 1,
     "https://s.shopee.com.br/2VtQGYS8z0": 2,
     "https://s.shopee.com.br/2La04FSmJz": 3,
-    "https://s.shopee.com.br/BVVUGb1ia": 2,
+    "https://s.shopee.com.br/BVVUGb1ia": 3,
     "https://s.shopee.com.br/1C5Hxbf3Z": 3,
     "https://s.shopee.com.br/W8LssZl2g": 1,
     "https://s.shopee.com.br/LovgZaONf": 1,
@@ -89,7 +89,7 @@
     "https://s.shopee.com.br/BVVUGb1jd": 1,
     "https://s.shopee.com.br/LovgZaOOg": 3,
     "https://s.shopee.com.br/W8LssZl3j": 1,
-    "https://s.shopee.com.br/gRm5BZ7im": 2,
+    "https://s.shopee.com.br/gRm5BZ7im": 3,
     "https://s.shopee.com.br/qlCHUYUNp": 1,
     "https://s.shopee.com.br/114cTnXr2s": 1,
     "https://s.shopee.com.br/1BO2g6XDhv": 3,
@@ -394,10 +394,23 @@
       }
     },
     "https://s.shopee.com.br/BVVUGb1ia": {
-      "status": "api_error",
+      "status": "needs_review",
       "originalName": "Projetor LED Natalino 16 Desenhos de Natal Luzes Decoração Natalinos Projeção 3D Casa Jardim Festas Parede",
       "keyword": "projetor led",
-      "error": "Shopee GraphQL: error [10000]: System Error"
+      "bestCandidate": {
+        "name": "Projetor de Luz LED Rotativo Dinâmico, Projetor de Luz Oceano, Noturno LED Oceano, Projetor de Luz Noturna LED,",
+        "image": "https://cf.shopee.com.br/file/sg-11134201-825aj-mrt78w5qzqpt55",
+        "score": 0.2149,
+        "recall": 0.1333,
+        "commonTokens": 2
+      },
+      "secondCandidate": {
+        "name": "Projetor Multimídia Portátil T5, Projetor Led Espelhamento Celular 2500 Lúmens, Projetores de Vídeo 1080P Full HD LED",
+        "image": "https://cf.shopee.com.br/file/br-11134207-7r98o-ma0j1yd9j7093e",
+        "score": 0.1849,
+        "recall": 0.1333,
+        "commonTokens": 2
+      }
     },
     "https://s.shopee.com.br/1C5Hxbf3Z": {
       "status": "needs_review",
@@ -1200,20 +1213,20 @@
     "https://s.shopee.com.br/gRm5BZ7im": {
       "status": "needs_review",
       "originalName": "Kit Body Splash Feminino Arabe 60ml Shakan Coroa Amber Sereia Rubi Ametysta Presente Bolsa Ambarados",
-      "keyword": "body splash feminino arabe",
+      "keyword": "body splash",
       "bestCandidate": {
-        "name": "Kit4 Body Splash Feminino Àrabe Importado 200ml,alta Fixação Feminino Àrabe Importado 200ml,alta Fixação",
-        "image": "https://cf.shopee.com.br/file/br-11134207-820l4-munw69l0dce805",
-        "score": 0.3761,
-        "recall": 0.2857,
-        "commonTokens": 4
+        "name": "Body Splash My Obsession Charmelle 60ml Body Splash Feminino para Bolsa Body Splash Alta Fixaçao one touch liberty",
+        "image": "https://cf.shopee.com.br/file/br-11134207-820mc-mozylpto3k007a",
+        "score": 0.3619,
+        "recall": 0.3571,
+        "commonTokens": 5
       },
       "secondCandidate": {
-        "name": "Kit Body Splash Árabe e Creme Hidratante Corporal Árabe Body Splash Feminino e Masculino",
-        "image": "https://cf.shopee.com.br/file/br-11134207-81z1k-mf31p8c3asxxfb",
-        "score": 0.3552,
-        "recall": 0.2857,
-        "commonTokens": 4
+        "name": "Body Splash Feminino Best Fantasy Charmelle 200ml Body Splash Alta Fixaçao Body Splash Doce Body Splash Alta Projeçao",
+        "image": "https://cf.shopee.com.br/file/br-11134207-820lt-mocmh5hq0ao363",
+        "score": 0.2929,
+        "recall": 0.2143,
+        "commonTokens": 3
       }
     },
     "https://s.shopee.com.br/qlCHUYUNp": {
@@ -1309,10 +1322,10 @@
   "summary": {
     "catalogMissingAtRun": 100,
     "alreadyRecovered": 61,
-    "searchedThisRun": 44,
-    "matchedThisRun": 5,
-    "notMatchedThisRun": 37,
-    "apiErrorsThisRun": 2,
-    "updatedAt": "2026-11-25T21:41:50Z"
+    "searchedThisRun": 3,
+    "matchedThisRun": 0,
+    "notMatchedThisRun": 2,
+    "apiErrorsThisRun": 1,
+    "updatedAt": "2026-11-26T21:28:25Z"
   }
 }
