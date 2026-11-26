@@ -31,8 +31,8 @@ try:
 except ValueError as exc:
     raise SystemExit("SHOPEE_TARGET_PRODUCTS precisa ser um número inteiro.") from exc
 
-if not 1 <= DAILY_TARGET <= 100:
-    raise SystemExit("SHOPEE_TARGET_PRODUCTS deve ficar entre 1 e 100.")
+if not 1 <= DAILY_TARGET <= 500:
+    raise SystemExit("SHOPEE_TARGET_PRODUCTS deve ficar entre 1 e 500.")
 
 ALLOW_SUPPLEMENTAL = os.environ.get("SHOPEE_ALLOW_SUPPLEMENTAL", "").strip().lower() == "true"
 RESULTS_PER_KEYWORD = 50
@@ -43,16 +43,43 @@ REQUEST_PAUSE = 0.8
 
 # Category discovery terms cover the current Vitrine Certeira sections.
 SEARCHES = [
+    # Tecnologia e áudio
     ("tech", "Tecnologia", "fone bluetooth"),
     ("tech", "Tecnologia", "celular smartphone"),
+    ("tech", "Tecnologia", "smartwatch"),
+    ("tech", "Tecnologia", "carregador usb c"),
+    ("tech", "Tecnologia", "power bank"),
+    ("tech", "Tecnologia", "camera wifi"),
+    # Casa, cozinha e organização
     ("casa", "Casa & Cozinha", "utensilios cozinha"),
     ("casa", "Casa & Cozinha", "liquidificador"),
+    ("casa", "Casa & Cozinha", "organizadores casa"),
+    ("casa", "Casa & Cozinha", "air fryer"),
+    ("casa", "Casa & Cozinha", "limpeza"),
+    # Ferramentas, games, beleza e automotivo
     ("tools", "Ferramentas", "ferramentas eletricas"),
+    ("tools", "Ferramentas", "kit ferramentas"),
     ("games", "Games", "controle gamer"),
+    ("games", "Games", "mouse teclado gamer"),
     ("perfume", "Perfumes", "perfume feminino"),
+    ("perfume", "Perfumes", "skincare"),
     ("auto", "Automotivo", "acessorios automotivos"),
+    ("auto", "Automotivo", "acessorios moto"),
+    # Agro, utilidades e fitness
     ("agro", "Agro", "jardinagem ferramentas"),
+    ("agro", "Agro", "irrigacao jardim"),
     ("util", "Utilidades", "utilidades domesticas"),
+    ("util", "Utilidades", "organizacao"),
+    ("fitness", "Academia & Fitness", "halteres musculacao"),
+    ("fitness", "Academia & Fitness", "kit academia em casa"),
+    ("fitness", "Academia & Fitness", "elastico faixa treino"),
+    ("fitness", "Academia & Fitness", "barra de porta musculacao"),
+    ("fitness", "Academia & Fitness", "tapete yoga"),
+    ("fitness", "Academia & Fitness", "luvas academia"),
+    ("fitness", "Academia & Fitness", "corda pular"),
+    ("fitness", "Academia & Fitness", "garrafa shaker"),
+    ("fitness", "Academia & Fitness", "banco supino"),
+    ("fitness", "Academia & Fitness", "acessorios fitness"),
 ]
 
 STOP_WORDS = {
@@ -484,7 +511,7 @@ def main():
     for index, item in enumerate(selected, 1):
         print(f"{index:02d}. {item['name']} | vendas={item['sales']} | nota={item['ratingStar']:.1f} | {item['price']}")
     if len(selected) < DAILY_TARGET:
-        print("Atenção: não houve 15 produtos que passassem em todos os critérios. Não foram incluídos produtos fracos para completar a meta.")
+        print(f"Atenção: apenas {len(selected)} produtos passaram em todos os critérios para a meta de {DAILY_TARGET}. Não foram incluídos produtos fracos para completar a meta.")
 
 
 if __name__ == "__main__":
