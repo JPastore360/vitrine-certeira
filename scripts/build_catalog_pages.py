@@ -27,6 +27,15 @@ CATEGORY_META = {
         "tips": ["Confirme compatibilidade com o modelo e a versão do seu aparelho.", "Compare conexões, potência, capacidade e recursos que você realmente vai usar.", "Leia avaliações recentes e confira a reputação do vendedor.", "Verifique garantia, prazo, frete e política de devolução na loja."],
         "guide": "tecnologia.html",
     },
+    "fitness": {
+        "slug": "academia-fitness", "name": "Academia & Fitness", "emoji": "🏋️",
+        "title": "Achados de academia, musculação e fitness | Vitrine Certeira",
+        "description": "Equipamentos, acessórios de musculação, treino em casa, yoga e fitness. Compare avaliações, medidas, materiais e segurança.",
+        "intro": "Produtos para academia, musculação e exercícios em casa selecionados por vendas, avaliação, comissão, imagem e link de afiliado. Confira medidas, capacidade e instruções de uso de cada equipamento antes de comprar.",
+        "tips": ["Confira as dimensões e a carga máxima suportada antes da compra.", "Prefira produtos com avaliações verificadas e descrição detalhada.", "Observe materiais, acabamento, estabilidade e garantia.", "Use acessórios e equipamentos conforme as orientações do fabricante."],
+        "guide": "categorias.html",
+    },
+
     "casa": {
         "slug": "casa-cozinha", "name": "Casa & Cozinha", "emoji": "🏠",
         "title": "Achados para casa e cozinha | Vitrine Certeira",
