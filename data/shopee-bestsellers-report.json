@@ -1,8 +1,8 @@
 {
-  "date": "2026-11-25",
-  "target": 100,
-  "mode": "supplemental_bulk",
-  "added": 100,
+  "date": "2026-11-26",
+  "target": 15,
+  "mode": "daily",
+  "added": 15,
   "searches": [
     {
       "keyword": "fone bluetooth",
@@ -77,813 +77,133 @@
   ],
   "selected": [
     {
-      "itemId": "23794696993",
-      "name": "Fio Elétrico Cabo Flexível 2,5mm Fio Selo certificado 20 METROS 50 METROS ROLO 100 METROS",
-      "sales": 5025,
-      "ratingStar": 4.8,
-      "commissionRate": 0.13,
-      "category": "Ferramentas"
-    },
-    {
-      "itemId": "21399069053",
-      "name": "Caneta Paint Original Reparadora Pintura Automotiva Permanente Não Sai Na Água Tira Riscos Carro Moto Retoque de Placa Tênis Pneus para Ferro Metal Madeira Plástico Gesso Vidro Couro Tecido Cores Preto Branco Prata (Cinza) Dourado Azul Vermelha",
-      "sales": 4954,
-      "ratingStar": 4.7,
-      "commissionRate": 0.24,
-      "category": "Automotivo"
-    },
-    {
-      "itemId": "55057204520",
-      "name": "Chaleira Elétrica Inox 1.8 Litros Desligamento Automático Aquecimento Rápido",
-      "sales": 4953,
-      "ratingStar": 4.8,
-      "commissionRate": 0.06,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "58255159172",
-      "name": "Fones de ouvido sem fio Bluetooth compactos Xiaomi Redmi Airdots com Estojo Recarregável",
-      "sales": 4949,
-      "ratingStar": 4.8,
-      "commissionRate": 0.12,
-      "category": "Tecnologia"
-    },
-    {
-      "itemId": "12237278339",
-      "name": "Liquidificador 3 velocidades 550W Turbo Power - L-99-FB - Mondial",
-      "sales": 4936,
-      "ratingStar": 4.9,
-      "commissionRate": 0.07,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "20705549413",
-      "name": "Pistola Elétrica Para Pintura Pulverizador de Tinta com Bico de Metal e Compressor 450w - TSSAPER",
-      "sales": 4740,
-      "ratingStar": 4.9,
-      "commissionRate": 0.06,
-      "category": "Ferramentas"
-    },
-    {
-      "itemId": "20199206047",
-      "name": "Air Fryer Britânia 4,2L Dura Mais 1500W BFR38",
-      "sales": 4685,
-      "ratingStar": 4.9,
-      "commissionRate": 0.23,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "19397732017",
-      "name": "Guarda Chuva Para Brisa Carro Protetor Parasol Tapa Sol Automotivo Retratil Dobravel Protecao UV Termico Com Capa",
-      "sales": 4520,
-      "ratingStar": 4.8,
-      "commissionRate": 0.03,
-      "category": "Automotivo"
-    },
-    {
-      "itemId": "18398159764",
-      "name": "Cooktop Itatiaia Essencial 5 Bocas Preto – Bivolt 127V/220V com Acendimento Automático",
-      "sales": 4485,
-      "ratingStar": 4.9,
-      "commissionRate": 0.07,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "22998383507",
-      "name": "Panela De Pressão 4,5litros Panelux Linha Classic Alto Brilho A Mais Vendida Do Brasil",
-      "sales": 4477,
-      "ratingStar": 4.9,
-      "commissionRate": 0.03,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "58215894101",
-      "name": "Misturador Manual Fue Mixer Batedor Clara Ovos Bebidas Feito em Aço Inoxidável Utensílio de Cozinha",
-      "sales": 4454,
-      "ratingStar": 4.8,
-      "commissionRate": 0.03,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "58269293469",
-      "name": "Liquidificador Mondial Pratic Power L-97-W 2 Velocidades + Pulsar 550W Branco",
-      "sales": 4355,
-      "ratingStar": 4.9,
-      "commissionRate": 0.04,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "22298759200",
-      "name": "Escova De Limpeza De Filme De Óleo Automotivo , Limpador De Vidro De Carro Pára-Brisa Evita Chuva E Nevoeiro , Capacidad",
-      "sales": 4311,
-      "ratingStar": 4.7,
-      "commissionRate": 0.03,
-      "category": "Automotivo"
-    },
-    {
-      "itemId": "58250361148",
-      "name": "1.8L Panela De Arroz Elétrica Multi-Camadas/De Dupla Camada Dormitório Doméstico Funções",
-      "sales": 4231,
-      "ratingStar": 4.7,
-      "commissionRate": 0.07,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "22394896507",
-      "name": "Fabricante De Iogurte Compacto , Máquina De Fazer Grego , Faça Você Mesmo , Caseiro Para Casa , Orgânico , Queijo , Plug",
-      "sales": 4189,
-      "ratingStar": 4.9,
-      "commissionRate": 0.18,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "58251720053",
-      "name": "5/10/20 PÇS Gancho de Parede Adesivo Multiuso Para Pendurar Quadros Utensílios De Cozinha Banheiros Parafuso",
-      "sales": 4136,
-      "ratingStar": 4.8,
-      "commissionRate": 0.03,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "22593915398",
-      "name": "Chaleira Elétrica Jarra Café Chá Inox 110v",
-      "sales": 4108,
+      "itemId": "26841826773",
+      "name": "Chaleira Elétrica Jarra 1.8L Café Chá Inox 220v",
+      "sales": 4197,
       "ratingStar": 4.9,
       "commissionRate": 0.13,
       "category": "Casa & Cozinha"
     },
     {
-      "itemId": "22694227037",
-      "name": "Revitalizador De Plástico Automotivo Matrix Cera Moto E Carro Para Choque Original",
-      "sales": 4105,
+      "itemId": "21297874783",
+      "name": "Micro-ondas Philco 33L Pintura Limpa Fácil PM36",
+      "sales": 2378,
       "ratingStar": 4.9,
       "commissionRate": 0.03,
-      "category": "Automotivo"
-    },
-    {
-      "itemId": "23399043568",
-      "name": "Fone Bluetooth Pro5 Premium | Imersão Total c Cancelamento Ruído Qualidade Superior p iPhoneAndroid",
-      "sales": 4078,
-      "ratingStar": 4.7,
-      "commissionRate": 0.03,
-      "category": "Tecnologia"
-    },
-    {
-      "itemId": "22199407844",
-      "name": "Cheirinho para Carro Árabe  Aromatizante Automotivo 10mlIdeal para Uber | Escolha Aroma",
-      "sales": 4004,
-      "ratingStar": 4.8,
-      "commissionRate": 0.28,
-      "category": "Automotivo"
-    },
-    {
-      "itemId": "22799869594",
-      "name": "Fones de Ouvido Bluetooth 5.4 X55 com Visor LED, Hi-Fi Estéreo, Cancelamento de Ruído, Design à Prova d’Água para Graves",
-      "sales": 3879,
-      "ratingStar": 4.7,
-      "commissionRate": 0.04,
-      "category": "Tecnologia"
-    },
-    {
-      "itemId": "22794275506",
-      "name": "Kit 100 Forma de airfryer descartavel antiaderente de papel cozinha quadrado fritadeira cozimento",
-      "sales": 3809,
-      "ratingStar": 4.7,
-      "commissionRate": 0.05,
       "category": "Casa & Cozinha"
     },
     {
-      "itemId": "58251702956",
-      "name": "Cera Alien Ind Automotiva Carnaúba Lataria 120g - Brilho Espelhado -Tira Queimado -Proteção UV",
-      "sales": 3796,
+      "itemId": "58253993587",
+      "name": "Scanner automotivo Bluetooth Android EML 327 - Em estoque - Mini scanner  ming",
+      "sales": 2078,
       "ratingStar": 4.8,
-      "commissionRate": 0.08,
+      "commissionRate": 0.03,
       "category": "Automotivo"
     },
     {
-      "itemId": "23697565475",
-      "name": "Removedor De Cutículas E Lixa Eletrônica Portátil Lixadeira Unha Elétrica Profissional",
-      "sales": 3781,
+      "itemId": "21098088921",
+      "name": "Antena Veículo Automotivo Shark Tipo Barbatana Tubarão Universal Esportiva Teto Carro Rádio AM FM",
+      "sales": 2026,
+      "ratingStar": 4.8,
+      "commissionRate": 0.03,
+      "category": "Automotivo"
+    },
+    {
+      "itemId": "58252524509",
+      "name": "Mangueira De Jardim Trançada Tripla-Camada",
+      "sales": 1968,
       "ratingStar": 4.7,
+      "commissionRate": 0.03,
+      "category": "Agro"
+    },
+    {
+      "itemId": "52607420187",
+      "name": "Escova de Limpeza Multifuncional Flexível Para Garrafas Mamadeiras Liquidificador De Silicone",
+      "sales": 1955,
+      "ratingStar": 4.7,
+      "commissionRate": 0.13,
+      "category": "Casa & Cozinha"
+    },
+    {
+      "itemId": "23394420107",
+      "name": "Aromatizante de Carro Premium | Cheirinho Automotivo de Luxo com Alta Fixação e Qualidade",
+      "sales": 1921,
+      "ratingStar": 4.8,
+      "commissionRate": 0.17,
+      "category": "Automotivo"
+    },
+    {
+      "itemId": "19098022680",
+      "name": "Adaptador USB Tipo C Para 3.0 OTG Compatível Com MacBook Pro Samsung Galaxy Type-Smartphones , Tablets E Laptops Ming",
+      "sales": 1921,
+      "ratingStar": 4.7,
+      "commissionRate": 0.03,
+      "category": "Tecnologia"
+    },
+    {
+      "itemId": "58204620137",
+      "name": "kit Parafusadeira elétrica/furadeira 48 Pçs À Bateria Carregador Usb com maleta Leve Portátil",
+      "sales": 1821,
+      "ratingStar": 4.8,
       "commissionRate": 0.03,
       "category": "Ferramentas"
     },
     {
-      "itemId": "58203212332",
-      "name": "Fone Bluetooth OWS Sem Fio 5.3 Open Ear Confortável para Academia Caminhada e Uso Diário",
-      "sales": 3779,
-      "ratingStar": 4.5,
-      "commissionRate": 0.03,
-      "category": "Tecnologia"
-    },
-    {
-      "itemId": "23093044369",
-      "name": "Cozedor Elétrico Multifuncional De Ovo Milho A Vapor De Leite Rápido De Tripla Camada Coze",
-      "sales": 3718,
+      "itemId": "22793412477",
+      "name": "Kit Limpeza e Lavagem Automotiva Pano Microfibra Flanela 30x40cm + Luva + 05 Pincel Detalhamento Automotivo para Carro",
+      "sales": 1816,
       "ratingStar": 4.9,
-      "commissionRate": 0.03,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "22198813710",
-      "name": "Kit Parafusadeira Elétrica/Furadeira 48 Peças À Bateria Sem Fio Carregador Usb Portátil Leve",
-      "sales": 3685,
-      "ratingStar": 4.7,
       "commissionRate": 0.1,
-      "category": "Ferramentas"
-    },
-    {
-      "itemId": "58254432544",
-      "name": "Jogo de Panelas Antiaderente, Kit com 8, 10 ou 11 Peças - Com Tampas de Vidro e Utensílios",
-      "sales": 3647,
-      "ratingStar": 4.8,
-      "commissionRate": 0.07,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "23993933147",
-      "name": "Micro-ondas Britânia 20L Pintura Limpa Fácil BMO23",
-      "sales": 3641,
-      "ratingStar": 4.9,
-      "commissionRate": 0.03,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "54557028525",
-      "name": "Chaleira Elétrica Inox 1,8L 1000W ou 1200W Desligamento Automático - Bule Jarra Cafeteira Elétrica Aquece Água Rápido",
-      "sales": 3625,
-      "ratingStar": 4.9,
-      "commissionRate": 0.09,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "58202799294",
-      "name": "Kit 2 cartões de memória 128gb ultra muito mais memória smartphone",
-      "sales": 3613,
-      "ratingStar": 4.6,
-      "commissionRate": 0.03,
-      "category": "Tecnologia"
-    },
-    {
-      "itemId": "29692387416",
-      "name": "Senbenbao Mini X55Max Invisível Sono Fones De Ouvido Sem Fio Esporte Bluetooth Estéreo De Carregamento",
-      "sales": 3525,
-      "ratingStar": 4.8,
-      "commissionRate": 0.03,
-      "category": "Tecnologia"
-    },
-    {
-      "itemId": "18931705150",
-      "name": "Mini Processador Triturador Sem Fio Elétrico 250ML De Alimentos Para Legumes Alho Gengibre",
-      "sales": 3467,
-      "ratingStar": 4.7,
-      "commissionRate": 0.19,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "19099611326",
-      "name": "HQAi H4 Tws Fones De Ouvido Bluetooth Sem Fio 5.3 Para Jogos Esportivos Com Redução De Ruído",
-      "sales": 3452,
-      "ratingStar": 4.6,
-      "commissionRate": 0.03,
-      "category": "Tecnologia"
-    },
-    {
-      "itemId": "18199069887",
-      "name": "Fritadeira Elétrica Air Fryer Mondial Family AF-30 3,5L Preta - 220V",
-      "sales": 3400,
-      "ratingStar": 4.9,
-      "commissionRate": 0.03,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "21597675448",
-      "name": "(110V) Pipoqueira Elétrica Ar Quente Máquina Fazer Pipoca Sem Óleo Minijoy - (110v) TOP",
-      "sales": 3392,
-      "ratingStar": 4.8,
-      "commissionRate": 0.03,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "22898987217",
-      "name": "Ferro De Solda Com Estanho 60W Soldador 40W 30W 110v 220v Resistente",
-      "sales": 3370,
-      "ratingStar": 4.9,
-      "commissionRate": 0.09,
-      "category": "Ferramentas"
-    },
-    {
-      "itemId": "58203749906",
-      "name": "2026 Novo Q71 Fones de ouvido Bluetooth sem fio OWS fones de ouvido esportivos com clipe",
-      "sales": 3361,
-      "ratingStar": 4.8,
-      "commissionRate": 0.13,
-      "category": "Tecnologia"
-    },
-    {
-      "itemId": "58256795019",
-      "name": "Bomba de Encher Balões Inflador Eletrico Maquina de Encher 2 Bexigas Rapido Festa Decoracão110V/220v",
-      "sales": 3334,
-      "ratingStar": 4.9,
-      "commissionRate": 0.08,
-      "category": "Ferramentas"
-    },
-    {
-      "itemId": "58260042754",
-      "name": "Mini Liquidificador Portátil De Suco De Alimentos Misturador Leite Smoothie 400ML 6 Lâminas Espremedor Elétrico",
-      "sales": 3313,
-      "ratingStar": 4.6,
-      "commissionRate": 0.03,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "23594970510",
-      "name": "Fone Ouvido Bluetooth 5.3 Tws M10 resistente a agua Microfone-Powerbank",
-      "sales": 3303,
-      "ratingStar": 4.6,
-      "commissionRate": 0.03,
-      "category": "Tecnologia"
-    },
-    {
-      "itemId": "22599386895",
-      "name": "Shampoo com Cera de carnaúba pH Neutro para Lavagem de Carro e Moto Xampu Automotivo",
-      "sales": 3284,
-      "ratingStar": 4.5,
-      "commissionRate": 0.14,
       "category": "Automotivo"
     },
     {
-      "itemId": "23398694336",
-      "name": "Revitalizador de Plástico e Borracha Automotivo - Restauração Painel - Brilho Intenso e Proteção Duradoura",
-      "sales": 3281,
-      "ratingStar": 4.8,
-      "commissionRate": 0.14,
-      "category": "Automotivo"
-    },
-    {
-      "itemId": "21397806660",
-      "name": "Chaleira Elétrica Térmica Bule Com Tampa Inox 1,8L",
-      "sales": 3270,
-      "ratingStar": 4.9,
-      "commissionRate": 0.03,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "22198068260",
-      "name": "Mini Liquidificador Portátil Shake 6 Laminas + Cabo USB-SE3095",
-      "sales": 3230,
-      "ratingStar": 4.7,
-      "commissionRate": 0.04,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "22898073151",
-      "name": "Escova De Limpeza Ajustável  9 Em1 Recarregavél Elétrica Giratória Com Cabo Alongador Ferramenta",
-      "sales": 3182,
-      "ratingStar": 4.9,
-      "commissionRate": 0.03,
-      "category": "Ferramentas"
-    },
-    {
-      "itemId": "58211027880",
-      "name": "Suporte Alumínio de Mesa Base Rotatória Ajustável 360º Para Smartphones e Tablets",
-      "sales": 3139,
-      "ratingStar": 4.9,
-      "commissionRate": 0.07,
-      "category": "Tecnologia"
-    },
-    {
-      "itemId": "22594639462",
-      "name": "Kit 4 Utensílios de Cozinha em Aço Inoxidável Colher De Arroz e Sopa,Espátula e Escumadeira",
-      "sales": 3133,
-      "ratingStar": 4.9,
-      "commissionRate": 0.13,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "22792891006",
-      "name": "Cafeteira Philco 15 Cafezinhos 600ml 550W PCFE01",
-      "sales": 3118,
-      "ratingStar": 4.9,
-      "commissionRate": 0.03,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "58206223551",
-      "name": "Bomba De Sucção Manual Para Transferência Automotiva Gasolina Etanol Óleo Água Completa",
-      "sales": 3117,
-      "ratingStar": 4.8,
-      "commissionRate": 0.14,
-      "category": "Automotivo"
-    },
-    {
-      "itemId": "58256560745",
-      "name": "Mangueira Magica 15M/30M Com Gatilho 7 Tipos Jatos",
-      "sales": 3089,
-      "ratingStar": 4.7,
-      "commissionRate": 0.03,
-      "category": "Agro"
-    },
-    {
-      "itemId": "22298086738",
-      "name": "Motor / Lixadeira Elétrica - Profissional - Bivolt - Porquinho Unhas Lixa Manicure Pedicure",
-      "sales": 3077,
-      "ratingStar": 4.9,
-      "commissionRate": 0.03,
-      "category": "Ferramentas"
-    },
-    {
-      "itemId": "22794554573",
-      "name": "Micro-ondas Electrolux 20L cor Inox Espelhado com Função Tira Odor (MT30S)",
-      "sales": 3067,
-      "ratingStar": 4.9,
-      "commissionRate": 0.03,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "23028611454",
-      "name": "Multímetro digital MD-180L fundo iluminado com BIPE e bateria e pontas",
-      "sales": 3042,
-      "ratingStar": 4.9,
-      "commissionRate": 0.03,
-      "category": "Ferramentas"
-    },
-    {
-      "itemId": "18399729464",
-      "name": "5/3/1 Discos Diamantado Para Corte De Vidro Porcelanato Piso e Cerâmica 100mm X 20mm",
-      "sales": 2982,
-      "ratingStar": 4.8,
-      "commissionRate": 0.09,
-      "category": "Ferramentas"
-    },
-    {
-      "itemId": "58217136773",
-      "name": "Tira de Vedação Automotiva em Formato de T Borracha Flexível para Para-brisas Portas e Tetos Solares Acessório Universal",
-      "sales": 2947,
-      "ratingStar": 4.7,
-      "commissionRate": 0.15,
-      "category": "Automotivo"
-    },
-    {
-      "itemId": "5796026674",
-      "name": "2 Arraste Copo Liquidificador Mondial L-99 L-850 L-900 L-1000 L-1200",
-      "sales": 2941,
-      "ratingStar": 4.9,
-      "commissionRate": 0.03,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "22292594641",
-      "name": "Suporte Tripé Celular Smartphone De Mesa Escritório 360º",
-      "sales": 2940,
-      "ratingStar": 4.7,
-      "commissionRate": 0.03,
-      "category": "Tecnologia"
-    },
-    {
-      "itemId": "23495589062",
-      "name": "Fio Elétrico Cabo Flexível 2,5mm Rolo de 100 metros – Certificado INMETRO | Anti-chamas | Ampex",
-      "sales": 2914,
-      "ratingStar": 4.8,
-      "commissionRate": 0.12,
-      "category": "Ferramentas"
-    },
-    {
-      "itemId": "22994268937",
-      "name": "Purificador Electrolux Eletrônico Compacto Efficient Painel Mecânico Bivolt Cinza (PE15X)",
-      "sales": 2896,
-      "ratingStar": 4.9,
-      "commissionRate": 0.03,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "19899587464",
-      "name": "1/2/3/4 Suporte magnético com poderoso imã neodimio p/celular universal - potente automotivo para carro Anjin",
-      "sales": 2878,
-      "ratingStar": 4.8,
-      "commissionRate": 0.03,
-      "category": "Automotivo"
-    },
-    {
-      "itemId": "20598090516",
-      "name": "Módulo Amplificador Taramps TS800 800W Rms 4 Canais 2 Ohms",
-      "sales": 2858,
-      "ratingStar": 4.9,
-      "commissionRate": 0.06,
-      "category": "Automotivo"
-    },
-    {
-      "itemId": "23099337262",
-      "name": "Liquidificador Britânia 2,6L 4 Velocidades Diamante 1100",
-      "sales": 2853,
-      "ratingStar": 4.9,
-      "commissionRate": 0.03,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "22894671461",
-      "name": "fone bluetooth fone de ouvido carregador portátil A6S TWS com baixa latência microfone Integrado Intra",
-      "sales": 2852,
-      "ratingStar": 4.7,
-      "commissionRate": 0.03,
-      "category": "Tecnologia"
-    },
-    {
-      "itemId": "18775453273",
-      "name": "Liquidificador Britânia 2,6L 900W 4 Lâminas BLQ970P Turbo",
-      "sales": 2846,
-      "ratingStar": 4.9,
-      "commissionRate": 0.03,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "22198852865",
-      "name": "Parafusadeira Elétrica Sem Fio USB Recarregável com Maleta Kit Ferramentas Uso Doméstico",
-      "sales": 2798,
-      "ratingStar": 4.8,
-      "commissionRate": 0.03,
-      "category": "Ferramentas"
-    },
-    {
-      "itemId": "8251655644",
-      "name": "1 PAR (2 UNIDADES) PELÍCULA ANTIEMBAÇANTE E ANTI-REFLEXO PARA RETROVISOR AUTOMOTIVO CARRO MOTO",
-      "sales": 2782,
-      "ratingStar": 4.7,
-      "commissionRate": 0.11,
-      "category": "Automotivo"
-    },
-    {
-      "itemId": "23498303242",
-      "name": "KIT 04 Body Splash ARABE SOUL 200ml FEMININO - Desodorante Perfume Corporal Alta Fixação Noite e Dia",
-      "sales": 2756,
-      "ratingStar": 4.8,
-      "commissionRate": 0.03,
-      "category": "Perfumes"
-    },
-    {
-      "itemId": "40458451294",
-      "name": "Kit Serra Adaptador de Serra Tico-Tico Elétrica para Furadeira e Parafusadeira, Ferramenta de Corte p/ Madeira",
-      "sales": 2747,
-      "ratingStar": 4.6,
-      "commissionRate": 0.08,
-      "category": "Ferramentas"
-    },
-    {
-      "itemId": "58262977415",
-      "name": "X15 Fone De Ouvido para Jogos Bluetooth 5.Tws Stereo Ultra Baixa Latency Gaming Headset",
-      "sales": 2727,
-      "ratingStar": 4.7,
-      "commissionRate": 0.03,
-      "category": "Tecnologia"
-    },
-    {
-      "itemId": "23298210857",
-      "name": "Perfume Touti Vip Fit Lux Todas Fragrancias Masculino Feminino Luxo Alta Fixacao",
-      "sales": 2681,
-      "ratingStar": 4.9,
-      "commissionRate": 0.14,
-      "category": "Perfumes"
-    },
-    {
-      "itemId": "22895058213",
-      "name": "Kit Body Splash Feminino Arabe 60ml Shakan Coroa Amber Sereia Rubi Ametysta Presente Bolsa Ambarados",
-      "sales": 2679,
-      "ratingStar": 4.6,
-      "commissionRate": 0.155,
-      "category": "Perfumes"
-    },
-    {
-      "itemId": "18875453326",
-      "name": "Liquidificador Britânia 1200W 3L 12 Velocidades BLQ1380P",
-      "sales": 2665,
-      "ratingStar": 4.9,
-      "commissionRate": 0.03,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "46201063556",
-      "name": "Jogo De Espatulas Ferramenta De Nylon Desmontar Painel Forro De Porta Automotivo",
-      "sales": 2653,
-      "ratingStar": 4.9,
-      "commissionRate": 0.05,
-      "category": "Automotivo"
-    },
-    {
-      "itemId": "23097538559",
-      "name": "Suporte Para Telefone Celular De Motocicleta Com Capacete Pequeno E Navegação Elétrica De Bicicleta À Prova D'água",
-      "sales": 2615,
-      "ratingStar": 4.9,
-      "commissionRate": 0.03,
-      "category": "Ferramentas"
-    },
-    {
-      "itemId": "43725204228",
-      "name": "Mangueira Antitorção Jardim Reforçada com Esguicho Pistola Não Dobra",
-      "sales": 2559,
-      "ratingStar": 4.7,
-      "commissionRate": 0.03,
-      "category": "Agro"
-    },
-    {
-      "itemId": "22094298412",
-      "name": "Bomba Elétrica Pneumática Para Inflar E Esvaziar Colchão Boias E Piscinas，Bivolt",
-      "sales": 2510,
-      "ratingStar": 4.8,
-      "commissionRate": 0.1,
-      "category": "Ferramentas"
-    },
-    {
-      "itemId": "58202497481",
-      "name": "Karbox 40x12cm Escova Microfibra Longa - Limpeza Vidros Automotivos e Residenciais",
-      "sales": 2505,
-      "ratingStar": 4.7,
-      "commissionRate": 0.08,
-      "category": "Automotivo"
-    },
-    {
-      "itemId": "23197089131",
-      "name": "Multímetro Digital DT-830 com bateria e ponta de teste (SEM BIPE)",
-      "sales": 2498,
-      "ratingStar": 4.9,
-      "commissionRate": 0.03,
-      "category": "Ferramentas"
-    },
-    {
-      "itemId": "18997751900",
-      "name": "Lixeira Automotiva Porta Lixo Couro Reforçado Universal Fiat Volkswagen Chevrolet Ford Renault",
-      "sales": 2484,
-      "ratingStar": 4.9,
-      "commissionRate": 0.03,
-      "category": "Automotivo"
-    },
-    {
-      "itemId": "23998275186",
-      "name": "Mangueira Antitorção Resistente e Reforçada Preta para Jardim",
-      "sales": 2481,
-      "ratingStar": 4.7,
-      "commissionRate": 0.03,
-      "category": "Agro"
-    },
-    {
-      "itemId": "22598544943",
-      "name": "Perfume Feminino ÁRABES Sabah 100ML Eau de Parfum Edp",
-      "sales": 2444,
-      "ratingStar": 4.8,
-      "commissionRate": 0.09,
-      "category": "Perfumes"
-    },
-    {
-      "itemId": "22697708859",
-      "name": "Suporte Adesivo PARA CELULAR SMARTPHONE  de Silicone com Ventosa para Celular Reforçado Rosa Claro",
-      "sales": 2404,
-      "ratingStar": 4.8,
-      "commissionRate": 0.09,
-      "category": "Tecnologia"
-    },
-    {
-      "itemId": "57253373766",
-      "name": "Mangueira De Jardim AcquaSlim Anti Torção Chata Preta Dupla Camada - 05 a 40 Metros",
-      "sales": 2385,
-      "ratingStar": 4.6,
-      "commissionRate": 0.07,
-      "category": "Agro"
-    },
-    {
-      "itemId": "22297687819",
-      "name": "Vonixx Tok Final Cera Líquida Carnaúba Proteção Automotiva 500ml",
-      "sales": 2379,
-      "ratingStar": 4.9,
-      "commissionRate": 0.14,
-      "category": "Automotivo"
-    },
-    {
-      "itemId": "23193503682",
-      "name": "Pulverizador Manual Pressão 1 Lt Jardinagem Multiuso",
-      "sales": 2354,
-      "ratingStar": 4.8,
-      "commissionRate": 0.08,
-      "category": "Agro"
-    },
-    {
-      "itemId": "13389075634",
-      "name": "Lixadeira Caneta Motor Bivolts  Profissional Bloco Motor Unha Lixa Elétrica",
-      "sales": 2334,
-      "ratingStar": 4.7,
-      "commissionRate": 0.03,
-      "category": "Ferramentas"
-    },
-    {
-      "itemId": "22694069772",
-      "name": "Amolador Afiador de Faca Eletrico Tesoura Ferramentas Alicate Amolador Elétrico de Facas Á Pilha",
-      "sales": 2284,
-      "ratingStar": 4.6,
-      "commissionRate": 0.18,
-      "category": "Ferramentas"
-    },
-    {
-      "itemId": "58256789778",
-      "name": "Bomba Inflador Elétrico De Encher Balões Bexigas 110V 600W Enche 2 Bexigas Rápido Festa Decoração",
-      "sales": 2252,
-      "ratingStar": 4.9,
-      "commissionRate": 0.08,
-      "category": "Ferramentas"
-    },
-    {
-      "itemId": "23398840189",
-      "name": "Carregar Bateria De Automotivo Carregador De Bateria Automotivo 12v 2a Carro Moto Automático 127V Só funciona na Tomada",
-      "sales": 2236,
-      "ratingStar": 4.8,
-      "commissionRate": 0.03,
-      "category": "Automotivo"
-    },
-    {
-      "itemId": "55957404904",
-      "name": "Perfume Deo Colônia Lescent N2 DELICATE LONDRES  Feminino",
-      "sales": 2222,
-      "ratingStar": 4.8,
-      "commissionRate": 0.26,
-      "category": "Perfumes"
-    },
-    {
-      "itemId": "23697904032",
-      "name": "Mangueira de Jardim Trançada Reforçada Flexível Antidobra 5 a 50 Metros Quintal Carro Calçada",
-      "sales": 2221,
+      "itemId": "26829651693",
+      "name": "Mangueira Jardim Trançada Reforçada 5 10 15 20 25 30 50 Metros Completa Esguicho Antitorção Verde",
+      "sales": 1807,
       "ratingStar": 4.7,
       "commissionRate": 0.11,
       "category": "Agro"
     },
     {
-      "itemId": "22294538322",
-      "name": "3/6/9/18/30 Haste De Solda Baixa Temperatura Solda Cobre, Ferro,alumínio, Reparo, Kit De Agente Fusível, Solda",
-      "sales": 2188,
-      "ratingStar": 4.5,
-      "commissionRate": 0.05,
-      "category": "Ferramentas"
-    },
-    {
-      "itemId": "22699682454",
-      "name": "Adaptador de Carro de Carregamento Rápido 6 em 1 3.1A Display Digital Duplo Tipo C para Smartphones, Tablets e Power",
-      "sales": 2185,
-      "ratingStar": 4.9,
-      "commissionRate": 0.03,
-      "category": "Tecnologia"
-    },
-    {
-      "itemId": "23991969328",
-      "name": "Caneta Detectora de Tensão AC 90-1000V – Testador Elétrico sem Contato",
-      "sales": 2175,
+      "itemId": "9181789718",
+      "name": "Espelho Retrovisor Interno Universal Panorâmico Automotivo Para Carros Com Ponto Cego 300mm",
+      "sales": 1806,
       "ratingStar": 4.8,
-      "commissionRate": 0.03,
-      "category": "Ferramentas"
-    },
-    {
-      "itemId": "23094819028",
-      "name": "Kit Acessórios Banheiro Cabide Toalheiros Papeleira 4 Peças Dourado ES",
-      "sales": 2171,
-      "ratingStar": 4.9,
-      "commissionRate": 0.13,
-      "category": "Agro"
-    },
-    {
-      "itemId": "22593830465",
-      "name": "Mangueira  Jardim 10 a 50 Metros Flexivel Anti-Torção e Anti-Dobras.",
-      "sales": 2127,
-      "ratingStar": 4.5,
-      "commissionRate": 0.04,
-      "category": "Agro"
-    },
-    {
-      "itemId": "22999454687",
-      "name": "Mini Liquidificador Portátil 400ml 6 Lâminas Recarregável USB Mixer Suco Shake",
-      "sales": 2123,
-      "ratingStar": 4.5,
-      "commissionRate": 0.04,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "22193983396",
-      "name": "Bomba Elétrica Recarregável para Galão com Torneira – Portátil, Silenciosa, com Carregamento via USB",
-      "sales": 2053,
-      "ratingStar": 4.8,
-      "commissionRate": 0.03,
-      "category": "Ferramentas"
-    },
-    {
-      "itemId": "22298932926",
-      "name": "Shampoo Automotivo com Cera de Carnaúba 5 L – Brilho e Proteção | Diamante (Detergente automotivo)",
-      "sales": 2034,
-      "ratingStar": 4.9,
-      "commissionRate": 0.03,
+      "commissionRate": 0.09,
       "category": "Automotivo"
+    },
+    {
+      "itemId": "29931024626",
+      "name": "1800W Mini Motosserra Poda Jardinagem 2 Baterias 4 Polegadas",
+      "sales": 1801,
+      "ratingStar": 4.8,
+      "commissionRate": 0.11,
+      "category": "Agro"
+    },
+    {
+      "itemId": "23994304314",
+      "name": "Perfume Importados Feminino E Masculino 30ML",
+      "sales": 1798,
+      "ratingStar": 4.8,
+      "commissionRate": 0.03,
+      "category": "Perfumes"
+    },
+    {
+      "itemId": "13284361519",
+      "name": "Dispositivo de Massagem Elétrica Massageador Facial Vibração Afina Rosto Bastão Mágico Anti-olheira",
+      "sales": 1794,
+      "ratingStar": 4.9,
+      "commissionRate": 0.07,
+      "category": "Ferramentas"
     }
   ],
   "rejected": {
-    "duplicate": 80,
-    "rating_below_4_5_or_missing": 24
+    "duplicate": 207,
+    "rating_below_4_5_or_missing": 23
   },
-  "duplicateCandidatesRemoved": 5,
+  "duplicateCandidatesRemoved": 0,
   "searchErrors": 0,
-  "candidatePool": 392,
+  "candidatePool": 270,
   "minimums": {
     "sales": 1,
     "rating": 4.5,
@@ -891,5 +211,5 @@
     "requiredImage": true,
     "requiredAffiliateLink": true
   },
-  "updatedAt": "2026-11-25T16:04:41.638087-03:00"
+  "updatedAt": "2026-11-26T02:27:50.677697-03:00"
 }
