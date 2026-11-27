@@ -3,7 +3,8 @@
 
 Collects by Shopee Affiliate Open API productOfferV2 sorted by sales,
 validates affiliate link/image/price/sales/rating/commission, deduplicates
-against the existing HTML catalog and feed, then appends at most 15 products.
+against the existing HTML catalog and feed, then appends up to 100 products
+per scheduled run when enough high-quality candidates are available.
 """
 import difflib
 import hashlib
@@ -27,7 +28,7 @@ ENDPOINT = "https://open-api.affiliate.shopee.com.br/graphql"
 USER_AGENT = "VitrineCerteiraBestsellers/1.0"
 
 try:
-    DAILY_TARGET = int(os.environ.get("SHOPEE_TARGET_PRODUCTS", "15"))
+    DAILY_TARGET = int(os.environ.get("SHOPEE_TARGET_PRODUCTS", "100"))
 except ValueError as exc:
     raise SystemExit("SHOPEE_TARGET_PRODUCTS precisa ser um número inteiro.") from exc
 
@@ -36,7 +37,7 @@ if not 1 <= DAILY_TARGET <= 500:
 
 ALLOW_SUPPLEMENTAL = os.environ.get("SHOPEE_ALLOW_SUPPLEMENTAL", "").strip().lower() == "true"
 RESULTS_PER_KEYWORD = 50
-MIN_SALES = 1
+MIN_SALES = 100
 MIN_RATING = 4.5
 MIN_COMMISSION = 0.0001
 REQUEST_PAUSE = 0.8
