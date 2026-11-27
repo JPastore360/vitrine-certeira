@@ -185,14 +185,16 @@ def prepare_products(feed_products: list[dict], static_products: list[dict]) -> 
 def card_html(p: dict, compact: bool = False) -> str:
     rating = float(p.get("ratingStar") or 0)
     sales = int(float(p.get("sales") or 0))
-    proof = ""
-    if rating > 0 or sales > 0:
-        parts = []
-        if rating > 0:
-            parts.append(f'<span class="proof-rating">★ {rating:.1f}/5</span>')
-        if sales > 0:
-            parts.append(f'<span>{sales:,} vendas</span>'.replace(",", "."))
-        proof = '<div class="card-proof">' + "".join(parts) + "</div>"
+    parts = []
+    parts.append(
+        f'<span class="proof-rating">★ {rating:.1f}/5</span>'
+        if rating > 0 else '<span class="proof-rating">★ Sem nota informada</span>'
+    )
+    parts.append(
+        f'<span>{sales:,} vendas</span>'.replace(",", ".")
+        if sales > 0 else '<span>Vendas não informadas</span>'
+    )
+    proof = '<div class="card-proof">' + "".join(parts) + "</div>"
     return f"""
 <article class="product-card">
   <a class="product-photo" href="{esc(p['affiliateUrl'])}" target="_blank" rel="nofollow sponsored noopener" aria-label="Ver {esc(p['name'])} na loja">
