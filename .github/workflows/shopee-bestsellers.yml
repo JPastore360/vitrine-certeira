@@ -1,4 +1,4 @@
-name: Shopee - catálogo diário e lote de até 500
+name: Shopee - catálogo diário de até 100 produtos
 
 on:
   push:
@@ -17,8 +17,8 @@ on:
         description: "Quantidade máxima de produtos para esta coleta"
         required: true
         type: choice
-        options: ["15", "100", "500"]
-        default: "500"
+        options: ["100", "500"]
+        default: "100"
       allow_supplemental:
         description: "Permite adicionar um lote extra mesmo que a coleta diária já tenha ocorrido"
         required: false
@@ -53,7 +53,7 @@ jobs:
         env:
           SHOPEE_APP_ID: ${{ secrets.SHOPEE_APP_ID }}
           SHOPEE_APP_SECRET: ${{ secrets.SHOPEE_APP_SECRET }}
-          SHOPEE_TARGET_PRODUCTS: ${{ github.event_name == 'workflow_dispatch' && inputs.target_products || (contains(github.event.head_commit.message || '', '[bulk-500]') && '500' || (contains(github.event.head_commit.message || '', '[bulk-100]') && '100' || '15')) }}
+          SHOPEE_TARGET_PRODUCTS: ${{ github.event_name == 'workflow_dispatch' && inputs.target_products || (contains(github.event.head_commit.message || '', '[bulk-500]') && '500' || (contains(github.event.head_commit.message || '', '[bulk-100]') && '100' || '100')) }}
           SHOPEE_ALLOW_SUPPLEMENTAL: ${{ (github.event_name == 'workflow_dispatch' && inputs.allow_supplemental) || contains(github.event.head_commit.message || '', '[bulk-500]') || contains(github.event.head_commit.message || '', '[bulk-100]') }}
         run: python scripts/collect_shopee_bestsellers.py
 
@@ -68,7 +68,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "Nenhum produto novo ou alteração no relatório."
           else
-            git commit -m "Atualiza catálogo Shopee em lote [bulk-500]"
+            git commit -m "Atualiza catálogo Shopee diariamente [daily-100]"
             git push
           fi
 
