@@ -63,7 +63,7 @@
     "https://s.shopee.com.br/60TIQzEotI": 3,
     "https://s.shopee.com.br/6AmidIEBYL": 1,
     "https://s.shopee.com.br/6L68pbDYDO": 3,
-    "https://s.shopee.com.br/6VPZ1uCusR": 2,
+    "https://s.shopee.com.br/6VPZ1uCusR": 3,
     "https://s.shopee.com.br/9KjkP72880": 2,
     "https://s.shopee.com.br/9V3AbQ1Un3": 3,
     "https://s.shopee.com.br/9fManj0rS6": 3,
@@ -871,10 +871,23 @@
       }
     },
     "https://s.shopee.com.br/6VPZ1uCusR": {
-      "status": "api_error",
+      "status": "needs_review",
       "originalName": "Fritadeira Air Fryer Oven Forno Elétrico Digital Extream 17L / 10L",
       "keyword": "fritadeira air",
-      "error": "Shopee GraphQL: error [10000]: System Error"
+      "bestCandidate": {
+        "name": "Fritadeira Air Fryer Air Forno Mueller 35L  - Forno e Fritadeira Air Fry com Timer de 120 Min",
+        "image": "https://cf.shopee.com.br/file/br-11134207-820ln-muhzmjjvyn0jf4",
+        "score": 0.4364,
+        "recall": 0.4,
+        "commonTokens": 4
+      },
+      "secondCandidate": {
+        "name": "Fritadeira Air Fryer Air Forno Mueller 35L  - Forno e Fritadeira Air Fry com Timer de 120 Min",
+        "image": "https://cf.shopee.com.br/file/br-11134207-820ma-muru32f5hedf23",
+        "score": 0.4364,
+        "recall": 0.4,
+        "commonTokens": 4
+      }
     },
     "https://s.shopee.com.br/9KjkP72880": {
       "status": "matched",
@@ -1322,10 +1335,10 @@
   "summary": {
     "catalogMissingAtRun": 100,
     "alreadyRecovered": 61,
-    "searchedThisRun": 3,
+    "searchedThisRun": 1,
     "matchedThisRun": 0,
-    "notMatchedThisRun": 2,
-    "apiErrorsThisRun": 1,
-    "updatedAt": "2026-11-26T21:28:25Z"
+    "notMatchedThisRun": 1,
+    "apiErrorsThisRun": 0,
+    "updatedAt": "2026-11-27T21:13:33Z"
   }
 }
