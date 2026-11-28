@@ -1,8 +1,8 @@
 {
-  "date": "2026-11-27",
-  "target": 15,
+  "date": "2026-11-28",
+  "target": 100,
   "mode": "daily",
-  "added": 15,
+  "added": 100,
   "searches": [
     {
       "keyword": "fone bluetooth",
@@ -238,140 +238,820 @@
   ],
   "selected": [
     {
-      "itemId": "22494391164",
-      "name": "Percarbonato de Sódio 100% Puro Limpeza Em Geral Tira Manchas Roupas Brancas 500g/1kg /2kg",
-      "sales": 30028,
-      "ratingStar": 4.8,
-      "commissionRate": 0.13,
-      "category": "Casa & Cozinha"
+      "itemId": "22693206550",
+      "name": "Soro Fisiologico Sorimax 0,9% 500ml",
+      "sales": 4333,
+      "ratingStar": 4.9,
+      "commissionRate": 0.03,
+      "category": "Perfumes"
     },
     {
-      "itemId": "19798129665",
-      "name": "Fita Selante De Pvc À Prova D 'Água Para Cozinha / Banheiro / Banheira",
-      "sales": 19002,
+      "itemId": "23998316312",
+      "name": "155L/180L/195L Caixa Multifuncional De Armazenamento De Grande Capacidade Para Colchas E Roupas Domésticas",
+      "sales": 4259,
       "ratingStar": 4.7,
+      "commissionRate": 0.13,
+      "category": "Casa & Cozinha"
+    },
+    {
+      "itemId": "58211578706",
+      "name": "Kit 10 Pcs Pentes e Ferramentas para Penteados, Escovas + Clipe Bico de Pato + Ferramenta de Trança",
+      "sales": 3918,
+      "ratingStar": 4.9,
+      "commissionRate": 0.03,
+      "category": "Ferramentas"
+    },
+    {
+      "itemId": "22098082869",
+      "name": "Kit Saco A Vácuo Grande Organizador Edredom Coberto Mala Roupa Viagem De Cama com Bomba Manual Tamanho Grande",
+      "sales": 3869,
+      "ratingStar": 4.9,
       "commissionRate": 0.1,
-      "category": "Ferramentas"
+      "category": "Utilidades"
     },
     {
-      "itemId": "58270243088",
-      "name": "Protetor Solar Facial Hidrabene FPS 70 Toque Seco - 50g",
-      "sales": 16657,
-      "ratingStar": 4.9,
-      "commissionRate": 0.15,
-      "category": "Perfumes"
-    },
-    {
-      "itemId": "21899049199",
-      "name": "1/2 Fita Dupla Face 1/3/5/10 Metro Extra Forte Transparente NanoGel Silicone Adesiva Cola na Parede Móvel Porta",
-      "sales": 15375,
+      "itemId": "23594648168",
+      "name": "Kit Conjunto Porcelanato Riscador Cortador Manual Para Cortar Vidro Cerâmica Porcelanato Telha",
+      "sales": 3689,
       "ratingStar": 4.8,
       "commissionRate": 0.03,
       "category": "Ferramentas"
     },
     {
-      "itemId": "58264684239",
-      "name": "Kit Hidrabene Clareador Skincare Clareador Facial: Sabonete, Protetor 70 FPS e Sérum Multicorretivo",
-      "sales": 12700,
-      "ratingStar": 4.9,
-      "commissionRate": 0.13,
-      "category": "Perfumes"
-    },
-    {
-      "itemId": "23399276688",
-      "name": "Kit 100 Esponjas + Aplicador metálico De Unha Cubo Coloridas E Brancas Com Ferramenta Profissional",
-      "sales": 9547,
-      "ratingStar": 5.0,
-      "commissionRate": 0.03,
-      "category": "Ferramentas"
-    },
-    {
-      "itemId": "58204411791",
-      "name": "PERCARBONATO de sódio 100% PURO Tira Manchas de Roupas Branca 1kg/2kg OXIGÊNIO ATIVO  Limpeza Calisul",
-      "sales": 9108,
-      "ratingStar": 4.9,
-      "commissionRate": 0.03,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "23492619475",
-      "name": "Kit Ferramenta Chave Magnética Precisão 24 Peças Pequenos Reparos Iphone Android Pc",
-      "sales": 6692,
-      "ratingStar": 4.6,
-      "commissionRate": 0.07,
-      "category": "Ferramentas"
-    },
-    {
-      "itemId": "58202377499",
-      "name": "Kit 6 Pontas Phillips PH2 Pontas Impacto Anti Derrapante Encaixe Preciso Anti choque (25-150mm)",
-      "sales": 5399,
-      "ratingStar": 4.8,
-      "commissionRate": 0.13,
-      "category": "Ferramentas"
-    },
-    {
-      "itemId": "20699892486",
-      "name": "Sapateira 4/5 Andares Organizador de Sapatos Tênis 8/10 Pares Desmontável Multiuso para Sapatos, Livros e Brinquedos",
-      "sales": 5228,
-      "ratingStar": 4.6,
-      "commissionRate": 0.03,
-      "category": "Casa & Cozinha"
-    },
-    {
-      "itemId": "19498037391",
-      "name": "1/2/3 Caneta Rejunte Reparadora Permanente Pinta Rejunte Anti-Mofo Branca A Prova Agua/Preenchedores Banheiro",
-      "sales": 4950,
-      "ratingStar": 4.5,
-      "commissionRate": 0.03,
-      "category": "Ferramentas"
-    },
-    {
-      "itemId": "23499526455",
-      "name": "Kit 24 cores Pixel Beads, 2.6mm Com 14000pcs, Perler Berads, Hama Beads DIY Presentes para crianças Com Ferramentas",
-      "sales": 4853,
+      "itemId": "58221004721",
+      "name": "Kit Hama Beads 2,6mm 11000/18000 Peças 24/48 Cores Miçangas De Fusão Pixel Arte DIY Ferramentas Pinças Brinquedos",
+      "sales": 3562,
       "ratingStar": 4.9,
       "commissionRate": 0.03,
       "category": "Ferramentas"
     },
     {
-      "itemId": "19999249755",
-      "name": "Kit Jogo de Alicates p/ Corte Eletrônico Artesanato & Bijuterias",
-      "sales": 4439,
-      "ratingStar": 4.9,
-      "commissionRate": 0.07,
-      "category": "Ferramentas"
-    },
-    {
-      "itemId": "58265207293",
-      "name": "Kit Ferramentas de Cabelo | Opções 3/5/10/11 peças: pente, borrifador, ferramenta trança, clipes e scrunchies",
-      "sales": 4296,
-      "ratingStar": 4.9,
-      "commissionRate": 0.03,
-      "category": "Ferramentas"
-    },
-    {
-      "itemId": "23292858291",
-      "name": "Principia Gel de Limpeza GL-02 350g",
-      "sales": 4269,
+      "itemId": "22097296846",
+      "name": "Protetor Solar Facial PS-01 FPS 60 Principia",
+      "sales": 3507,
       "ratingStar": 4.9,
       "commissionRate": 0.26,
       "category": "Perfumes"
+    },
+    {
+      "itemId": "21998266150",
+      "name": "Kit 5 Bits Ponteiras Phillips PH2 Magnéticas de Impacto Aço Reforçado 50 a 150mm",
+      "sales": 3502,
+      "ratingStar": 4.8,
+      "commissionRate": 0.06,
+      "category": "Ferramentas"
+    },
+    {
+      "itemId": "23194215980",
+      "name": "Kit de Pincel Rolo de Pintura Easy Glide de 6 Polegadas para Pintura de Paredes + 72 cm cabo",
+      "sales": 3491,
+      "ratingStar": 4.7,
+      "commissionRate": 0.09,
+      "category": "Ferramentas"
+    },
+    {
+      "itemId": "22294375033",
+      "name": "Kit Peças Fita Dupla Face Extra Forte Transparente NanoGel Silicone Mágica Adesiva Cola na Parede Móvel Porta",
+      "sales": 3465,
+      "ratingStar": 4.8,
+      "commissionRate": 0.08,
+      "category": "Ferramentas"
+    },
+    {
+      "itemId": "17262537890",
+      "name": "Kit Alongamento Poligel Polygel + Molde F1 + Lixa + Mini Cabine De Unha",
+      "sales": 3393,
+      "ratingStar": 4.6,
+      "commissionRate": 0.03,
+      "category": "Ferramentas"
+    },
+    {
+      "itemId": "23397982095",
+      "name": "Expositor de Perfumes Cosméticos 3 Andares Multiuso Organizador Prateleira Diamante Acrílico Porta Maquiagem Beleza",
+      "sales": 3369,
+      "ratingStar": 5.0,
+      "commissionRate": 0.08,
+      "category": "Utilidades"
+    },
+    {
+      "itemId": "23297979513",
+      "name": "Kit 3/5 Pincéis 7/9/11/15/25mm De Arte De Unhas UV Para Pintura Em Gel Pincel Manicure",
+      "sales": 3236,
+      "ratingStar": 4.9,
+      "commissionRate": 0.03,
+      "category": "Ferramentas"
+    },
+    {
+      "itemId": "58257222814",
+      "name": "Carregador Turbo 120w Fonte Usb Carregador + cabo Ultra Rápido 120w Usb C Turbo",
+      "sales": 3190,
+      "ratingStar": 4.6,
+      "commissionRate": 0.03,
+      "category": "Tecnologia"
+    },
+    {
+      "itemId": "22393646180",
+      "name": "Kit Jogo 46 Peças Chaves Soquetes Catraca Bits 1/4 Ferramenta Profissional Multiuso Com Maleta",
+      "sales": 3118,
+      "ratingStar": 4.8,
+      "commissionRate": 0.03,
+      "category": "Ferramentas"
+    },
+    {
+      "itemId": "58216757516",
+      "name": "Jogo Chaves De Fenda Precisão Com 115 peças 1 Kit Ferramentas P/ Manutenção Celular Notebook Tablet Reparação",
+      "sales": 3098,
+      "ratingStar": 4.9,
+      "commissionRate": 0.03,
+      "category": "Ferramentas"
+    },
+    {
+      "itemId": "23299140143",
+      "name": "Kit Polygel + Lixadeira Caneta + Cabine Sun Mini + Polygel + Molde F1",
+      "sales": 3062,
+      "ratingStar": 4.7,
+      "commissionRate": 0.03,
+      "category": "Ferramentas"
+    },
+    {
+      "itemId": "21032420237",
+      "name": "Bateria Portátil Power Bank 10.000mah e 5000mah Universal",
+      "sales": 3057,
+      "ratingStar": 4.5,
+      "commissionRate": 0.03,
+      "category": "Tecnologia"
+    },
+    {
+      "itemId": "23497989247",
+      "name": "Kit De Reparo De Couro Fita Adesiva Preta Para Móveis , Sofás , Assentos De Carros , Cadeiras De Escritório , Vinil",
+      "sales": 3055,
+      "ratingStar": 4.8,
+      "commissionRate": 0.05,
+      "category": "Ferramentas"
+    },
+    {
+      "itemId": "23694318183",
+      "name": "Kit Unha Gel Construtor Unhas Profissional – Molde F1 + Lixa + Mini Cabine UV/LED – Nail Completo",
+      "sales": 3018,
+      "ratingStar": 4.6,
+      "commissionRate": 0.03,
+      "category": "Ferramentas"
+    },
+    {
+      "itemId": "23997690526",
+      "name": "Kit Completo Jogo de Cozinha Luxo 19 Peças Com Tábua em Silicone Espátula Faca Tesoura Utensílios",
+      "sales": 3008,
+      "ratingStar": 4.7,
+      "commissionRate": 0.03,
+      "category": "Casa & Cozinha"
+    },
+    {
+      "itemId": "22997182283",
+      "name": "Carregador para iPhone 20W PD Turbo com Opções: Fonte, Cabo USB-C Lightning ou Fonte + Cabo",
+      "sales": 2993,
+      "ratingStar": 4.8,
+      "commissionRate": 0.09,
+      "category": "Tecnologia"
+    },
+    {
+      "itemId": "50506030654",
+      "name": "Kit Jogo 50 Brocas Aço Rapido 1mm, 1,5mm, 2mm, 2,5mm E 3mm",
+      "sales": 2974,
+      "ratingStar": 4.6,
+      "commissionRate": 0.03,
+      "category": "Ferramentas"
+    },
+    {
+      "itemId": "23098428261",
+      "name": "Kit 1/3/5/8 Discos Diamantado 100mm p/ Cerâmica/Vidro/Porcelanato Areia 15mm c/ Anel 20mm",
+      "sales": 2968,
+      "ratingStar": 4.8,
+      "commissionRate": 0.07,
+      "category": "Ferramentas"
+    },
+    {
+      "itemId": "20997515173",
+      "name": "Conjunto Capa Chuva  PVC Moto Impermeável Com Gola Completo Motoqueiro Adulto",
+      "sales": 2946,
+      "ratingStar": 4.9,
+      "commissionRate": 0.15,
+      "category": "Automotivo"
+    },
+    {
+      "itemId": "58201958222",
+      "name": "Kit 2/4/8/12 Removedor de Pelos Mágico Reutilizável de Máquina de Lavar Bolas Lavanderia Ferramentas Limpeza",
+      "sales": 2897,
+      "ratingStar": 4.7,
+      "commissionRate": 0.03,
+      "category": "Ferramentas"
+    },
+    {
+      "itemId": "22194554063",
+      "name": "1/2/3 Cola Transparente Para Reparo De Sapatos – Adesivo À Prova D'água Fixação De Solas , Saltos E Bolsas (60ml)",
+      "sales": 2865,
+      "ratingStar": 4.8,
+      "commissionRate": 0.03,
+      "category": "Ferramentas"
+    },
+    {
+      "itemId": "23198100568",
+      "name": "Kit Pintura Parede 13 Peças – Rolo de Lã, Lixa, Pincel e Lona Plástica | Completo e Econômico",
+      "sales": 2817,
+      "ratingStar": 4.8,
+      "commissionRate": 0.13,
+      "category": "Ferramentas"
+    },
+    {
+      "itemId": "22603758374",
+      "name": "Kit 04 Brocas Cerâmica Acabamento Unha Nail Gel Manicure Barato Aleatório Lucky",
+      "sales": 2801,
+      "ratingStar": 4.9,
+      "commissionRate": 0.03,
+      "category": "Ferramentas"
+    },
+    {
+      "itemId": "22894857888",
+      "name": "Fita Dupla Face 3M Original Adesiva Fixação Forte Para Quadro Painel Artesanato Parede Objetos",
+      "sales": 2761,
+      "ratingStar": 4.8,
+      "commissionRate": 0.03,
+      "category": "Ferramentas"
+    },
+    {
+      "itemId": "49969743245",
+      "name": "Kit 4 de Ferramentas de Beleza Extrator de Acne Removedor de Cravo Espinha",
+      "sales": 2744,
+      "ratingStar": 4.9,
+      "commissionRate": 0.13,
+      "category": "Ferramentas"
+    },
+    {
+      "itemId": "11622193353",
+      "name": "Kit Completo Papel de Parede Líquido Ecocollor diversas cores + Desempenadeira",
+      "sales": 2709,
+      "ratingStar": 4.9,
+      "commissionRate": 0.13,
+      "category": "Ferramentas"
+    },
+    {
+      "itemId": "58267413548",
+      "name": "CARREGADOR RÁPIDO DE 120 W COM 6A USB C 1M",
+      "sales": 2457,
+      "ratingStar": 4.7,
+      "commissionRate": 0.13,
+      "category": "Tecnologia"
+    },
+    {
+      "itemId": "57106975868",
+      "name": "kit de Alicate Aplicador Para Botao De Metal De Pressao Roupa Bebe C/ 150 botões de roupas",
+      "sales": 2379,
+      "ratingStar": 4.9,
+      "commissionRate": 0.08,
+      "category": "Ferramentas"
+    },
+    {
+      "itemId": "22693562781",
+      "name": "Suporte Para Celular GPS Bike Bicicleta E Moto Em Aluminio",
+      "sales": 2372,
+      "ratingStar": 4.9,
+      "commissionRate": 0.03,
+      "category": "Automotivo"
+    },
+    {
+      "itemId": "23297548294",
+      "name": "Carregador Original Para iPhone 11 12 13 14 15 16 Fonte + Cabo 20w PD Turbo Rapido Tipo C Lightning",
+      "sales": 2317,
+      "ratingStar": 4.9,
+      "commissionRate": 0.05,
+      "category": "Tecnologia"
+    },
+    {
+      "itemId": "22394551143",
+      "name": "5000mah /10000mah /5000MAH Carregador Portátil Bateria Power Bank",
+      "sales": 2219,
+      "ratingStar": 4.7,
+      "commissionRate": 0.03,
+      "category": "Tecnologia"
+    },
+    {
+      "itemId": "42806396653",
+      "name": "Carregador 2em1 Portátil: Bateria 10000mAh + Base Sem Fio para iPhone e Android Tipo-C",
+      "sales": 2145,
+      "ratingStar": 4.6,
+      "commissionRate": 0.1,
+      "category": "Tecnologia"
+    },
+    {
+      "itemId": "23493401178",
+      "name": "Kit 3 em1 Bico Esguicho De Alta Pressão Para Torneira Mangueira Lavagem De Carros Moto Rega Jardim",
+      "sales": 2067,
+      "ratingStar": 4.7,
+      "commissionRate": 0.12,
+      "category": "Ferramentas"
+    },
+    {
+      "itemId": "23197416358",
+      "name": "Parafusadeira Furadeira de Impacto Sem Fio 21V Bivolt 110/220V Kit Maleta com 2 Baterias 28 Peças",
+      "sales": 2037,
+      "ratingStar": 4.8,
+      "commissionRate": 0.11,
+      "category": "Ferramentas"
+    },
+    {
+      "itemId": "23498724368",
+      "name": "Extensor Tensão Forte Faixa Elástica 2 Elásticos Exercícios Treino Academia Ginástica",
+      "sales": 2008,
+      "ratingStar": 4.8,
+      "commissionRate": 0.09,
+      "category": "Academia & Fitness"
+    },
+    {
+      "itemId": "22098563874",
+      "name": "Kit 15 Pincéis + 10 Boleadores Em 5 Pincéis Manicure Desenho",
+      "sales": 1996,
+      "ratingStar": 4.9,
+      "commissionRate": 0.03,
+      "category": "Ferramentas"
+    },
+    {
+      "itemId": "23394846845",
+      "name": "Mangueira de Jardim Siliconada 50 Metros Laranja Kit Completo Reforçada Resistente Anti Torção",
+      "sales": 1948,
+      "ratingStar": 4.7,
+      "commissionRate": 0.03,
+      "category": "Agro"
+    },
+    {
+      "itemId": "23194179318",
+      "name": "Carregador Portátil Mini 10000mAh com Recarga Sem Fio 2-em-1 para iPhone e Tipo-C",
+      "sales": 1895,
+      "ratingStar": 4.6,
+      "commissionRate": 0.09,
+      "category": "Tecnologia"
+    },
+    {
+      "itemId": "19499303395",
+      "name": "Lixadeira Lixa Motor De Unha Elétrica Profissional Mercedes 2000-envio imediato",
+      "sales": 1750,
+      "ratingStar": 4.8,
+      "commissionRate": 0.03,
+      "category": "Ferramentas"
+    },
+    {
+      "itemId": "22294690788",
+      "name": "Mini Aspirador de Pó Portátil Sem Fio Sucção 3 em 1 USB Recarregável Bivolt 120w",
+      "sales": 1712,
+      "ratingStar": 4.6,
+      "commissionRate": 0.03,
+      "category": "Automotivo"
+    },
+    {
+      "itemId": "20597603526",
+      "name": "Mega Cartela de Adesivos Bike Carro Capacete Moto 200 Un Coelho 244 Grau Osascorte",
+      "sales": 1707,
+      "ratingStar": 4.7,
+      "commissionRate": 0.08,
+      "category": "Automotivo"
+    },
+    {
+      "itemId": "14013316143",
+      "name": "Corda De Pular Profissional Ajustavel Crossfit Malhar Saúde",
+      "sales": 1681,
+      "ratingStar": 4.8,
+      "commissionRate": 0.03,
+      "category": "Academia & Fitness"
+    },
+    {
+      "itemId": "58255730048",
+      "name": "Snow Foam Pressão Manual 2l Profissional Pulverizador Preto Lavagem Lavar Carro Horta",
+      "sales": 1647,
+      "ratingStar": 4.8,
+      "commissionRate": 0.14,
+      "category": "Agro"
+    },
+    {
+      "itemId": "23694402336",
+      "name": "Carregador Portátil grande 50000mah/30000mah/2000mah/10000mah Turbo 22,5W PD carregamento ultrarrápido",
+      "sales": 1642,
+      "ratingStar": 4.8,
+      "commissionRate": 0.03,
+      "category": "Tecnologia"
+    },
+    {
+      "itemId": "22994866417",
+      "name": "Mangueira Retrátil Ajustável 15m / 30m – Compacta e Fácil de Guardar",
+      "sales": 1628,
+      "ratingStar": 4.8,
+      "commissionRate": 0.03,
+      "category": "Agro"
+    },
+    {
+      "itemId": "19597686178",
+      "name": "Pulverizador Portátil Borrifador Manual Alta Pressão 2 Litros",
+      "sales": 1627,
+      "ratingStar": 4.8,
+      "commissionRate": 0.13,
+      "category": "Agro"
+    },
+    {
+      "itemId": "21799856205",
+      "name": "Carregador Completo Turbo Power Para Xiaomi Cabo USB + Cabo Tipo C 33W Original",
+      "sales": 1571,
+      "ratingStar": 4.8,
+      "commissionRate": 0.06,
+      "category": "Tecnologia"
+    },
+    {
+      "itemId": "23398223779",
+      "name": "Câmera de segurança YOOSEE IP66 Wi-Fi com lente dupla e sensor de movimento 360° ANJGG",
+      "sales": 1559,
+      "ratingStar": 4.9,
+      "commissionRate": 0.03,
+      "category": "Tecnologia"
+    },
+    {
+      "itemId": "16306884420",
+      "name": "Espelho Auxiliar Convexo Moto Carro Elimina Ponto Cego",
+      "sales": 1554,
+      "ratingStar": 4.8,
+      "commissionRate": 0.08,
+      "category": "Automotivo"
+    },
+    {
+      "itemId": "58201114683",
+      "name": "Mangueira de Jardim 50/30/20/15/10/5 Metros Reforçada Lisa Flexivel Mangueiras Para Quintal Borracha",
+      "sales": 1509,
+      "ratingStar": 4.7,
+      "commissionRate": 0.03,
+      "category": "Agro"
+    },
+    {
+      "itemId": "58269866554",
+      "name": "Kit 5 Faixas Elásticas de Resistência para Treino Pernas Glúteos Pilates Yoga Academia Musculação Funcional",
+      "sales": 1466,
+      "ratingStar": 4.8,
+      "commissionRate": 0.03,
+      "category": "Academia & Fitness"
+    },
+    {
+      "itemId": "16720227042",
+      "name": "Corda Pular Aço Crossfit 3M Rolamento Speed Profissional Corda Crossfit Entrega Rápida",
+      "sales": 1433,
+      "ratingStar": 4.9,
+      "commissionRate": 0.15,
+      "category": "Academia & Fitness"
+    },
+    {
+      "itemId": "21397996993",
+      "name": "Pulverizador Agrícola Lateral Manual 5 Litros Borrifador Com Compressão Prévia Profissional Branco",
+      "sales": 1398,
+      "ratingStar": 4.9,
+      "commissionRate": 0.13,
+      "category": "Agro"
+    },
+    {
+      "itemId": "22293882305",
+      "name": "Colchonete de Academia 90x40x3,00 a 2,90 cm Compacto Espuma Macia D23 Impermeável Azul Preto Pilates",
+      "sales": 1350,
+      "ratingStar": 4.8,
+      "commissionRate": 0.12,
+      "category": "Academia & Fitness"
+    },
+    {
+      "itemId": "21199206425",
+      "name": "Pulverizador Manual 5 Litros Bomba Mangueira Aspersor Jardinagem Hortas Gramas",
+      "sales": 1316,
+      "ratingStar": 4.9,
+      "commissionRate": 0.08,
+      "category": "Agro"
+    },
+    {
+      "itemId": "58216466145",
+      "name": "Kit 4 Ferramentas de Jardinagem Para Vasos Horta Jardim Plantas Flores Aço Carbono Cabo Madeira kit 4",
+      "sales": 1259,
+      "ratingStar": 4.8,
+      "commissionRate": 0.13,
+      "category": "Agro"
+    },
+    {
+      "itemId": "22398226733",
+      "name": "Afiador Profissional de Facas Aço Tungstênio Pedra Diamantada Lâminas Tesoura Jardinagem Cabo Antiderrapante",
+      "sales": 1255,
+      "ratingStar": 4.7,
+      "commissionRate": 0.03,
+      "category": "Agro"
+    },
+    {
+      "itemId": "22598814936",
+      "name": "Kit Pulverizador gatilho Borrifador pra Garrafa Pet Reforçado",
+      "sales": 1181,
+      "ratingStar": 4.9,
+      "commissionRate": 0.03,
+      "category": "Agro"
+    },
+    {
+      "itemId": "27017371894",
+      "name": "Serra Dobrável Profissional , Para Jardinagem , Camping , Poda De Galhos",
+      "sales": 1169,
+      "ratingStar": 4.8,
+      "commissionRate": 0.08,
+      "category": "Agro"
+    },
+    {
+      "itemId": "19899558340",
+      "name": "Pulverizador Agrícola Lateral Manual 5 Litros De Compressão Prévia Borrifador Jato Regulável Stuart",
+      "sales": 1165,
+      "ratingStar": 4.9,
+      "commissionRate": 0.1,
+      "category": "Agro"
+    },
+    {
+      "itemId": "58205538623",
+      "name": "Mangueira Jardim Trançada Laranja 05 a 50 Metros  Mangueira Com Pronta para uso.",
+      "sales": 1161,
+      "ratingStar": 4.6,
+      "commissionRate": 0.04,
+      "category": "Agro"
+    },
+    {
+      "itemId": "58205272511",
+      "name": "Mangueira de Jardim 50 Metros Azul Reforçada Lisa Flexível Conector Engate Bico",
+      "sales": 1124,
+      "ratingStar": 4.7,
+      "commissionRate": 0.03,
+      "category": "Agro"
+    },
+    {
+      "itemId": "58267615697",
+      "name": "V720 Câmara de segurança 1080P Wi-Fi, com visão noturna por infravermelhos e função de rastreamento",
+      "sales": 1124,
+      "ratingStar": 4.6,
+      "commissionRate": 0.06,
+      "category": "Tecnologia"
+    },
+    {
+      "itemId": "23194931193",
+      "name": "Câmera De Segurança WIFI Lâmpada Sem Fio full HD IP 360°Com Microfone 8177",
+      "sales": 1109,
+      "ratingStar": 4.8,
+      "commissionRate": 0.07,
+      "category": "Tecnologia"
+    },
+    {
+      "itemId": "22294717914",
+      "name": "Mangueira Mágica 15 e 30 Metros Retrátil Flexível",
+      "sales": 1099,
+      "ratingStar": 4.7,
+      "commissionRate": 0.03,
+      "category": "Agro"
+    },
+    {
+      "itemId": "23197474031",
+      "name": "Kit Mini Ferramentas P/jardinagem Vasos 21cm Madeira 169101",
+      "sales": 1062,
+      "ratingStar": 4.7,
+      "commissionRate": 0.08,
+      "category": "Agro"
+    },
+    {
+      "itemId": "23698527944",
+      "name": "2025 Nova Série 8 Relógio T800 Ultra Smart Watch Esportivo Sem Fio À Prova D'água T800 Ultra2 MAXHomens Mulheres Relógio",
+      "sales": 1039,
+      "ratingStar": 4.7,
+      "commissionRate": 0.03,
+      "category": "Tecnologia"
+    },
+    {
+      "itemId": "22494451872",
+      "name": "Smartphone Motorola Moto g06 - 128GB 4GB RAM + 8GB Ram Boost, e Camera 50MP com AI Bateria de 5200 mAh Tela 6.9\"",
+      "sales": 1034,
+      "ratingStar": 4.9,
+      "commissionRate": 0.03,
+      "category": "Tecnologia"
+    },
+    {
+      "itemId": "12488907890",
+      "name": "Caminha para Cachorros Cama Pet Colchonete Gatos",
+      "sales": 1012,
+      "ratingStar": 4.7,
+      "commissionRate": 0.03,
+      "category": "Academia & Fitness"
+    },
+    {
+      "itemId": "23497845423",
+      "name": "Mangueira de Jardim 50 Metros Lisa Reforçada 5 a 50m 15 20 30 Metros Kit Engate Conector Esguicho",
+      "sales": 946,
+      "ratingStar": 4.7,
+      "commissionRate": 0.11,
+      "category": "Agro"
+    },
+    {
+      "itemId": "42524620494",
+      "name": "smartwatch GPS BETTDOW Com Aplicativos AI Integrados , Resistência À Água De 3 ATM E display AMOLED",
+      "sales": 898,
+      "ratingStar": 4.9,
+      "commissionRate": 0.13,
+      "category": "Tecnologia"
+    },
+    {
+      "itemId": "40336326149",
+      "name": "Kit 7 Body Splash Feminino Shakan 60ml Perfume Feminino Fragrâncias Doces Florais Kit Presente Beleza Perfumaria",
+      "sales": 883,
+      "ratingStar": 4.6,
+      "commissionRate": 0.14,
+      "category": "Perfumes"
+    },
+    {
+      "itemId": "22593514865",
+      "name": "Mangueira Magica 30M Flexivel Irrigação E 7 Tipos De Jato",
+      "sales": 879,
+      "ratingStar": 4.8,
+      "commissionRate": 0.03,
+      "category": "Agro"
+    },
+    {
+      "itemId": "23094411022",
+      "name": "Tesoura De Poda 17,5cm Cabo De Plástico Ponta De Metal Para Jardinagem Plantas 15694",
+      "sales": 876,
+      "ratingStar": 4.9,
+      "commissionRate": 0.03,
+      "category": "Agro"
+    },
+    {
+      "itemId": "13239354529",
+      "name": "Suporte Mangueira Jardim Plastico Parede Reforçado + Parafuso e Bucha - Preto Overtime",
+      "sales": 870,
+      "ratingStar": 4.9,
+      "commissionRate": 0.21,
+      "category": "Agro"
+    },
+    {
+      "itemId": "22998825429",
+      "name": "Luva Fitness Feminina e Masculina Musculação  Antiderrapante | Meia Luva Academia Anticalos  Levantamento cros meia luva",
+      "sales": 843,
+      "ratingStar": 4.8,
+      "commissionRate": 0.03,
+      "category": "Academia & Fitness"
+    },
+    {
+      "itemId": "58268851263",
+      "name": "Afiador de Facas Profissional Aço Tungstênio para Tesoura Canivete Ferramentas de Jardinagem",
+      "sales": 842,
+      "ratingStar": 4.5,
+      "commissionRate": 0.03,
+      "category": "Agro"
+    },
+    {
+      "itemId": "25195366917",
+      "name": "Bico Pulverizador De Pesticidas De Alta Pressão Portátil , Irrigação Ajustável , Suprimentos Para Jardim Agrícola",
+      "sales": 841,
+      "ratingStar": 4.8,
+      "commissionRate": 0.08,
+      "category": "Agro"
+    },
+    {
+      "itemId": "46212693380",
+      "name": "Suporte Gamer GTA VI para Controle PS5 e Xbox | Organizador 3D",
+      "sales": 840,
+      "ratingStar": 5.0,
+      "commissionRate": 0.03,
+      "category": "Games"
+    },
+    {
+      "itemId": "18198087196",
+      "name": "Colchonete p/ Academia90x40x2 cm Espuma Macia D23 Impermeável Compacto Fit Mat Yoga Pilates 1-2-3/UN",
+      "sales": 831,
+      "ratingStar": 4.8,
+      "commissionRate": 0.08,
+      "category": "Academia & Fitness"
+    },
+    {
+      "itemId": "58269829865",
+      "name": "Body Splash Feminino 200ml – Colônia Perfumada Refrescante VLOWER",
+      "sales": 819,
+      "ratingStar": 4.6,
+      "commissionRate": 0.21,
+      "category": "Perfumes"
+    },
+    {
+      "itemId": "23393946244",
+      "name": "Relógios Esporte Led digital à prova d'agua unissex",
+      "sales": 811,
+      "ratingStar": 4.5,
+      "commissionRate": 0.03,
+      "category": "Academia & Fitness"
+    },
+    {
+      "itemId": "22792005725",
+      "name": "T900 Ultra Smartwatch 9 Ultra Relógio Inteligente Estoque em São Paulo disponível para pronta entrega",
+      "sales": 810,
+      "ratingStar": 4.7,
+      "commissionRate": 0.03,
+      "category": "Tecnologia"
+    },
+    {
+      "itemId": "21997634046",
+      "name": "Pulverizador Borrifador Manual  Pressão Acumulada Inseticida Pesticida 2 litros",
+      "sales": 806,
+      "ratingStar": 4.9,
+      "commissionRate": 0.08,
+      "category": "Agro"
+    },
+    {
+      "itemId": "19160152685",
+      "name": "Cama Para Cachorro e Gatos Cama Pet Colchonete Pet Grande Menor Preço!",
+      "sales": 805,
+      "ratingStar": 4.6,
+      "commissionRate": 0.14,
+      "category": "Academia & Fitness"
+    },
+    {
+      "itemId": "58251855904",
+      "name": "Controle Sem Fio Joystick Gamer para Switch E PC  Oled Lite Com Cabo Carregável",
+      "sales": 803,
+      "ratingStar": 4.9,
+      "commissionRate": 0.03,
+      "category": "Games"
+    },
+    {
+      "itemId": "58267606349",
+      "name": "Novo Smartwatch S9 Ultra Max Novo Inteligente Watch 9 Ultra  Série 9 Homens Disponível para: Sistemas Android e iOS",
+      "sales": 803,
+      "ratingStar": 4.7,
+      "commissionRate": 0.13,
+      "category": "Tecnologia"
+    },
+    {
+      "itemId": "58203736970",
+      "name": "Colchonete * CAMINHA * Vai com Sistema de Remoção Para retirada do travesseiro da Caminha 100x80cm 80x60cm",
+      "sales": 802,
+      "ratingStar": 4.9,
+      "commissionRate": 0.14,
+      "category": "Academia & Fitness"
+    },
+    {
+      "itemId": "58261016170",
+      "name": "2026 Chamada De Frequência Cardíaca Bluetooth À Prova D'água Iwo s10 Sport Smart Watch",
+      "sales": 800,
+      "ratingStar": 4.8,
+      "commissionRate": 0.14,
+      "category": "Tecnologia"
+    },
+    {
+      "itemId": "20898258730",
+      "name": "Mangueira Tubo Polietileno Irrigação 1/2 Polegada Rolo Com 50m E 100m Metros Preta",
+      "sales": 792,
+      "ratingStar": 4.8,
+      "commissionRate": 0.03,
+      "category": "Agro"
+    },
+    {
+      "itemId": "58211213701",
+      "name": "Faixas Elásticas de Resistência 3 Níveis Ideal para Yoga, Pilates e Treinos Funcionais em Casa e Academia",
+      "sales": 781,
+      "ratingStar": 4.8,
+      "commissionRate": 0.07,
+      "category": "Academia & Fitness"
+    },
+    {
+      "itemId": "22798340971",
+      "name": "Geladeira Multidoor 4 Portas HQ 426 L Frost Free Inverter Classe A HQ-426MDFF",
+      "sales": 779,
+      "ratingStar": 4.9,
+      "commissionRate": 0.04,
+      "category": "Casa & Cozinha"
+    },
+    {
+      "itemId": "23397127285",
+      "name": "Mangueira de Jardim Trançada Grafite 7/16 (Kit Completo) - 10m à 50m Reforçada Trançada Resistente",
+      "sales": 776,
+      "ratingStar": 4.8,
+      "commissionRate": 0.18,
+      "category": "Agro"
+    },
+    {
+      "itemId": "58262663696",
+      "name": "Barra Fixa de Porta Ajustável 64-100cm para Exercícios, Calistenia, Crossfit, Musculação e Fitness",
+      "sales": 775,
+      "ratingStar": 4.9,
+      "commissionRate": 0.03,
+      "category": "Academia & Fitness"
     }
   ],
   "rejected": {
-    "duplicate": 916,
-    "rating_below_4_5_or_missing": 45,
-    "not_enough_sales": 3
+    "duplicate": 929,
+    "not_enough_sales": 192,
+    "rating_below_4_5_or_missing": 36
   },
-  "duplicateCandidatesRemoved": 7,
+  "duplicateCandidatesRemoved": 6,
   "searchErrors": 0,
-  "candidatePool": 665,
+  "candidatePool": 474,
   "minimums": {
-    "sales": 1,
+    "sales": 100,
     "rating": 4.5,
     "commissionRate": 0.0001,
     "requiredImage": true,
     "requiredAffiliateLink": true
   },
-  "updatedAt": "2026-11-27T02:24:49.897059-03:00"
+  "updatedAt": "2026-11-28T02:00:21.712034-03:00"
 }
